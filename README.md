@@ -1,10 +1,18 @@
-fernandocejas.com 
+Blog Project
 =========================
-
-Personal blog project: 
 
 * [android10.github.io](https://android10.github.io/)
 * [fernandocejas.com](https://www.fernandocejas.com)
+
+
+Useful commands
+-----------------
+
+ * `bundle install`.
+ * `bundle update`.
+ * `jekyll clean`.
+ * `jekyll build`.
+ * `bundle exec jekyll serve`
 
 
 License
