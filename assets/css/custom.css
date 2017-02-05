@@ -1,5 +1,10 @@
 /* Custom CSS */
 .page-header { color: #fff; text-align: center; background-color: #159957; background-image: linear-gradient(120deg, #155799, #159957); }
-@media screen and (min-width: 64em) { .page-header { padding: 5rem 6rem; } }
-@media screen and (min-width: 42em) and (max-width: 64em) { .page-header { padding: 3rem 4rem; } }
-@media screen and (max-width: 42em) { .page-header { padding: 2rem 1rem; } }
+@media screen and (min-width: 64em) { .page-header { padding: 2rem 3rem; } }
+@media screen and (min-width: 42em) and (max-width: 64em) { .page-header { padding: 1rem 2rem; } }
+@media screen and (max-width: 42em) { .page-header { padding: 1rem 0rem; } }
+
+.section-separator { padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: solid 1px #eff0f1; }
+@media screen and (min-width: 64em) { .section-separator { font-size: 0rem; } }
+@media screen and (min-width: 42em) and (max-width: 64em) { .section-separator { font-size: 0rem; } }
+@media screen and (max-width: 42em) { .section-separator { font-size: 0.5rem; } }
