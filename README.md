@@ -5,6 +5,18 @@ Blog Project
 * [fernandocejas.com](https://www.fernandocejas.com)
 
 
+
+Useful documentation
+-----------------
+* [Jekyll: Quick-start guide](https://jekyllrb.com/docs/quickstart/)
+* [Jekyll: Documentation](https://jekyllrb.com/docs/home/)
+* [Github: Jekyll dependency versions](https://pages.github.com/versions/)
+* [Github: Jekyll supported themes](https://pages.github.com/themes/)
+* [Cayman Theme](https://github.com/pages-themes/cayman)
+* [Cayman Sample](https://jasonlong.github.io/cayman-theme/)
+
+
+
 Useful commands
 -----------------
 
@@ -13,6 +25,7 @@ Useful commands
  * `jekyll clean`.
  * `jekyll build`.
  * `bundle exec jekyll serve`
+
 
 
 License
