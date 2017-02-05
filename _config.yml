@@ -16,8 +16,8 @@
 title: Fernando Cejas
 email: hello@fernandocejas.com
 description: > # this means to ignore newlines until "baseurl:"
-  Welcome and hello! My name is Fernando Cejas. I’m a Core Engineer working at @SoundCloud.
-  In this blog, you will find content related to software engineering. 
+  Welcome! I'm Fernando Cejas, Core Engineer working at @SoundCloud.<br>
+  In this blog, you will find content related to software engineering.<br> 
   All views, posts and opinions shared are my own.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
