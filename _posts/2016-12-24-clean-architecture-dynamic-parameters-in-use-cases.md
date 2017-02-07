@@ -1,10 +1,9 @@
 ---
-id: 484
-title: 'Clean Architecture&#8230;Dynamic Parameters in Use Cases'
+id: 11
+title: 'Clean Architecture...Dynamic Parameters in Use Cases'
 date: 2016-12-24T22:05:11+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=484
 permalink: /2016/12/24/clean-architecture-dynamic-parameters-in-use-cases/
 categories:
   - Android

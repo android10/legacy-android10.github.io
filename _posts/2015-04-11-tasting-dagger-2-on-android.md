@@ -1,10 +1,9 @@
 ---
-id: 287
+id: 6
 title: Tasting Dagger 2 on Android
 date: 2015-04-11T13:23:14+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=287
 permalink: /2015/04/11/tasting-dagger-2-on-android/
 categories:
   - Android

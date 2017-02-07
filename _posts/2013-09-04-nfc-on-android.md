@@ -2,9 +2,8 @@
 id: 1
 title: NFC on Android
 date: 2013-09-04T18:00:19+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=1
 permalink: /2013/09/04/nfc-on-android/
 categories:
   - Android

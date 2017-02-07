@@ -1,10 +1,9 @@
 ---
-id: 352
-title: 'Architecting Android&#8230;The evolution'
+id: 7
+title: 'Architecting Android...The evolution'
 date: 2015-07-18T16:18:56+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=352
 permalink: /2015/07/18/architecting-android-the-evolution/
 categories:
   - Android

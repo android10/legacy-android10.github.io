@@ -1,10 +1,9 @@
 ---
-id: 196
-title: 'Architecting Android&#8230;The clean way?'
+id: 4
+title: 'Architecting Android...The clean way?'
 date: 2014-09-03T01:45:54+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=196
 permalink: /2014/09/03/architecting-android-the-clean-way/
 categories:
   - Android

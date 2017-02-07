@@ -1,10 +1,9 @@
 ---
-id: 457
+id: 10
 title: 'Android: Dagger 1 and 2 living together'
 date: 2016-08-03T20:10:03+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=457
 permalink: /2016/08/03/android-dagger-1-and-2-living-together/
 categories:
   - Android

@@ -1,10 +1,9 @@
 ---
-id: 91
+id: 2
 title: Unit testing asynchronous methods with Mockito
 date: 2014-04-08T00:32:44+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=91
 permalink: /2014/04/08/unit-testing-asynchronous-methods-with-mockito/
 categories:
   - Development

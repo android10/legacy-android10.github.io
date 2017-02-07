@@ -1,10 +1,9 @@
 ---
-id: 241
+id: 5
 title: 'RxJava Observable tranformation: concatMap() vs flatMap()'
 date: 2015-01-11T22:58:06+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=241
 permalink: /2015/01/11/rxjava-observable-tranformation-concatmap-vs-flatmap/
 categories:
   - Android

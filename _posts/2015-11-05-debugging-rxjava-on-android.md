@@ -1,10 +1,9 @@
 ---
-id: 393
+id: 8
 title: Debugging RxJava on Android
 date: 2015-11-05T00:12:19+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=393
 permalink: /2015/11/05/debugging-rxjava-on-android/
 categories:
   - Android

@@ -1,10 +1,9 @@
 ---
-id: 416
+id: 9
 title: How to use Optional values on Java and Android
 date: 2016-02-20T23:19:45+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=416
 permalink: /2016/02/20/how-to-use-optional-on-android-and-java/
 categories:
   - Android

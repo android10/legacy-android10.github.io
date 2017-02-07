@@ -1,10 +1,9 @@
 ---
-id: 154
+id: 3
 title: Aspect Oriented Programming in Android
 date: 2014-08-03T01:02:51+00:00
-author: fcejas
+author: Fernando Cejas
 layout: post
-guid: http://fernandocejas.com/?p=154
 permalink: /2014/08/03/aspect-oriented-programming-in-android/
 categories:
   - Android
