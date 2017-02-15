@@ -116,28 +116,28 @@ afterEvaluate {
 ```kotlin
 class GetUserDetailsTest {
 
-    private val USER_ID = 123
+  private val USER_ID = 123
 
-    private lateinit var getUserDetails: GetUserDetails
+  private lateinit var getUserDetails: GetUserDetails
 
-    private val userRepository: UserRepository = mock()
-    private val threadExecutor: ThreadExecutor = mock()
-    private val postExecutionThread: PostExecutionThread = mock()
+  private val userRepository: UserRepository = mock()
+  private val threadExecutor: ThreadExecutor = mock()
+  private val postExecutionThread: PostExecutionThread = mock()
 
-    @Before
-    fun setUp() {
-        getUserDetails = GetUserDetails(userRepository, threadExecutor, postExecutionThread)
-    }
+  @Before
+  fun setUp() {
+    getUserDetails = GetUserDetails(userRepository, threadExecutor, postExecutionThread)
+  }
 
-    @Test
-    fun shouldGetUserDetails() {
-        getUserDetails.buildUseCaseObservable(GetUserDetails.Params.forUser(USER_ID));
+  @Test
+  fun shouldGetUserDetails() {
+    getUserDetails.buildUseCaseObservable(GetUserDetails.Params.forUser(USER_ID));
 
-        verify(userRepository).user(USER_ID)
-        verifyNoMoreInteractions(userRepository)
-        verifyZeroInteractions(postExecutionThread)
-        verifyZeroInteractions(threadExecutor)
-    }
+    verify(userRepository).user(USER_ID)
+    verifyNoMoreInteractions(userRepository)
+    verifyZeroInteractions(postExecutionThread)
+    verifyZeroInteractions(threadExecutor)
+  }
 }
 ```
 
@@ -146,39 +146,39 @@ class GetUserDetailsTest {
 ```kotlin
 class SerializerTest {
 
-    private val JSON_RESPONSE = "{\n \"id\": 1,\n " +
-                                "\"cover_url\": \"http://www.android10.org/myapi/cover_1.jpg\",\n " +
-                                "\"full_name\": \"Simon Hill\",\n " +
-                                "\"description\": \"Curabitur gravida nisi at nibh. In hac habitasse " +
-                                "platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer " +
-                                "eget, rutrum at, lorem.\\n\\nInteger tincidunt ante vel ipsum. " +
-                                "Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo " +
-                                "placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, " +
-                                "lacinia eget, tincidunt eget, tempus vel, pede.\",\n " +
-                                "\"followers\": 7484,\n " +
-                                "\"email\": \"jcooper@babbleset.edu\"\n}"
+  private val JSON_RESPONSE = "{\n \"id\": 1,\n " +
+                              "\"cover_url\": \"http://www.android10.org/myapi/cover_1.jpg\",\n " +
+                              "\"full_name\": \"Simon Hill\",\n " +
+                              "\"description\": \"Curabitur gravida nisi at nibh. In hac habitasse " +
+                              "platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer " +
+                              "eget, rutrum at, lorem.\\n\\nInteger tincidunt ante vel ipsum. " +
+                              "Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo " +
+                              "placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, " +
+                              "lacinia eget, tincidunt eget, tempus vel, pede.\",\n " +
+                              "\"followers\": 7484,\n " +
+                              "\"email\": \"jcooper@babbleset.edu\"\n}"
 
-    private var serializer = Serializer()
+  private var serializer = Serializer()
 
-    @Test
-    fun shouldSerialize() {
-        val userEntityOne = serializer.deserialize(JSON_RESPONSE, UserEntity::class.java)
-        val jsonString = serializer.serialize(userEntityOne, UserEntity::class.java)
-        val userEntityTwo = serializer.deserialize(jsonString, UserEntity::class.java)
+  @Test
+  fun shouldSerialize() {
+    val userEntityOne = serializer.deserialize(JSON_RESPONSE, UserEntity::class.java)
+    val jsonString = serializer.serialize(userEntityOne, UserEntity::class.java)
+    val userEntityTwo = serializer.deserialize(jsonString, UserEntity::class.java)
 
-        userEntityOne.userId shouldEqual userEntityTwo.userId
-        userEntityOne.fullname shouldEqual userEntityTwo.fullname
-        userEntityOne.followers shouldEqual userEntityTwo.followers
-    }
+    userEntityOne.userId shouldEqual userEntityTwo.userId
+    userEntityOne.fullname shouldEqual userEntityTwo.fullname
+    userEntityOne.followers shouldEqual userEntityTwo.followers
+  }
 
-    @Test
-    fun shouldDesearialize() {
-        val userEntity = serializer.deserialize(JSON_RESPONSE, UserEntity::class.java)
+  @Test
+  fun shouldDesearialize() {
+    val userEntity = serializer.deserialize(JSON_RESPONSE, UserEntity::class.java)
 
-        userEntity.userId shouldEqual 1
-        userEntity.fullname shouldEqual "Simon Hill"
-        userEntity.followers shouldEqual 7484
-    }
+    userEntity.userId shouldEqual 1
+    userEntity.fullname shouldEqual "Simon Hill"
+    userEntity.followers shouldEqual 7484
+  }
 }
 ```
 
@@ -187,7 +187,7 @@ class SerializerTest {
 <p class="justify"><span class="boldtext">I created a test parent class (used for each test case) in order to encapsulate everything <a href="http://robolectric.org/" target="_blank">Robolectic</a> related,</span> thus, my tests do not depend directly on this framework. The idea is that any functionality or helper method is wrapped here (<span class="boldtext">this is a lesson learned from the past</span> where I polluted all my code with Robolectric classes, so the process of migrating to a non-backward compatible newer version was very painful).</p>
 
 ```kotlin
-/
+/**
  * Base class for Robolectric data layer tests.
  * Inherit from this class to create a test.
  */
@@ -197,15 +197,15 @@ class SerializerTest {
         sdk = intArrayOf(21))
 abstract class AndroidTest {
 
-    fun context(): Context {
-        return RuntimeEnvironment.application
-    }
+  fun context(): Context {
+    return RuntimeEnvironment.application
+  }
 
-    fun cacheDir(): File {
-        return context().cacheDir
-    }
+  fun cacheDir(): File {
+    return context().cacheDir
+  }
 
-    internal class ApplicationStub : Application()
+  internal class ApplicationStub : Application()
 }
 ```
 
@@ -214,38 +214,38 @@ abstract class AndroidTest {
 ```kotlin
 class FileManagerTest : AndroidTest() {
 
-    private var fileManager = FileManager()
+  private var fileManager = FileManager()
 
-    @After
-    fun tearDown() {
-        fileManager.clearDirectory(cacheDir())
-    }
+  @After
+  fun tearDown() {
+    fileManager.clearDirectory(cacheDir())
+  }
 
-    @Test
-    fun shouldWriteToFile() {
-        val fileToWrite = createDummyFile()
-        val fileContent = "content"
+  @Test
+  fun shouldWriteToFile() {
+    val fileToWrite = createDummyFile()
+    val fileContent = "content"
 
-        fileManager.writeToFile(fileToWrite, fileContent)
+    fileManager.writeToFile(fileToWrite, fileContent)
 
-        fileToWrite.exists() shouldEqualTo true
-    }
+    fileToWrite.exists() shouldEqualTo true
+  }
 
-    @Test
-    fun shouldHaveCorrectFileContent() {
-        val fileToWrite = createDummyFile()
-        val fileContent = "content\n"
+  @Test
+  fun shouldHaveCorrectFileContent() {
+    val fileToWrite = createDummyFile()
+    val fileContent = "content\n"
 
-        fileManager.writeToFile(fileToWrite, fileContent)
-        val expectedContent = fileManager.readFileContent(fileToWrite)
+    fileManager.writeToFile(fileToWrite, fileContent)
+    val expectedContent = fileManager.readFileContent(fileToWrite)
 
-        expectedContent shouldEqualTo fileContent
-    }
+    expectedContent shouldEqualTo fileContent
+  }
 
-    private fun createDummyFile(): File {
-        val dummyFilePath = cacheDir().path + File.separator + "dummyFile"
-        return File(dummyFilePath)
-    }
+  private fun createDummyFile(): File {
+    val dummyFilePath = cacheDir().path + File.separator + "dummyFile"
+    return File(dummyFilePath)
+  }
 }
 ```
 
@@ -258,11 +258,11 @@ class FileManagerTest : AndroidTest() {
 @RunWith(AndroidJUnit4::class)
 abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
 
-    @Rule @JvmField
-    val testRule: ActivityTestRule&lt;T&gt; = IntentsTestRule(clazz)
+  @Rule @JvmField
+  val testRule: ActivityTestRule<T> = IntentsTestRule(clazz)
 
-    val checkThat: Matchers = Matchers()
-    val events: Events = Events()
+  val checkThat: Matchers = Matchers()
+  val events: Events = Events()
 }
 ```
 
@@ -275,25 +275,25 @@ abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
 
 ```kotlin
 class Matchers {
-    fun <T : Activity> nextOpenActivityIs(clazz: Class<T>) {
-        intended(IntentMatchers.hasComponent(clazz.name))
-    }
+  fun <T : Activity> nextOpenActivityIs(clazz: Class<T>) {
+    intended(IntentMatchers.hasComponent(clazz.name))
+  }
 
-    fun viewIsVisibleAndContainsText(@StringRes stringResource: Int) {
-        onView(withText(stringResource)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
-    }
+  fun viewIsVisibleAndContainsText(@StringRes stringResource: Int) {
+    onView(withText(stringResource)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+  }
 
-    fun viewContainsText(@IdRes viewId: Int, @StringRes stringResource: Int) {
-        onView(withId(viewId)).check(matches(withText(stringResource)))
-    }
+  fun viewContainsText(@IdRes viewId: Int, @StringRes stringResource: Int) {
+    onView(withId(viewId)).check(matches(withText(stringResource)))
+  }
 }
 ```
 
 ```kotlin
 class Events {
-    fun clickOnView(@IdRes viewId: Int) {
-        onView(withId(viewId)).perform(click())
-    }
+  fun clickOnView(@IdRes viewId: Int) {
+    onView(withId(viewId)).perform(click())
+  }
 }
 ```
 
@@ -302,17 +302,17 @@ class Events {
 ```kotlin
 class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) {
 
-    @Test
-    fun shouldOpenHelloWorldScreen() {
-        events.clickOnView(R.id.btn_hello_world)
-        checkThat.nextOpenActivityIs(HelloWorldActivity::class.java)
-    }
+  @Test
+  fun shouldOpenHelloWorldScreen() {
+    events.clickOnView(R.id.btn_hello_world)
+    checkThat.nextOpenActivityIs(HelloWorldActivity::class.java)
+  }
 
-    @Test
-    fun shouldDisplayAction() {
-        events.clickOnView(R.id.fab)
-        checkThat.viewIsVisibleAndContainsText(R.string.action)
-    }
+  @Test
+  fun shouldDisplayAction() {
+    events.clickOnView(R.id.fab)
+    checkThat.viewIsVisibleAndContainsText(R.string.action)
+  }
 }
 ```
 
