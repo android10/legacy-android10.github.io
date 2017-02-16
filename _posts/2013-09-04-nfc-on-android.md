@@ -14,22 +14,20 @@ tags:
   - development
   - nfc
 ---
-Hi all! I&#8217;m so proud that finally I&#8217;ve created my new blog. Since this is my **12372983** attempt for having a development blog, **I can only promise you that will put all my effort to keep it up to date.** So welcome!
+Hi all! I'm so proud that finally I have created my new blog. Since this is my <span class="boldtext">12372983</span> attempt for having a development blog, <span class="boldtext">I can only promise that I will put all my efforts to keep it up to date.</span> So welcome!
 
-And now that this is my first post I just wanted to share with you a talk about Near Field Communication I gave last year which was requested by a lot of colleagues. Here it is guys! (take into account that the video is in spanish, anyway I promise to explain some examples and use cases soon).
+And now that this is my first post, I wanted to share with you a talk about <span class="boldtext">Near Field Communication</span> I gave last year which was requested by a lot of colleagues. Here it is. (take into account that the video is in spanish, but I promise to explain some examples and use cases soon).
 
-**Enjoy and feel free to comment and give very useful feedback.**
+<span class="boldtext">Enjoy and feel free to comment and give very useful feedback.</span>
 
 You can find the source code of the example application of both the presentation and video here: <a href="https://github.com/android10/nfc_android_sample" title="https://github.com/android10/nfc_android_sample" target="_blank">https://github.com/android10/nfc_android_sample</a>
 
 Here is the presentation (english):
 
-<center>
-</center>&nbsp;
+<center><script class="speakerdeck-embed" type="text/javascript" src="//speakerdeck.com/assets/embed.js" async="" data-id="28a44f50f8a60130e852227600bb7d26" data-ratio="1.41436464088398"></script></center>
 
 Here is the video (spanish):
 
-<center>
-</center>
+<center><iframe width="640" height="480" src="//www.youtube.com/embed/l_NmDalX4kc" frameborder="0" allowfullscreen=""></iframe></center>
 
-See you!!!
+<span class="boldtext">See you!!!</span>
