@@ -27,167 +27,76 @@ tags:
   - patterns
   - programming
 ---
-<p style="text-align: justify;">
-  <span style="color: #000080;"><strong>Hey!</strong></span> Finally I decided that was a good time to get back to the blog and share what I have dealing with for the last weeks. In this occasion I would like to talk a bit about my experience with <a href="http://google.github.io/dagger/" target="_blank">Dagger 2</a>, but first I think that really worth a quick explanation about why<span style="color: #000080;"> <strong>I believe that <span style="color: #333399;">dependency</span> injection is important and why we should definitely use it in our android applications</strong>.</span>
-</p>
+<p class="justify"><span class="boldtext">Hey!</span> Finally I decided that was a good time to get back to the blog and share what I have dealing with for the last weeks. In this occasion I would like to talk a bit about my experience with <a href="http://google.github.io/dagger/" target="_blank">Dagger 2</a>, but first I think that really worth a quick explanation about why<span class="boldtext"> I believe that <span class="boldtext">dependency</span> injection is important and why we should definitely use it in our android applications.</span></p>
 
-<p style="text-align: justify;">
-  By the way, I assume that you have have a basic knowledge about <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> in general and tools like <a href="http://square.github.io/dagger/" target="_blank">Dagger</a>/<a href="https://github.com/google/guice" target="_blank">Guice</a>, otherwise I would suggest you to check some of the <a href="http://antonioleiva.com/dependency-injection-android-dagger-part-1/" target="_blank">very good tutorials out there</a>. <span style="color: #000080;"><strong>Let&#8217;s get our hands dirty then!</strong></span>
-</p>
+<p class="justify">By the way, I assume that you have have a basic knowledge about <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> in general, and tools like <a href="http://square.github.io/dagger/" target="_blank">Dagger</a>/<a href="https://github.com/google/guice" target="_blank">Guice</a>, otherwise I would suggest you to check some of the <a href="http://antonioleiva.com/dependency-injection-android-dagger-part-1/" target="_blank">very good tutorials out there</a>. <span class="boldtext">Let's get our hands dirty then!</span></p>
 
-<h3 style="text-align: justify;">
-  Why dependency injection?
-</h3>
+## Why dependency injection?
 
-<p style="text-align: justify;">
-  The first <span style="color: #000080;"><strong><span style="text-decoration: underline;">(and indeed most important)</span></strong></span> thing we should know about it is that has been there for a long time and uses <a href="http://en.wikipedia.org/wiki/Inversion_of_control" target="_blank">Inversion of Control</a> principle, which basically states that <strong><span style="color: #000080;">the flow of your application depends on the object graph that is built up during program execution, and such a dynamic flow is made possible by object interactions being defined through abstractions.</span></strong> This run-time binding is achieved by mechanisms such as <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> or a service locator.
-</p>
+<p class="justify">The first <span class="boldtext"><span class="underlinetext">(and indeed most important)</span></span> thing we should know about it is that has been there for a long time and uses <a href="http://en.wikipedia.org/wiki/Inversion_of_control" target="_blank">Inversion of Control</a> principle, which basically states that <span class="boldtext">the flow of your application depends on the object graph that is built up during program execution, and such a dynamic flow is made possible by object interactions being defined through abstractions.</span> This run-time binding is achieved by mechanisms such as <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> or a service locator.</p>
 
-<p style="text-align: justify;">
-  Said that we can get to the conclusion that <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> brings us important benefits:
-</p>
+<p class="justify">Said that we can get to the conclusion that <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> brings us important benefits:</p>
 
-<li style="text-align: justify;">
-  Since dependencies can be injected and configured externally we can <span style="text-decoration: underline; color: #000080;">reuse those components.</span>
-</li>
-<li style="text-align: justify;">
-  When injecting abstractions as collaborators, we can just <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;">change the implementation of any object without having to make a lot of changes in our codebase</span></span>, since that object instantiation resides in one place isolated and decoupled.
-</li>
-<li style="text-align: justify;">
-  Dependencies can be injected into a component: it is possible to <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;">inject mock implementations of these dependencies</span></span> which makes testing easier.
-</li>
+  * Since dependencies can be injected and configured externally we can <span class="boldtext">reuse those components.</span>
+  * When injecting abstractions as collaborators, we can just <span class="boldtext">change the implementation of any object without having to make a lot of changes in our codebase</span>, since that object instantiation resides in one place isolated and decoupled.
+  * Dependencies can be injected into a component: it is possible to <span class="boldtext">inject mock implementations of these dependencies</span> which makes testing easier.
 
-<p style="text-align: justify;">
-  One thing that we will see is that we can manage the scope of our instances created, which is something really cool and from my point of view, <strong><span style="color: #000080;">any object or collaborator in your app should not know anything about instances creation and lifecycle and this should be managed by our dependency injection framework.</span></strong>
-</p>
+<p class="justify">One thing that we will see is that we can manage the scope of our instances created, which is something really cool and from my point of view, <span class="boldtext">any object or collaborator in your app should not know anything about instances creation and lifecycle and this should be managed by our dependency injection framework.</span></p>
 
-<p style="text-align: justify;">
-  <a href="http://fernandocejas.com/wp-content/uploads/2015/04/dependency_inversion1.png" target="_blank"><img class="aligncenter wp-image-343 size-full" src="http://fernandocejas.com/wp-content/uploads/2015/04/dependency_inversion1.png" alt="" width="523" height="224" srcset="http://fernandocejas.com/wp-content/uploads/2015/04/dependency_inversion1.png 523w, http://fernandocejas.com/wp-content/uploads/2015/04/dependency_inversion1-300x128.png 300w" sizes="(max-width: 523px) 100vw, 523px" /></a>
-</p>
+<img class="aligncenter wp-image-343 size-full" src="/assets/migrated/dependency_inversion1.png" alt="" width="523" height="224" srcset="/assets/migrated/dependency_inversion1.png 523w, /assets/migrated/dependency_inversion1-300x128.png 300w" sizes="(max-width: 523px) 100vw, 523px" />
 
-<h3 style="text-align: justify;">
-  What is JSR-330?
-</h3>
+## What is JSR-330?
 
-<p style="text-align: justify;">
-  Basically <a href="https://jcp.org/en/jsr/detail?id=330" target="_blank">dependency injection for Java</a> defines a standard set of annotations (and one interface) for use on injectable classes in order to to <strong><span style="color: #000080;">maximize reusability, testability and maintainability of java code.</span></strong><br /> Both Dagger 1 and 2 (also Guice) are based on this standard which brings consistency and an standard way to do <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a>.
-</p>
+<p class="justify">Basically <a href="https://jcp.org/en/jsr/detail?id=330" target="_blank">dependency injection for Java</a> defines a standard set of annotations (and one interface) for use on injectable classes in order to to <span class="boldtext">maximize reusability, testability and maintainability of java code.</span> Both Dagger 1 and 2 (also Guice) are based on this standard which brings consistency and an standard way to do <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a>.</p>
 
-<h3 style="text-align: justify;">
-  Dagger 1
-</h3>
+## Dagger 1
 
-<p style="text-align: justify;">
-  I will be very quick here because this version is out of the purpose of this article. Anyway, <a href="http://square.github.io/dagger/" target="_blank">Dagger 1</a> has a lot to offer and I would say that nowadays is the most popular dependency injector used on Android. It has been created by <a href="https://squareup.com" target="_blank">Square</a> inspired by <a href="https://github.com/google/guice" target="_blank">Guice</a>.
-</p>
+<p class="justify"><span class="boldtext">I will be very quick here because this version is out of the purpose of this article.</span> Anyway, <a href="http://square.github.io/dagger/" target="_blank">Dagger 1</a> has a lot to offer and I would say that nowadays is the most popular dependency injector used on Android. It has been created by <a href="https://squareup.com" target="_blank">Square</a> inspired by <a href="https://github.com/google/guice" target="_blank">Guice</a>.</p>
 
-<p style="text-align: justify;">
-  Its fundamentals are:
-</p>
+<p class="justify">Its fundamentals are:</p>
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>Multiple injection points: dependencies, being injected.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>Multiple bindings: dependencies, being provided.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>Multiple modules: a collection of bindings that <span style="color: #000080;">implement</span> a feature.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>Multiple object graphs: a collection of modules that implement a scope.</strong></span>
-  </li>
-</ul>
+* <span class="boldtext">Multiple injection points: dependencies, being injected.</span>
+* <span class="boldtext">Multiple bindings: dependencies, being provided.</span>
+* <span class="boldtext">Multiple modules: a collection of bindings that <span class="boldtext">implement</span> a feature.</span>
+* <span class="boldtext">Multiple object graphs: a collection of modules that implement a scope.</span>
 
-<p style="text-align: justify;">
-  Dagger 1 uses compile time to figure out bindings but also uses reflection, and although it is not used to instantiate objects, it is used for graph composition. All this process <span style="text-decoration: underline;">happens at runtime</span>, where Dagger tries to figure out how everything fits together, so there is a price to pay: <span style="text-decoration: underline;">inefficiency sometimes and difficulties when debugging</span>.
-</p>
+<p class="justify"><span class="boldtext">Dagger 1 uses compile time to figure out bindings but also uses reflection, and although it is not used to instantiate objects, it is used for graph composition.</span> All this process <span class="underlinetext">happens at runtime</span>, where Dagger tries to figure out how everything fits together, so there is a price to pay: <span class="underlinetext">inefficiency sometimes and difficulties when debugging</span>.</p>
 
-<h3 style="text-align: justify;">
-  Dagger 2
-</h3>
+## Dagger 2
 
-<p style="text-align: justify;">
-  <a href="http://google.github.io/dagger/" target="_blank">Dagger 2</a> is a fork from Dagger 1 under heavy development by Google, currently version 2.0. It was inspired by AutoValue project (<a href="https://github.com/google/auto" target="_blank">https://github.com/google/auto</a>, useful if you are tired of writing equals and hashcode methods everywhere).<br /> From the beginning, the basic idea behind Dagger 2, was to make problems solvable by using code generation, <strong><span style="color: #000080;">hand written code</span></strong>, as if we were writing all the code that creates and provides our dependencies ourselves.
-</p>
+<p class="justify"><span class="boldtext"><a href="http://google.github.io/dagger/" target="_blank">Dagger 2</a> is a fork from Dagger 1 under heavy development by Google,</span> currently version 2.0. It was inspired by <span class="boldtext">AutoValue</span> project (<a href="https://github.com/google/auto" target="_blank">https://github.com/google/auto</a>, useful if you are tired of writing equals and hashcode methods everywhere). From the beginning, the basic idea behind Dagger 2, was to make problems solvable by using code generation, <span class="boldtext">hand written code</span>, as if we were writing all the code that creates and provides our dependencies ourselves.</p>
 
-<p style="text-align: justify;">
-  If we compare this version with its predecessor, both are quite similar in many aspects but there are also important differences that worth mentioning:
-</p>
+<p class="justify">If we compare this version with its predecessor, both are quite similar in many aspects but there are also important differences that <span class="boldtext">worth mentioning:</span></p>
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>No reflection at all: graph validation, configurations and preconditions at compile time.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>Easy debugging and fully traceable: entirely concrete call stack for provision and creation.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>More performance: according to google they gained 13% of processor performance.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>Code obfuscation: it uses method dispatch, like hand written code.</strong></span>
-  </li>
-</ul>
+* <span class="boldtext">No reflection at all: graph validation, configurations and preconditions at compile time.</span>
+* <span class="boldtext">Easy debugging and fully traceable: entirely concrete call stack for provision and creation.</span>
+* <span class="boldtext">More performance: according to google they gained 13% of processor performance.</span>
+* <span class="boldtext">Code obfuscation: it uses method dispatch, like hand written code.</span>
 
-<p style="text-align: justify;">
-  Of course all this cool features come with a price, which makes it <span style="text-decoration: underline;">less flexible</span>: for instance, there is no dynamism due to the lack of reflection.
-</p>
+<p class="justify">Of course all this cool features come with a price, which makes it <span class="boldtext">less flexible</span>: for instance, there is no dynamism due to the lack of reflection.</p>
 
-<h3 style="text-align: justify;">
-  Diving deeper
-</h3>
+## Diving deeper
 
-<p style="text-align: justify;">
-  To understand Dagger 2 it is important (and probably a bit hard in the beginning) to know about the fundamentals of <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> and the concepts of each one of these guys (do not worry if you do not understand them yet, we will see examples):
-</p>
+<p class="justify"><span class="boldtext">To understand Dagger 2 it is important (and probably a bit hard in the beginning) to know about the fundamentals of <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> and the concepts of each one of these guys</span> (do not worry if you do not understand them yet, we will see examples):</p>
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>@Inject:</strong></span> Basically with this annotation we request dependencies. In other words, you use it to tell Dagger that the annotated class or field wants to participate in dependency injection. Thus, Dagger will construct instances of this annotated classes and satisfy their dependencies.
-  </li>
-</ul>
+* <span class="boldtext">@Inject:</span> Basically with this annotation we request dependencies. In other words, you use it to tell Dagger that the annotated class or field wants to participate in dependency injection. Thus, <span class="boldtext">Dagger will construct instances of this annotated classes and satisfy their dependencies.</span>
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>@Module:</strong></span> Modules are classes whose methods provide dependencies, so we define a class and annotate it with <span style="color: #000080;">@Module</span>, thus, Dagger will know <span style="line-height: 1.5;">where to find the dependencies in order to satisfy them when constructing class instances. <span style="text-decoration: underline;">One important feature of modules is that they </span></span><span style="line-height: 1.5;"><span style="text-decoration: underline;">have been designed to be partitioned and composed together</span> (for instance we will see that in our apps we can have multiple composed modules). </span>
-  </li>
-</ul>
+* <span class="boldtext">@Module:</span> Modules are classes whose methods provide dependencies, so we define a class and annotate it with <span class="boldtext">@Module</span>, thus, Dagger will know where to find the dependencies in order to satisfy them when constructing class instances. <span class="boldtext">One important feature of modules is that they </span><span class="boldtext">have been designed to be partitioned and composed together (for instance we will see that in our apps we can have multiple composed modules). </span>
 
-<ul style="text-align: justify;">
-  <li>
-    <strong><span style="color: #000080;">@Provide:</span></strong> Inside modules we define methods containing this annotation which tells Dagger <span style="text-decoration: underline;">how we want to construct and provide those mentioned dependencies</span>.
-  </li>
-</ul>
+* <span class="boldtext">@Provide:</span> Inside modules we define methods containing this annotation which tells Dagger <span class="boldtext">how we want to construct and provide those mentioned dependencies</span>.
+ 
+* <span class="boldtext">@Component:</span> Components basically are injectors, let's say a bridge between <span class="boldtext">@Inject</span> and <span class="boldtext">@Module</span>, which its main responsibility is to put both together. <span style="line-height: 1.5;"><span class="boldtext">They just give you instances of all the types you defined</span>, for example, we must annotate an interface with <span class="boldtext">@Component</span> and list all the <span class="boldtext">@Modules</span> </span>that will compose that component, and if any of them is missing, we get errors at compile time. All the components are aware of the scope of dependencies it provides through its modules.
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>@Component:</strong></span> Components basically are injectors, let&#8217;s say a bridge between <span style="color: #000080;">@Inject</span> and <span style="color: #000080;">@Module</span>, which its main responsibility is to put both together. <span style="line-height: 1.5;"><span style="text-decoration: underline;">They just give you instances of all the types you defined</span>, for example, we must annotate an interface with <span style="color: #000080;">@Component</span> and list all the <span style="color: #000080;">@Modules</span> </span><span style="line-height: 1.5;">that will compose that component, and if any of them is missing, we get errors at compile time. </span><span style="line-height: 1.5;">All the components are aware of the scope of dependencies it provides through its modules. </span>
-  </li>
-</ul>
+* <span class="boldtext">@Scope:</span> Scopes are very useful and Dagger 2 has <span class="boldtext">has a more concrete way to do scoping through custom annotations</span>. We will see an example later, but this is a very powerful feature, because as pointed out earlier, there is no need that every object knows about how to manage its own instances. An scope example would be a class with a custom <span class="boldtext">@PerActivity</span> annotation, so this object will live as long as our Activity is alive. <span class="boldtext">In other words, we can define the granularity of your scopes (@PerFragment, @PerUser, etc).</span>
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>@Scope:</strong></span> Scopes are very useful and Dagger 2 has <span style="text-decoration: underline;">has a more concrete way to do scoping through custom annotations</span>. <span style="line-height: 1.5;">We will see an example later, but this is a very powerful feature, because as pointed out earlier, there is no need that every </span><span style="line-height: 1.5;">object knows about how to manage its own instances. </span><span style="line-height: 1.5;">An scope example would be a class with a custom <span style="color: #000080;">@PerActivity</span> annotation, so this object will live as long as our Activity is alive. </span><span style="line-height: 1.5;"><span style="text-decoration: underline;">In other words, we can define the granularity of your scopes</span> (@PerFragment, @PerUser, etc). </span>
-  </li>
-</ul>
+* <span class="boldtext">@Qualifier:</span> <span class="boldtext">We use this annotation when the type of class is insufficient to identify a dependency.</span> For example in the case of Android, many times we need different types of context, so we might define a qualifier annotation <span class="boldtext">"@ForApplication"</span> and <span class="boldtext">"@ForActivity"</span>, thus when injecting a context we can use those qualifiers to tell Dagger which type of context we want to be provided.
 
-<ul style="text-align: justify;">
-  <li>
-    <strong><span style="color: #000080;">@Qualifier:</span></strong> <span style="text-decoration: underline;">We use this annotation when the type of class is insufficient to identify a dependency.</span> <span style="line-height: 1.5;">For example in the case of Android, many times we need different types of context, so we might define a qualifier annotation <strong>&#8220;@ForApplication&#8221;</strong> and <strong>&#8220;@ForActivity&#8221;</strong>, thus when </span><span style="line-height: 1.5;">injecting a context we can use those qualifiers to tell Dagger which type of context we want to be provided.</span>
-  </li>
-</ul>
+## Shut up and show me the code!
 
-<h3 style="text-align: justify;">
-  Shut up and show me the code!
-</h3>
+<p class="justify">I guess it is too much theory for now, so let's see <span class="boldtext">Dagger 2</span> in action, although it is a good idea to first set it up by adding the dependencies in our <span class="boldtext">build.gradle</span> file:</p>
 
-<p style="text-align: justify;">
-  I guess it is too much theory for now, so let&#8217;s see <strong><span style="color: #000080;">Dagger 2</span></strong> in action, although it is a good idea to first set it up by adding the dependencies in our <span style="color: #000080;"><strong>build.gradle</strong></span> file:
-</p>
-
-<pre class="font-size:13 nums:false lang:java decode:true" title="build.gradle">apply plugin: 'com.neenbedankt.android-apt'
+```groovy
+apply plugin: 'com.neenbedankt.android-apt'
 
 buildscript {
   repositories {
@@ -208,65 +117,54 @@ dependencies {
   provided 'javax.annotation:jsr250-api:1.0' 
   
   ...
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  As you can see we are adding javax annotations, compiler, the runtime library and the <a href="https://bitbucket.org/hvisser/android-apt" target="_blank">apt plugin</a>, which is necessary, otherwise the dagger annotation processor might not work properly, especially <span style="text-decoration: underline;">I encountered problems on Android Studio.</span>
+<p class="justify">As you can see we are adding javax annotations, compiler, the runtime library and the <a href="https://bitbucket.org/hvisser/android-apt" target="_blank">apt plugin</a>, which is necessary, otherwise the dagger annotation processor might not work properly: <span class="boldtext">I encountered problems on Android Studio.</span></p>
+
+## Our example
+
+<p class="justify">A few months ago I wrote an article about <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">how to implement uncle bob's clean architecture on Android</a>, which<span class="boldtext"> I strongly recommend to read so you get a better understanding of what we are gonna do here</span>. Back then, I faced a problem when constructing and providing dependencies of most of the objects involved in my solution, which looked something like this (check out the comments):</p>
+
+```java
+@Override void initializePresenter() {
+  // All this dependency initialization could have been avoided by using a
+  // dependency injection framework. But in this case this is used this way for
+  // LEARNING EXAMPLE PURPOSE.
+  ThreadExecutor threadExecutor = JobExecutor.getInstance();
+  PostExecutionThread postExecutionThread = UIThread.getInstance();
+
+  JsonSerializer userCacheSerializer = new JsonSerializer();
+  UserCache userCache = UserCacheImpl.getInstance(getActivity(), userCacheSerializer,
+      FileManager.getInstance(), threadExecutor);
+  UserDataStoreFactory userDataStoreFactory =
+      new UserDataStoreFactory(this.getContext(), userCache);
+  UserEntityDataMapper userEntityDataMapper = new UserEntityDataMapper();
+  UserRepository userRepository = UserDataRepository.getInstance(userDataStoreFactory,
+      userEntityDataMapper);
+
+  GetUserDetailsUseCase getUserDetailsUseCase = new GetUserDetailsUseCaseImpl(userRepository,
+      threadExecutor, postExecutionThread);
+  UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
+
+  this.userDetailsPresenter =
+      new UserDetailsPresenter(this, getUserDetailsUseCase, userModelDataMapper);
+}
+```
+
+<p class="justify">As you can see, the way to address this problem is to use a dependency injection framework. We basically get rid of that boilerplate code (which is unreadable and understandable): <span class="boldtext">this class must not know anything about object creation and dependency provision.</span></p>
+
+<p class="justify"> <span class="boldtext">So how do we do it?</span> Of course we use Dagger 2 features... Let me picture the structure of <span class="boldtext">my dependency injection graph:</span>
 </p>
 
-<h3 style="text-align: justify;">
-  Our example
-</h3>
+<img class="aligncenter wp-image-347 size-full" src="/assets/migrated/composed_dagger_graph1.png" alt="" width="513" height="421" srcset="/assets/migrated/composed_dagger_graph1.png 513w, /assets/migrated/composed_dagger_graph1-300x246.png 300w" sizes="(max-width: 513px) 100vw, 513px" />
 
-<p style="text-align: justify;">
-  A few months ago I wrote an article about <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">how to implement uncle bob&#8217;s clean architecture on Android</a>, which<strong><span style="color: #000080;"> I strongly recommend to read so you get a better understanding of what we are gonna do here</span></strong>. Back then, I faced a problem when constructing and providing dependencies of most of the objects involved in my solution, which looked something like this <strong>(check out the comments)</strong>:
-</p>
+<p class="justify">Let's break down this graphic and explain its parts plus some code.</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserDetailsFragment.java">@Override void initializePresenter() {
-    // All this dependency initialization could have been avoided by using a
-    // dependency injection framework. But in this case this is used this way for
-    // LEARNING EXAMPLE PURPOSE.
-    ThreadExecutor threadExecutor = JobExecutor.getInstance();
-    PostExecutionThread postExecutionThread = UIThread.getInstance();
+<p class="justify"><span class="underlinetext"><span class="boldtext">Application Component:</span></span> A component whose lifetime is the life of the application. It injects both <span class="boldtext">AndroidApplication</span> and <span class="boldtext">BaseActivity</span> classes.</p>
 
-    JsonSerializer userCacheSerializer = new JsonSerializer();
-    UserCache userCache = UserCacheImpl.getInstance(getActivity(), userCacheSerializer,
-        FileManager.getInstance(), threadExecutor);
-    UserDataStoreFactory userDataStoreFactory =
-        new UserDataStoreFactory(this.getContext(), userCache);
-    UserEntityDataMapper userEntityDataMapper = new UserEntityDataMapper();
-    UserRepository userRepository = UserDataRepository.getInstance(userDataStoreFactory,
-        userEntityDataMapper);
-
-    GetUserDetailsUseCase getUserDetailsUseCase = new GetUserDetailsUseCaseImpl(userRepository,
-        threadExecutor, postExecutionThread);
-    UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
-
-    this.userDetailsPresenter =
-        new UserDetailsPresenter(this, getUserDetailsUseCase, userModelDataMapper);
-  }</pre>
-
-<p style="text-align: justify;">
-  As you can see, the way to address this problem is to use a dependency injection framework. We basically get rid of that boilerplate code (which is unreadable and understandable): <strong><span style="color: #000080;">this class must not know anything about object creation and dependency provision.</span></strong>
-</p>
-
-<p style="text-align: justify;">
-  <strong>So how do we do it? Of course we use Dagger 2 features&#8230;</strong> Let me picture the structure of my dependency injection graph:
-</p>
-
-<p style="text-align: justify;">
-  <a href="http://fernandocejas.com/wp-content/uploads/2015/04/composed_dagger_graph1.png" target="_blank"><img class="aligncenter wp-image-347 size-full" src="http://fernandocejas.com/wp-content/uploads/2015/04/composed_dagger_graph1.png" alt="" width="513" height="421" srcset="http://fernandocejas.com/wp-content/uploads/2015/04/composed_dagger_graph1.png 513w, http://fernandocejas.com/wp-content/uploads/2015/04/composed_dagger_graph1-300x246.png 300w" sizes="(max-width: 513px) 100vw, 513px" /></a>
-</p>
-
-<p style="text-align: justify;">
-  Let&#8217;s break down this graphic and explain its parts plus some code.
-</p>
-
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>Application Component:</strong></span></span> A component whose lifetime is the life of the application. It injects both <span style="color: #000080;"><strong>AndroidApplication</strong></span> and <span style="color: #000080;"><strong>BaseActivity</strong></span> classes.
-</p>
-
-<pre class="font-size:13 nums:false lang:java decode:true " title="ApplicationComponent.java">@Singleton // Constraints this component to one-per-application or unscoped bindings.
+```java
+@Singleton // Constraints this component to one-per-application or unscoped bindings.
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {
   void inject(BaseActivity baseActivity);
@@ -276,17 +174,15 @@ public interface ApplicationComponent {
   ThreadExecutor threadExecutor();
   PostExecutionThread postExecutionThread();
   UserRepository userRepository();
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  As you can see, I use the <span style="color: #000080;"><strong>@Singleton</strong></span> annotation for this component which constraints it to <span style="text-decoration: underline;">one-per-application</span>. You might be wondering why I&#8217;m exposing the <span style="color: #000080;"><strong>Context</strong></span> and the rest of the classes. <strong><span style="color: #000080;">This is actually an important property of how components work in Dagger: they do not expose types from their modules unless you explicitly make them available.</span></strong> In this case in particular I just exposed those elements to <span style="text-decoration: underline;">subgraphs</span> and if you try to remove any of them, a compilation error will be triggered.
-</p>
+<p class="justify">As you can see, I use the <span class="boldtext">@Singleton</span> annotation for this component which constraints it to <span class="underlinetext">one-per-application</span>. You might be wondering why I'm exposing the <span class="boldtext">Context</span> and the rest of the classes. <span class="boldtext">This is actually an important property of how components work in Dagger: they do not expose types from their modules unless you explicitly make them available.</span> In this case in particular I just exposed those elements to <span class="underlinetext">subgraphs</span> and if you try to remove any of them, a compilation error will be triggered.</p>
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline; color: #000080;"><strong>Application Module:</strong></span> This module provides objects which will live during the application lifecycle, that is the reason why all of <strong><span style="color: #000080;">@Provide</span></strong> methods use a <strong><span style="color: #000080;">@Singleton</span></strong> scope.
-</p>
+<p class="justify"><span class="underlinetext"><span class="boldtext">Application Module:</span></span> This module provides objects which will live during the application lifecycle, that is the reason why all of <span class="boldtext">@Provide</span> methods use a <span class="boldtext">@Singleton</span> scope.</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="ApplicationModule.java">@Module
+```java
+@Module
 public class ApplicationModule {
   private final AndroidApplication application;
 
@@ -317,48 +213,38 @@ public class ApplicationModule {
   @Provides @Singleton UserRepository provideUserRepository(UserDataRepository userDataRepository) {
     return userDataRepository;
   }
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>Activity Component:</strong></span></span> A component which will live during the <span style="text-decoration: underline;">lifetime</span> of an activity.
-</p>
+<p class="justify"><span class="underlinetext"><span class="boldtext">Activity Component:</span></span> A component which will live during the <span class="underlinetext">lifetime</span> of an activity.</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="ActivityComponent.java">@PerActivity
+```java
+@PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
   //Exposed to sub-graphs.
   Activity activity();
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  The <span style="color: #000080;"><strong><span style="text-decoration: underline;">@PerActivity</span></strong></span> is a custom scoping annotation <span style="text-decoration: underline;">to permit objects whose lifetime should conform to the life of the activity to be memorized in the correct component.</span> I really encourage to do this as a good practice, since we get these advantages:
-</p>
+<p class="justify">The <span class="boldtext"><span class="underlinetext">@PerActivity</span></span> is a custom scoping annotation <span class="boldtext">to permit objects whose lifetime should conform to the life of the activity to be memorized in the correct component.</span> I really encourage to do this as a good practice, since we get these advantages:</p>
 
-<ul style="text-align: justify;">
-  <li>
-    <span style="color: #000080;"><strong>The ability to inject objects where and activity is required to be constructed.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>The use of singletons on a per-activity basis.</strong></span>
-  </li>
-  <li>
-    <span style="color: #000080;"><strong>The global object graph is kept clear of things that can be used only in activities.</strong></span>
-  </li>
-</ul>
+* <span class="boldtext">The ability to inject objects where and activity is required to be constructed.</span>
+* <span class="boldtext">The use of singletons on a per-activity basis.</span>
+* <span class="boldtext">The global object graph is kept clear of things that can be used only in activities.</span>
 
-<p style="text-align: justify;">
-  You can see the code below:
-</p>
+<p class="justify">You can see the code below:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="PerActivity.java">@Scope
+```java
+@Scope
 @Retention(RUNTIME)
-public @interface PerActivity {}</pre>
+public @interface PerActivity {}
+```
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>Activity Module:</strong></span></span> This module exposes the activity to dependents in the graph. The reason behind this is basically to use the activity context in a fragment for example.
-</p>
+<p class="justify"><span class="boldtext"><span class="underlinetext">Activity Module:</span></span> This module exposes the activity to dependents in the graph. <span class="boldtext">The reason behind this is basically to use the activity context in a fragment, for example.</span></p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="ActivityModule.java">@Module
+```java
+@Module
 public class ActivityModule {
   private final Activity activity;
 
@@ -369,24 +255,27 @@ public class ActivityModule {
   @Provides @PerActivity Activity activity() {
     return this.activity;
   }
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>User Component:</strong></span></span> A scoped <span style="color: #000080;"><strong>@PerActivity</strong></span> component that extends <strong><span style="color: #000080;">ActiviyComponent</span></strong>. Basically I use it in order to injects user specific fragments. Since <span style="color: #000080;"><strong>ActivityModule</strong></span> <span style="text-decoration: underline;">exposes the activity to the graph</span> (as mentioned earlier), whenever an activity context is needed to satisfy a dependency, Dagger will get it from there and inject it: <span style="text-decoration: underline;">there is no need to re define it in sub modules</span>.
-</p>
+<p class="justify"><span class="boldtext"><span class="underlinetext">User Component:</span></span> A scoped <span class="boldtext">@PerActivity</span> component that extends <span class="boldtext">ActiviyComponent</span>. Basically I use it in order to injects user specific fragments. Since <span class="boldtext">ActivityModule</span> <span class="boldtext">exposes the activity to the graph</span> (as mentioned earlier), whenever an activity context is needed to satisfy a dependency, Dagger will get it from there and inject it: <span class="boldtext">there is no need to re define it in sub modules</span>.</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserComponent.java">@PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, UserModule.class})
+```java
+@PerActivity
+@Component(dependencies = ApplicationComponent.class, 
+           modules = {ActivityModule.class, UserModule.class})
 public interface UserComponent extends ActivityComponent {
   void inject(UserListFragment userListFragment);
   void inject(UserDetailsFragment userDetailsFragment);
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>User Module:</strong></span></span> A module that provides user related collaborators. <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Based on the example</a>, <strong><span style="color: #000080;">it will provide</span> <span style="color: #000080;">user use cases</span></strong> basically.
+<p class="justify">
+  <span class="boldtext"><span class="underlinetext">User Module:</span></span> A module that provides user related collaborators. <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Based on the example</a>, <span class="boldtext">it will provide</span> <span class="boldtext">user use cases</span> basically.
 </p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserModule.java">@Module
+```java
+@Module
 public class UserModule {
   @Provides @PerActivity GetUserListUseCase provideGetUserListUseCase(GetUserListUseCaseImpl getUserListUseCase) {
     return getUserListUseCase;
@@ -395,37 +284,24 @@ public class UserModule {
   @Provides @PerActivity GetUserDetailsUseCase provideGetUserDetailsUseCase(GetUserDetailsUseCaseImpl getUserDetailsUseCase) {
     return getUserDetailsUseCase;
   }
-}</pre>
+}
+```
 
-<h3 style="text-align: justify;">
-  Putting everything together
-</h3>
+## Putting everything together
 
-<p style="text-align: justify;">
-  Now we have our <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> graph implementation, <span style="text-decoration: underline;">how do we inject dependencies?</span> Something we need to know is that Dagger give us a bunch of options to inject dependencies:
-</p>
+<p class="justify">Now we have our <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">dependency injection</a> graph implementation, <span class="boldtext">how do we inject dependencies?</span> Something we need to know is that Dagger give us a bunch of options to inject dependencies:</p>
 
-<ol style="text-align: justify;">
-  <li>
-    <strong><span style="color: #000080;">Constructor injection: by annotating the constructor of our class with <span style="text-decoration: underline;">@Inject</span>.</span></strong>
-  </li>
-  <li>
-    <strong><span style="color: #000080;">Field injection: by annotating a (non private) field of our class with <span style="text-decoration: underline;">@Inject.</span></span></strong>
-  </li>
-  <li>
-    <strong><span style="color: #000080;">Method injection: by annotating a method with <span style="text-decoration: underline;">@Inject.</span></span></strong>
-  </li>
-</ol>
+* <span class="boldtext">Constructor injection:</span> by annotating the constructor of our class with <span class="boldtext">@Inject</span>.
+* <span class="boldtext">Field injection:</span> by annotating a (non private) field of our class with <span class="boldtext">@Inject.</span>
+* <span class="boldtext">Method injection:</span> by annotating a method with <span class="boldtext">@Inject.</span>
 
-<p style="text-align: justify;">
-  <span style="color: #000080;"><strong>This is also the order used by Dagger when binding dependencies</strong></span> and it is important because it might happen that you have some strange behavior or even <strong>NullPointerExceptions</strong>, <span style="text-decoration: underline;">which means that your dependencies might not have been initialized at the moment of the object creation.</span> This is common on Android when using field injection in <span style="color: #000080;"><strong>Activities</strong></span> or <span style="color: #000080;"><strong>Fragments</strong></span>, since we <span style="text-decoration: underline;">do not have access to their constructors</span>.
-</p>
 
-<p style="text-align: justify;">
-  <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Getting back to our example</a>, let&#8217;s see how we can inject a member to our <span style="color: #000080;"><strong>BaseActivity</strong></span>. In this case we do it with a class called <span style="color: #000080;"><strong>Navigator</strong></span> which is responsible for managing the navigation flow in our app:
-</p>
+<p class="justify"><span class="boldtext">This is also the order used by Dagger when binding dependencies</span> and it is important because it might happen that you have some strange behavior or even <span class="boldtext">NullPointerExceptions, which means that your dependencies might not have been initialized at the moment of the object creation.</span> This is common on Android when using field injection in <span class="boldtext">Activities</span> or <span class="boldtext">Fragments</span>, since we <span class="boldtext">do not have access to their constructors</span>.</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="BaseActivity.java">public abstract class BaseActivity extends Activity {
+<p class="justify"><a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Getting back to our example</a>, let's see how we can inject a member to our <span class="boldtext">BaseActivity</span>. In this case we do it with a class called <span class="boldtext">Navigator</span> which is responsible for managing the navigation flow in our app:</p>
+
+```java
+public abstract class BaseActivity extends Activity {
 
   @Inject Navigator navigator;
 
@@ -442,79 +318,73 @@ public class UserModule {
   protected ActivityModule getActivityModule() {
     return new ActivityModule(this);
   }
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  Since <strong><span style="color: #000080;">Navigator</span></strong> <span style="text-decoration: underline;"><strong>is bound by field injection it is mandatory to be provided explicitly in our ApplicationModule using @Provide annotation</strong></span>. Finally we initialize our component and call the <strong><span style="color: #000080;">inject()</span></strong> method in order to inject our members. We do this in the <strong><span style="color: #000080;">onCreate()</span></strong> method of our <strong><span style="color: #000080;">Activity</span></strong> by calling <span style="color: #000080;"><strong>getApplicationComponent()</strong></span>. This method has been added here for reusability and its main purpose is to retrieve the <span style="color: #000080;"><strong>ApplicationComponent</strong></span> which was initialized in the <strong><span style="color: #000080;">Application</span></strong> object.
-</p>
+<p class="justify">Since <span class="boldtext">Navigator is bound by field injection it is mandatory to be provided explicitly in our ApplicationModule using @Provide annotation</span>. Finally we initialize our component and call the <span class="boldtext">inject()</span> method in order to inject our members. We do this in the <span class="boldtext">onCreate()</span> method of our <span class="boldtext">Activity</span> by calling <span class="boldtext">getApplicationComponent()</span>. This method has been added here for reusability and its main purpose is to retrieve the <span class="boldtext">ApplicationComponent</span> which was initialized in the <span class="boldtext">Application</span> object.a</p>
 
-<p style="text-align: justify;">
-  Let&#8217;s do the same with a <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter" target="_blank">presenter</a> in a Fragment. In this case the approach is a bit different since <span style="color: #000080;"><strong>we are using a per-activity scoped component</strong></span>. So our <strong><span style="color: #000080;">UserComponent</span></strong> which will inject <strong><span style="color: #000080;">UserDetailsFragment</span></strong> will reside in our <strong><span style="color: #000080;">UserDetailsActivity</span></strong>:
-</p>
+<p class="justify">Let's do the same with a <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter" target="_blank">presenter</a> in a Fragment. In this case the approach is a bit different since <span class="boldtext">we are using a per-activity scoped component</span>. So our <span class="boldtext">UserComponent</span> which will inject <span class="boldtext">UserDetailsFragment</span> will reside in our <span class="boldtext">UserDetailsActivity</span>:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserDetailsActivity.java">private UserComponent userComponent;</pre>
+```java
+private UserComponent userComponent;
+```
 
-<p style="text-align: justify;">
-  We have to initialize it this way in the <span style="color: #000080;"><strong>onCreate()</strong></span> method of the activity:
-</p>
+<p class="justify">We have to initialize it this way in the <span class="boldtext">onCreate()</span> method of the activity:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserDetailsActivity.java">private void initializeInjector() {
+```java
+private void initializeInjector() {
   this.userComponent = DaggerUserComponent.builder()
       .applicationComponent(getApplicationComponent())
       .activityModule(getActivityModule())
       .build();
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  As you can see when Dagger processes our annotations, creates implementations of our components and rename them adding a &#8220;Dagger&#8221; prefix. <strong><span style="color: #000080;">Since this is a composed component, when constructing it, we must pass in all its dependencies (both components and modules).</span></strong> Now that our component is ready, we just make it accesible in order to satisfy the fragment dependencies:
-</p>
+<p class="justify">As you can see when Dagger processes our annotations, creates implementations of our components and rename them adding a "Dagger" prefix. <span class="boldtext">Since this is a composed component, when constructing it, we must pass in all its dependencies (both components and modules).</span> Now that our component is ready, we just make it accesible in order to satisfy the fragment dependencies:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserDetailsActivity.java">@Override public UserComponent getComponent() {
+```java
+@Override public UserComponent getComponent() {
   return userComponent;
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  We bind <strong><span style="color: #000080;">UserDetailsFragment</span></strong> dependencies by getting the created component and calling the <strong><span style="color: #000080;">inject()</span></strong> method passing the <strong><span style="color: #000080;">Fragment</span></strong> as a parameter:
-</p>
+<p class="justify">We bind <span class="boldtext">UserDetailsFragment</span> dependencies by getting the created component and calling the <span class="boldtext">inject()</span> method passing the <span class="boldtext">Fragment</span> as a parameter:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="UserDetailsFragment.java">@Override public void onActivityCreated(Bundle savedInstanceState) {
+```java
+@Override public void onActivityCreated(Bundle savedInstanceState) {
   super.onActivityCreated(savedInstanceState);
   this.getComponent.inject(this);
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">For the complete example, check the repository on github</a>. There is also some refactor happening and I can tell you that one of the main ideas (<a href="https://github.com/google/dagger/tree/master/examples" target="_blank">taken from the official examples</a>) is to <span style="color: #000080;"><strong>have an interface as a contract which will be implemented by every class that has a component</strong></span>. Something like this:
-</p>
+<p class="justify"><a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">For the complete example, check the repository on github</a>. There is also some refactor happening and I can tell you that one of the main ideas (<a href="https://github.com/google/dagger/tree/master/examples" target="_blank">taken from the official examples</a>) is to <span class="boldtext">have an interface as a contract which will be implemented by every class that has a component</span>. Something like this:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="HasComponent.java">public interface HasComponent&lt;C&gt; {
+```java
+public interface HasComponent<C> {
   C getComponent();
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  Thus, the client (for example a <span style="color: #000080;"><strong>Fragment</strong></span>) can get the component (from the <span style="color: #000080;"><strong>Activity</strong></span>) and use it:
-</p>
+<p class="justify">Thus, the client (for example a <span class="boldtext">Fragment</span>) can get the component (from the <span class="boldtext">Activity</span>) and use it:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="BaseFragment.java">@SuppressWarnings("unchecked")
-protected &lt;C&gt; C getComponent(Class&lt;C&gt; componentType) {
-  return componentType.cast(((HasComponent&lt;C&gt;)getActivity()).getComponent());
-}</pre>
+```java
+@SuppressWarnings("unchecked")
+protected <C> C getComponent(Class<C> componentType) {
+  return componentType.cast(((HasComponent<C>)getActivity()).getComponent());
+}
+```
 
-<p style="text-align: justify;">
-  <span style="color: #000080;"><strong>The use of generics here makes mandatory to do the casting but at least is gonna fail fast whether the client cannot get a component to use</strong></span>. Just ping me if you have any thoughts/ideas on how to solve this in a better way.
-</p>
+<p class="justify"><span class="boldtext">The use of generics here makes mandatory to do the casting but at least is gonna fail fast whether the client cannot get a component to use</span>. Just ping me if you have any thoughts/ideas on how to solve this in a better way.</p>
 
-<h3 style="text-align: justify;">
-  Dagger 2 code generation
-</h3>
+## Dagger 2 code generation
 
-<p style="text-align: justify;">
-  After having a taste of Dagger&#8217;s main features, <span style="text-decoration: underline;"><strong>let&#8217;s see how does its job under the hood</strong></span>. To illustrate this, we are gonna take again the <span style="color: #000080;"><strong>Navigator</strong></span> class and see how it is created and injected.<br /> First let&#8217;s have a look at our <span style="color: #000080;"><strong>DaggerApplicationComponent</strong></span> which is an implementation of our <span style="color: #000080;"><strong>ApplicationComponent</strong></span>:
-</p>
+<p class="justify">After having a taste of Dagger's main features, <span class="boldtext">let's see how does its job under the hood</span>. To illustrate this, we are gonna take again the <span class="boldtext">Navigator</span> class and see how it is created and injected. First let's have a look at our <span class="boldtext">DaggerApplicationComponent</span> which is an implementation of our <span class="boldtext">ApplicationComponent</span>:</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="DaggerApplicationComponent.java">@Generated("dagger.internal.codegen.ComponentProcessor")
+```java
+@Generated("dagger.internal.codegen.ComponentProcessor")
 public final class DaggerApplicationComponent implements ApplicationComponent {
-  private Provider&lt;Navigator&gt; provideNavigatorProvider;
-  private MembersInjector&lt;BaseActivity&gt; baseActivityMembersInjector;
+  private Provider<Navigator> provideNavigatorProvider;
+  private MembersInjector<BaseActivity> baseActivityMembersInjector;
 
   private DaggerApplicationComponent(Builder builder) {  
     assert builder != null;
@@ -556,18 +426,18 @@ public final class DaggerApplicationComponent implements ApplicationComponent {
       return this;
     }
   }
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>Two important things:</strong></span></span> the first one is that since we are gonna inject our activity, we have a members injector (which Dagger translates to <strong><span style="color: #000080;">BaseActivity_MembersInjector</span></strong>):
-</p>
+<p class="justify"><span class="underlinetext"><span class="boldtext">Two important things:</span></span> the first one is that since we are gonna inject our activity, we have a members injector (which Dagger translates to <span class="boldtext">BaseActivity_MembersInjector</span>):</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true" title="BaseActivity_MembersInjector.java">@Generated("dagger.internal.codegen.ComponentProcessor")
-public final class BaseActivity_MembersInjector implements MembersInjector&lt;BaseActivity&gt; {
-  private final MembersInjector&lt;Activity&gt; supertypeInjector;
-  private final Provider&lt;Navigator&gt; navigatorProvider;
+```java
+@Generated("dagger.internal.codegen.ComponentProcessor")
+public final class BaseActivity_MembersInjector implements MembersInjector<BaseActivity> {
+  private final MembersInjector<Activity> supertypeInjector;
+  private final Provider<Navigator> navigatorProvider;
 
-  public BaseActivity_MembersInjector(MembersInjector&lt;Activity&gt; supertypeInjector, Provider&lt;Navigator&gt; navigatorProvider) {  
+  public BaseActivity_MembersInjector(MembersInjector<Activity> supertypeInjector, Provider<Navigator> navigatorProvider) {  
     assert supertypeInjector != null;
     this.supertypeInjector = supertypeInjector;
     assert navigatorProvider != null;
@@ -583,25 +453,21 @@ public final class BaseActivity_MembersInjector implements MembersInjector&lt;Ba
     instance.navigator = navigatorProvider.get();
   }
 
-  public static MembersInjector&lt;BaseActivity&gt; create(MembersInjector&lt;Activity&gt; supertypeInjector, Provider&lt;Navigator&gt; navigatorProvider) {  
+  public static MembersInjector<BaseActivity> create(MembersInjector<Activity> supertypeInjector, Provider<Navigator> navigatorProvider) {  
       return new BaseActivity_MembersInjector(supertypeInjector, navigatorProvider);
   }
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  Basically, <span style="text-decoration: underline;">this guy contains providers for all the injectable members</span> of our <span style="color: #000080;"><strong>Activity</strong></span> so when we call <strong><span style="color: #000080;">inject()</span></strong> will take the accessible fields and bind the dependencies.
-</p>
+<p class="justify">Basically, <span class="boldtext">this guy contains providers for all the injectable members</span> of our <span class="boldtext">Activity</span> so when we call <span class="boldtext">inject()</span> will take the accessible fields and bind the dependencies.</p>
 
-<p style="text-align: justify;">
-  <span style="text-decoration: underline;"><span style="color: #000080; text-decoration: underline;"><strong>The second thing,</strong></span></span> regarding our <span style="color: #000080;"><strong>DaggerApplicationComponent</strong></span>, is that we have a <strong><span style="color: #000080;">Provider<Navigator></span></strong> which is no more than interface which provides instances of our class and it is constructed by a <span style="color: #000080;"><strong>ScopedProvider</strong></span> (in the <strong><span style="color: #000080;">initialize()</span></strong> method) <span style="text-decoration: underline;">which will memorize the scope of the created class</span>.
-</p>
+<p class="justify"><span class="boldtext"><span class="underlinetext">The second thing,</span></span> regarding our <span class="boldtext">DaggerApplicationComponent</span>, is that we have a <span class="boldtext">Provider&lt;Navigator&gt;</span> which is no more than interface which provides instances of our class and it is constructed by a <span class="boldtext">ScopedProvider</span> (in the <span class="boldtext">initialize()</span> method) <span class="boldtext">which will memorize the scope of the created class</span>.</p>
 
-<p style="text-align: justify;">
-  Dagger also generated a Factory called <span style="color: #000080;"><strong>ApplicationModule_ProvideNavigatorFactory</strong></span> for our <strong><span style="color: #000080;">Navigator</span></strong> which is passed as a parameter to the mentioned <strong><span style="color: #000080;">ScopedProvider</span></strong> <span style="text-decoration: underline;">in order to get scoped instances of our class</span>.
-</p>
+<p class="justify">Dagger also generated a Factory called <span class="boldtext">ApplicationModule_ProvideNavigatorFactory</span> for our <span class="boldtext">Navigator</span> which is passed as a parameter to the mentioned <span class="boldtext">ScopedProvider in order to get scoped instances of our class</span>.</p>
 
-<pre class="font-size:13 nums:false lang:java decode:true " title="ApplicationModule_ProvideNavigatorFactory.java">@Generated("dagger.internal.codegen.ComponentProcessor")
-public final class ApplicationModule_ProvideNavigatorFactory implements Factory&lt;Navigator&gt; {
+```java
+@Generated("dagger.internal.codegen.ComponentProcessor")
+public final class ApplicationModule_ProvideNavigatorFactory implements Factory<Navigator> {
   private final ApplicationModule module;
 
   public ApplicationModule_ProvideNavigatorFactory(ApplicationModule module) {  
@@ -621,55 +487,38 @@ public final class ApplicationModule_ProvideNavigatorFactory implements Factory&
   public static Factory&lt;Navigator&gt; create(ApplicationModule module) {  
     return new ApplicationModule_ProvideNavigatorFactory(module);
   }
-}</pre>
+}
+```
 
-<p style="text-align: justify;">
-  This class is actually <strong><span style="color: #000080;">very simple</span></strong>, it delegates to our <span style="color: #000080;"><strong>ApplicationModule</strong></span> (which contains our <strong><span style="color: #000080;">@Provide method()</span></strong>) the creation of our <strong><span style="color: #000080;">Navigator</span></strong> class.
-</p>
+<p class="justify">This class is actually <span class="boldtext">very simple</span>, it delegates to our <span class="boldtext">ApplicationModule</span> (which contains our <span class="boldtext">@Provide method()</span>) the creation of our <span class="boldtext">Navigator</span> class.</p>
 
-<p style="text-align: justify;">
-  <strong><span style="color: #000080;">In conclusion, this really looks like hand-written code and it is very easy to understand which makes it easy to debug.</span></strong> There is still much to explore here and a good idea is start debugging and see how Dagger deal with dependency binding.
-</p>
+<p class="justify"><span class="boldtext">In conclusion, this really looks like hand-written code and it is very easy to understand which makes it easy to debug.</span> There is still much to explore here and a good idea is start debugging and see how Dagger deal with dependency binding.</p>
 
-<p style="text-align: justify;">
-  <a href="http://fernandocejas.com/wp-content/uploads/2015/04/debugging_dagger.png" target="_blank"><img class="aligncenter wp-image-335 size-large" src="http://fernandocejas.com/wp-content/uploads/2015/04/debugging_dagger-1024x615.png" alt="debugging_dagger" width="640" height="384" srcset="http://fernandocejas.com/wp-content/uploads/2015/04/debugging_dagger-1024x615.png 1024w, http://fernandocejas.com/wp-content/uploads/2015/04/debugging_dagger-300x180.png 300w" sizes="(max-width: 640px) 100vw, 640px" /></a>
-</p>
+<img class="aligncenter wp-image-335 size-large" src="/assets/migrated/debugging_dagger-1024x615.png" alt="debugging_dagger" width="640" height="384" srcset="/assets/migrated/debugging_dagger-1024x615.png 1024w, /assets/migrated/debugging_dagger-300x180.png 300w" sizes="(max-width: 640px) 100vw, 640px" />
 
-<h3 style="text-align: justify;">
-  Testing
-</h3>
+## Testing
 
-<p style="text-align: justify;">
-  Honestly not too much to say here: for unit tests, I do not think is necessary to create any injector so I do not use Dagger, and <span style="color: #000080;"><strong>by injecting mock collaborators manually works fine till now</strong></span> but when it comes to <strong><span style="color: #000080;">end-to-end integration tests,</span></strong> Dagger could make more sense: <span style="color: #000080;"><strong>you can replace modules with others that provide mocks.</strong></span><br /> I will appreciate any experience here to add it as part of the article.
-</p>
+<p class="justify">Honestly not too much to say here: for unit tests, I do not think is necessary to create any injector so I do not use Dagger, and <span class="boldtext">by injecting mock collaborators manually works fine till now</span> but when it comes to <span class="boldtext">end-to-end integration tests,</span> Dagger could make more sense: <span class="boldtext">you can replace modules with others that provide mocks.</span> I will appreciate any experience here to add it as part of the article.</p>
 
-<h3 style="text-align: justify;">
-  Wrapping up
-</h3>
+## Wrapping up
 
-<p style="text-align: justify;">
-  <span style="color: #000080;"><strong>So far we have had a taste on what Dagger is capable of doing</strong></span>, but still there is a long way ahead of us, so I strongly recommend to <a href="http://google.github.io/dagger/" target="_blank">read the documentation</a>, <a href="https://www.youtube.com/watch?v=oK_XtfXPkqw" target="_blank">watch videos</a> and <a href="https://github.com/gk5885/dagger-android-sample" target="_blank">have a look at the examples</a>. <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">This was actually a small sample for learning purpose</a> and I hope you have found it useful. <strong><span style="color: #000080;">Remember that any feedback is always welcome.</span></strong>
-</p>
+<p class="justify"><span class="boldtext">So far we have had a taste on what Dagger is capable of doing</span>, but still there is a long way ahead of us, so I strongly recommend to <a href="http://google.github.io/dagger/" target="_blank">read the documentation</a>, <a href="https://www.youtube.com/watch?v=oK_XtfXPkqw" target="_blank">watch videos</a> and <a href="https://github.com/gk5885/dagger-android-sample" target="_blank">have a look at the examples</a>. <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">This was actually a small sample for learning purpose</a> and I hope you have found it useful. <span class="boldtext">Remember that any feedback is always welcome.</span></p>
 
-<h3 style="text-align: justify;">
-  Source code:
-</h3>
+## Source code:
 
-<p style="text-align: justify;">
-  Example: <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">https://github.com/android10/Android-CleanArchitecture</a>
-</p>
+* <span class="boldtext">Example:</span> <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">https://github.com/android10/Android-CleanArchitecture</a>
 
-### Further reading:
+## Further reading:
 
-  1. <a href="http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/" target="_blank">Architecting Android..the evolution</a>
-  2. <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android..the clean way?</a>
-  3. <a href="https://speakerdeck.com/android10/the-mayans-lost-guide-to-rxjava-on-android" target="_blank">The Mayans Lost Guide to RxJava on Android</a>
-  4. <a href="https://speakerdeck.com/android10/it-is-about-philosophy-culture-of-a-good-programmer" target="_blank">It is about philosophy: Culture of a good programmer</a>
+  * <a href="http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/" target="_blank">Architecting Android..the evolution</a>
+  * <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android..the clean way?</a>
+  * <a href="https://speakerdeck.com/android10/the-mayans-lost-guide-to-rxjava-on-android" target="_blank">The Mayans Lost Guide to RxJava on Android</a>
+  * <a href="https://speakerdeck.com/android10/it-is-about-philosophy-culture-of-a-good-programmer" target="_blank">It is about philosophy: Culture of a good programmer</a>
 
-<h3 style="text-align: justify;">
-  References:
-</h3>
+## References:
 
-<p style="text-align: justify;">
-  <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android…The clean way?.</a><br /> <a href="https://www.youtube.com/watch?v=oK_XtfXPkqw" target="_blank">Dagger 2, A New Type of Dependency Injection.</a><br /> <a href="https://speakerdeck.com/jakewharton/dependency-injection-with-dagger-2-devoxx-2014" target="_blank">Dependency Injection with Dagger 2.</a><br /> <a href="https://publicobject.com/2014/11/15/dagger-2-has-components/" target="_blank">Dagger 2 has Components.</a><br /> <a href="http://google.github.io/dagger/" target="_blank">Dagger 2 Official Documentation.</a>
-</p>
+* <a title="Architecting Android…The clean way?" href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android…The clean way?.</a>
+* <a href="https://www.youtube.com/watch?v=oK_XtfXPkqw" target="_blank">Dagger 2, A New Type of Dependency Injection.</a> 
+* <a href="https://speakerdeck.com/jakewharton/dependency-injection-with-dagger-2-devoxx-2014" target="_blank">Dependency Injection with Dagger 2.</a>
+* <a href="https://publicobject.com/2014/11/15/dagger-2-has-components/" target="_blank">Dagger 2 has Components.</a>
+* <a href="http://google.github.io/dagger/" target="_blank">Dagger 2 Official Documentation.</a>
