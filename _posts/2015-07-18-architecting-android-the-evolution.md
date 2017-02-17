@@ -126,7 +126,7 @@ private final class UserListSubscriber extends DefaultSubscriber<List<User>> {
 
 * <p class="justify"><span class="boldtext">Decoupling between Observables and Subscribers:</span> makes maintainability and testing easier.</p>
 * <p class="justify"><span class="boldtext">Simplified asynchronous tasks:</span> java threads and futures are complex to manipulate and synchronize if more than one single level of asynchronous execution is required, so by using schedulers we can jump between background and main thread in an easy way (with no extra effort), especially when we need to update the UI. We also avoid what we call a “callback hell”, which makes our code unreadable and hard to follow up.</p>
-* <p class="justify"><span class="boldtext">Data transformation/composition:</span> we can combine multiple Observables<T>  without affecting the client, which makes our solution more scalable.</p>
+* <p class="justify"><span class="boldtext">Data transformation/composition:</span> we can combine multiple Observables&lt;T&gt; without affecting the client, which makes our solution more scalable.</p>
 * <p class="justify"><span class="boldtext">Error handling:</span> a signal is emitted to the consumer when an error has occurred within any Observable&lt;T&gt;.</p>
 
 <p class="justify">From my point of view there is one drawback, and indeed a price to pay, which has to do with <span class="boldtext">the learning curve for developers who are not familiar with the concept.</span> However, you get very valuable stuff out of it. <span class="boldtext">Reactive for the win!</span></p>
