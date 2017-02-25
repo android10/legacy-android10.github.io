@@ -3,6 +3,7 @@ id: 7
 title: 'Architecting Android...The evolution'
 date: 2015-07-18T16:18:56+00:00
 author: Fernando Cejas
+description: Architecture is about evolution. This is an evolution of my implementation of Clean Architecture on Android
 layout: post
 permalink: /2015/07/18/architecting-android-the-evolution/
 categories:

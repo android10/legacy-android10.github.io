@@ -3,6 +3,7 @@ id: 9
 title: How to use Optional values on Java and Android
 date: 2016-02-20T23:19:45+00:00
 author: Fernando Cejas
+description: Optional are not available in Android so in this article I will explain how we can make use of them by introducing a library called arrow that works for both android and java
 layout: post
 permalink: /2016/02/20/how-to-use-optional-on-android-and-java/
 categories:

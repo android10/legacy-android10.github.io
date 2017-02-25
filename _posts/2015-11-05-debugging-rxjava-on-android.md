@@ -3,6 +3,7 @@ id: 8
 title: Debugging RxJava on Android
 date: 2015-11-05T00:12:19+00:00
 author: Fernando Cejas
+description: Debugging RxJava on Android by using an open source library called frodo
 layout: post
 permalink: /2015/11/05/debugging-rxjava-on-android/
 categories:

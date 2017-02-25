@@ -13,14 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Fernando Cejas
+title: Fernando Cejas Blog
 email: fcejas@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Welcome! I'm Fernando Cejas, Core Engineer working at @SoundCloud.<br>
   In this blog, you will find content related to software engineering.<br> 
   All views, posts and opinions shared are my own.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://fernandocejas.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: fernando_cejas
 github_username:  android10
 
@@ -29,6 +29,7 @@ markdown: kramdown
 theme: jekyll-theme-cayman
 gems:
   - jekyll-feed
+  - jekyll-seo-tag  
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -41,5 +42,17 @@ twitter_url: https://twitter.com/fernando_cejas
 github_url: https://github.com/android10
 linkedin_url: https://www.linkedin.com/in/fernandocejas/
 speakerdeck_url: https://speakerdeck.com/android10 
+
+# SEO settings: https://github.com/jekyll/jekyll-seo-tag
+twitter:
+  username: fernando_cejas
+social:
+  name: Fernando Cejas
+  links:
+    - https://twitter.com/fernando_cejas
+    - https://github.com/android10
+    - https://www.linkedin.com/in/fernandocejas/
+    - https://speakerdeck.com/android10  
+
 
 

@@ -3,6 +3,7 @@ id: 1
 title: NFC on Android
 date: 2013-09-04T18:00:19+00:00
 author: Fernando Cejas
+description: Near Field Communication in Android
 layout: post
 permalink: /2013/09/04/nfc-on-android/
 categories:

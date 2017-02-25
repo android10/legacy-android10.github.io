@@ -3,6 +3,7 @@ id: 4
 title: 'Architecting Android...The clean way?'
 date: 2014-09-03T01:45:54+00:00
 author: Fernando Cejas
+description: The purpose of this article is to show you a little approach based on Clean Architecture that I had in mind in the last few months plus all the stuff I have learnt from investigating and implementing it
 layout: post
 permalink: /2014/09/03/architecting-android-the-clean-way/
 categories:

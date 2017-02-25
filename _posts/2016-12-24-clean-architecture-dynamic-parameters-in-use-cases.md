@@ -3,6 +3,7 @@ id: 11
 title: 'Clean Architecture: Dynamic Parameters in Use Cases'
 date: 2016-12-24T22:05:11+00:00
 author: Fernando Cejas
+description: Using dynamic parameters in a clean architecture approach for android
 layout: post
 permalink: /2016/12/24/clean-architecture-dynamic-parameters-in-use-cases/
 categories:

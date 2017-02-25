@@ -3,6 +3,7 @@ id: 12
 title: Android Testing with Kotlin
 date: 2017-02-03T19:15:58+00:00
 author: Fernando Cejas
+description: How to introduce Kotlin language on Android by adopting it for Testing
 layout: post
 permalink: /2017/02/03/android-testing-with-kotlin/
 categories:

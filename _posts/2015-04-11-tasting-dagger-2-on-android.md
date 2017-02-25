@@ -3,6 +3,7 @@ id: 6
 title: Tasting Dagger 2 on Android
 date: 2015-04-11T13:23:14+00:00
 author: Fernando Cejas
+description: Giving a try to Dagger 2 on Android
 layout: post
 permalink: /2015/04/11/tasting-dagger-2-on-android/
 categories:
