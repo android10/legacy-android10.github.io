@@ -21,6 +21,11 @@
 .underlinetext { text-decoration: underline; }
 
 
+/* Main title ===================================================================== */
+a.site-title { color: inherit; text-decoration: none; }
+a.site-title:hover { text-decoration: none; }
+
+
 /* Images ========================================================================== */
 /* All images are centered */
 .main-content img { margin: 0 auto; display: block; height: auto; }
