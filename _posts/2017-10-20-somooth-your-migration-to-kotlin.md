@@ -89,7 +89,7 @@ We want to make sure we are in the same boat on our path.</p>
 ![fernando-cejas](/assets/images/smooth_kotlin_03.png){:class="img-responsive"}
 
 
-## Resisting the inevitable
+# Resisting the inevitable
 
 <p class="justify">In the past (when Kotlin was not officially supported by Google) we had a few failed attempts which caused uncertainty and frustration in the team due to these doubts:</p>
 
@@ -116,7 +116,7 @@ We want to make sure we are in the same boat on our path.</p>
 <p class="justify">This way, we prepare the terrain by detecting potential issues and solutions to the most common problems in our codebase.</p>
 
 
-## Our First PR
+# Our First PR
 
 <p class="justify">At this point we detected possible problems to solve and it was time to officially get our hands dirty. This is an important stage because we are translating our previous investigation into code.</p>
 
@@ -133,7 +133,7 @@ We want to make sure we are in the same boat on our path.</p>
 ![fernando-cejas](/assets/images/smooth_kotlin_06.png){:class="img-responsive"}
 
 
-## More power implies more responsibility
+# More power implies more responsibility
 
 <p class="justify">Everything does not end up once you merge your first piece of Kotlin code. We are embracing a new language (a new technology) so there should be commitment. The main idea is to establish rules we must follow in order to fully transition from the old stack to the new one.</p>
 
@@ -147,7 +147,7 @@ We want to make sure we are in the same boat on our path.</p>
 <p class="justify">My suggestion is to also allocate time (when possible) every sprint to migrate and refactor features. Maybe it is also a good idea to address technical debt too and write it in Kotlin: kill two birds with only one stone (legacy code and Java).</p>
 
 
-## Continuous Learning
+# Continuous Learning
 
 <p class="justify">This an exciting process and we should keep it up by constantly learning, improving and addressing together problems we find along the way. Sharing and transfer of knowledge is key. As mentioned earlier, what worked for us, were discussions in our collective weekly meeting, presentations, pair programming and little workshops. </p>
 
@@ -156,7 +156,7 @@ We want to make sure we are in the same boat on our path.</p>
 <p class="justify">As a colleague of mine say, do not put things in cold water and always encourage continuous improvement.</p>
 
 
-## Benefits and key points
+# Benefits and key points
 
 <p class="justify">Here I wanted to include facts and situations we are getting out of this transition:</p>
 
@@ -169,7 +169,7 @@ We want to make sure we are in the same boat on our path.</p>
   * <span class="boldtext">Testing in Kotlin might help, it is better than nothing but you will not appreciate the real power until you solve real world problems with it.</span>
 
 
-## Conclusion
+# Conclusion
 
 <p class="justify">As we have seen, it is never straightforward to introduce such big changes. Also, the bigger the company is, the more difficult, due to its moving parts, team size and amount of code generated every day.</p>
 
