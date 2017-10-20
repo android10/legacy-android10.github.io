@@ -32,16 +32,15 @@ tags:
   - continuous learning
   - new technologies
 ---
-<p class="justify">First of all, I like to give credit to who deserves it, and in this occasion wanna say thanks to @Mauin for taking the leadership on the process and let me join the party. Was a real pleasure. 
-Also, I like to mention that in this article there is no source code involved and here is the reason: It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</p>
+<p class="justify">First of all, I like to give credit to who deserves it, and in this occasion wanna say thanks to <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a> for taking the leadership on the process and let me join the party. Was a real pleasure. Also, I like to mention, that in this article there is no source code involved and here is the reason: It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</p>
 
 <p class="justify">Same principles apply not only when introducing a new programming language, but also any new technology.</p>
  
-<p class="justify">Actually the motivation behind this writing came from a tweet and a couple of discussions and constructive feedback around it:</p>
+<p class="justify">Actually the motivation behind this writing <a href="https://twitter.com/fernando_cejas/status/920591431730900992" target="_blank">came from a tweet</a> and a couple of discussions and constructive feedback around it:</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_01.png){:class="img-responsive"}
 
-<p class="justify">So in this article I will bring up insights (and opinions) on how to introduce Kotlin into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
+<p class="justify">So in this article I will bring up insights (and opinions) on how to introduce <a href="https://kotlinlang.org/" target="_blank">Kotlin</a> into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
 
 
 # The movitation
@@ -128,7 +127,7 @@ We want to make sure we are in the same boat on our path.</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_05.png){:class="img-responsive"}
 
-<p class="justify">Finally it was time to push the button and commit our first Kotlin PR. It was a real pleasure to presence that moment (again thanks @Mauin!). Now we are happy kotlin coders.</p>
+<p class="justify">Finally it was time to push the button and commit our first Kotlin PR. It was a real pleasure to presence that moment (again thanks <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a>!). Now we are happy kotlin coders!</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_06.png){:class="img-responsive"}
 
@@ -175,4 +174,4 @@ We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify">That is why it is important to come up with a plan to make the process as smooth as possible.</p>
 
-<p class="justify">This is all I have to offer for now, ping me on Twitter for discussions/feedback. Happy kotlin coding!</p>
+<p class="justify">This is all I have to offer for now, <a href="https://twitter.com/fernando_cejas" target="_blank">ping me on Twitter</a> for discussions/feedback. Happy kotlin coding!</p>
