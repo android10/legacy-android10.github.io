@@ -39,7 +39,7 @@ Also, I like to mention that in this article there is no source code involved an
  
 <p class="justify">Actually the motivation behind this writing came from a tweet and a couple of discussions and constructive feedback around it:</p>
 
-![image-title-here](/assets/images/smooth_kotlin_01.png){:class="img-responsive"}
+![fernando-cejas](/assets/images/smooth_kotlin_01.png){:class="img-responsive"}
 
 <p class="justify">So in this article I will bring up insights (and opinions) on how to introduce Kotlin into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
 
@@ -53,7 +53,7 @@ Also, I like to mention that in this article there is no source code involved an
   * <span class="boldtext">Because it is trendy.</span>
   * <span class="boldtext">Because it is cool.</span>
 
-picture smooth_kotlin_02
+![fernando-cejas](/assets/images/smooth_kotlin_02.png){:class="img-responsive"}
 
 <p class="justify">Keep in mind that we are taking risks at a technical and business level. So if we do not do our homework first, we might run into the unknown with disastrous consequences, which are not easy to rollback and consume development time and for instance money for the organization.</p>
 
@@ -84,7 +84,7 @@ We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify">Something we did was to also talk to the iOS Team, since they had gone through a similar process when migrating from Objective C to Swift: super valuable feedback and experience.</p>
 
-picture smooth_kotlin_03
+![fernando-cejas](/assets/images/smooth_kotlin_03.png){:class="img-responsive"}
 
 ## Resisting the inevitable
 
@@ -96,7 +96,7 @@ picture smooth_kotlin_03
 
 <p class="justify">But... I think it is time to quote Pablo Neruda here which reflects the impact Kotlin is provoking in the development community:</p>
 
-picture smooth_kotlin_04
+![fernando-cejas](/assets/images/smooth_kotlin_04.png){:class="img-responsive"}
 
 <p class="justify">With that being said, nowadays there are no many reasons to NOT introduce Kotlin, or at least the good things beat the downsides. Anyway, that does not mean we do NOT have to focus on the pros and cons of introducing a new technology based on:</p>
 
@@ -122,11 +122,11 @@ picture smooth_kotlin_04
 
 <p class="justify">Along the way, we did not only write code, bu also performed tests, for example compilation time. The more information we collect sooner, the better.</p>
 
-picture smooth_kotlin_05
+![fernando-cejas](/assets/images/smooth_kotlin_05.png){:class="img-responsive"}
 
 <p class="justify">Finally it was time to push the button and commit our first Kotlin PR. It was a real pleasure to presence that moment (again thanks @Mauin!). Now we are happy kotlin coders.</p>
 
-picture smooth_kotlin_06
+![fernando-cejas](/assets/images/smooth_kotlin_06.png){:class="img-responsive"}
 
 ## More power implies more responsibility
 
@@ -145,7 +145,7 @@ picture smooth_kotlin_06
 
 <p class="justify">This an exciting process and we should keep it up by constantly learning, improving and addressing together problems we find along the way. Sharing and transfer of knowledge is key. As mentioned earlier, what worked for us, were discussions in our collective weekly meeting, presentations, pair programming and little workshops. </p>
 
-picture smooth_kotlin_07
+![fernando-cejas](/assets/images/smooth_kotlin_07.png){:class="img-responsive"}
 
 <p class="justify">As a colleague of mine say, do not put things in cold water and always encourage continuous improvement.</p>
 
