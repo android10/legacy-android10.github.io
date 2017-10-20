@@ -96,7 +96,7 @@ We want to make sure we are in the same boat on our path.</p>
   * <span class="boldtext">What about tools availability? Like static analysis for example.</span>
   * <span class="boldtext">It is still in Beta and APIs are likely to change without backward compatibility in mind.</span>
 
-<p class="justify">But... I think it is time to quote Pablo Neruda here which reflects the <span class="underlinetext">impact Kotlin is provoking<span class="boldtext"> in the development community:</p>
+<p class="justify">But... I think it is time to invoke <span class="boldtext">Pablo Neruda</span> here which reflects the <span class="underlinetext">impact Kotlin is provoking</span> in the development community:</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_04.png){:class="img-responsive"}
 
