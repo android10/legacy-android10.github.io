@@ -119,7 +119,7 @@ We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify"><span class="boldtext">At this point, we detected possible problems to solve and it was time to officially get our hands dirty.</span> This is an <span class="underlinetext">important stage</span> because we are translating our previous investigation into code.</p>
 
-<p class="justify">In my opinion this should be done with <span class="boldtext">Pair Programming.</span> There should be discussions, suggestions and pair reviews from the rest of the team. <<span class="boldtext">It is a good idea to put a deadline until when the PR will be open,</span> otherwise discussions become endless.</p>
+<p class="justify">In my opinion this should be done with <span class="boldtext">Pair Programming.</span> There should be discussions, suggestions and pair reviews from the rest of the team. <span class="boldtext">It is a good idea to put a deadline until when the PR will be open,</span> otherwise discussions become endless.</p>
 
 <p class="justify">If you are wondering <span class="boldtext">what to work on for your first Kotlin PR,</span> I would say that just pick a simple functionality (a screen) in your app and refactor it end to end. This way, you start your <span class="boldtext">job vertically,</span> and <span class="boldtext">gradually</span> move to the rest of features. <span class="boldtext">Divide and conquer, remember?</span></p>
 
