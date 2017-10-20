@@ -39,9 +39,7 @@ Also, I like to mention that in this article there is no source code involved an
  
 <p class="justify">Actually the motivation behind this writing came from a tweet and a couple of discussions and constructive feedback around it:</p>
 
-<center>
-  ![image-title-here](/assets/images/smooth_kotlin_01.png){:class="img-responsive"}
-</center>
+![image-title-here](/assets/images/smooth_kotlin_01.png){:class="img-responsive"}
 
 <p class="justify">So in this article I will bring up insights (and opinions) on how to introduce Kotlin into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
 
