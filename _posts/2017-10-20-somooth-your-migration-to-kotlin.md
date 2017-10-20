@@ -32,8 +32,10 @@ tags:
   - continuous learning
   - new technologies
 ---
-<p class="justify">First of all, I like to give credit to who deserve it, and in this occasion wanna say thanks to @Mauin for taking the leadership on the process and let me join the party. Was a real pleasure. 
-Also, I like to mention that in this article there is no source code involved and here is the reason: It is not about technical implementation, it is about the process, philosophy and all the moving parts involved. Same principles apply not only when introducing a new programming language, but also any new technology.</p>
+<p class="justify">First of all, I like to give credit to who deserves it, and in this occasion wanna say thanks to @Mauin for taking the leadership on the process and let me join the party. Was a real pleasure. 
+Also, I like to mention that in this article there is no source code involved and here is the reason: It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</p>
+
+<p class="justify">Same principles apply not only when introducing a new programming language, but also any new technology.</p>
  
 <p class="justify">Actually the motivation behind this writing came from a tweet and a couple of discussions and constructive feedback around it:</p>
 
@@ -47,9 +49,9 @@ picture smooth_kotlin_01
 
 <p class="justify">There should be always a motivation with strong arguments for betting on new technologies, and those reasons do NOT include:</p>
 
-  * <span class="boldtext">Because everyone is using it.</span>.
-  * <span class="boldtext">Because it is trendy.</span>.
-  * <span class="boldtext">Because it is cool.</span>.
+  * <span class="boldtext">Because everyone is using it.</span>
+  * <span class="boldtext">Because it is trendy.</span>
+  * <span class="boldtext">Because it is cool.</span>
 
 picture smooth_kotlin_02
 
@@ -57,11 +59,11 @@ picture smooth_kotlin_02
 
 <p class="justify">To avoid these issues the first step should be to consider a bunch of basic questions:</p>
 
-  * <span class="boldtext">Is the technology mature enough?</span>.
-  * <span class="boldtext">Has the technology support from the community?</span>.
-  * <span class="boldtext">Is out there other companies which have already adopted it?</span>.
-  * <span class="boldtext">Do we have experts in the team who can lead/guide us in the process?</span>.
-  * <span class="boldtext">Is the team interested in learning this new programming language?</span>.
+  * <span class="boldtext">Is the technology mature enough?</span>
+  * <span class="boldtext">Has the technology support from the community?</span>
+  * <span class="boldtext">Is out there other companies which have already adopted it?</span>
+  * <span class="boldtext">Do we have experts in the team who can lead/guide us in the process?</span>
+  * <span class="boldtext">Is the team interested in learning this new programming language?</span>
 
 <p class="justify">These are, in my opinion, the first answers we need, in order to move forward to the next stage.</p>
 
@@ -72,11 +74,11 @@ We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify">There are a a couple of things we can do to collect such information and participation:</p>
 
-  * <span class="boldtext">Collective meetings for discussions.</span>.
-  * <span class="boldtext">Hacker time for spiking.</span>.
-  * <span class="boldtext">Pair programming on a pet project as example.</span>.
-  * <span class="boldtext">RFCs through a shared document.</span>.
-  * <span class="boldtext">Some basic workshop or presentation after investigation.</span>.
+  * <span class="boldtext">Collective meetings for discussions.</span>
+  * <span class="boldtext">Hacker time for spiking.</span>
+  * <span class="boldtext">Pair programming on a pet project as example.</span>
+  * <span class="boldtext">RFCs through a shared document.</span>
+  * <span class="boldtext">Some basic workshop or presentation after investigation.</span>
 
 <p class="justify">We want everyone to commit as much as possible which will help the decision making and the collection of information about potential issues we might run into.</p>
 
@@ -88,9 +90,9 @@ picture smooth_kotlin_03
 
 <p class="justify">In the past (when Kotlin was not officially supported by Google) we had a few failed attempts which caused uncertainty and frustration in the team due to these doubts:</p>
 
-  * <span class="boldtext">Does it integrate well with our current Continuous Integration Pipeline?</span>.
-  * <span class="boldtext">What about tools availability? Like static analysis for example.</span>.
-  * <span class="boldtext">It is still in Beta and APIs are likely to change without backward compatibility in mind.</span>. 
+  * <span class="boldtext">Does it integrate well with our current Continuous Integration Pipeline?</span>
+  * <span class="boldtext">What about tools availability? Like static analysis for example.</span>
+  * <span class="boldtext">It is still in Beta and APIs are likely to change without backward compatibility in mind.</span>
 
 <p class="justify">But... I think it is time to quote Pablo Neruda here which reflects the impact Kotlin is provoking in the development community:</p>
 
@@ -103,10 +105,10 @@ picture smooth_kotlin_04
 
 <p class="justify">At SoundCloud, after dealing with these 2 aspects we decided it was worth to move forward, so we came up with a bunch of bullet points (a couple of examples below) we would need to address in the next stage:</p>
 
-  * <span class="boldtext">Make the Java <-> Kotlin Interop as easy as possible.</span>.
-  * <span class="boldtext">When converting `@AutoValue` classes to `data class` we should add the static factory methods back in the same way. This would be as `@JvmStatic` functions in "companion objects" of the `data class`. That way we can keep using the same methods in Java to create those objects. From Kotlin we can directly call the constructor.</span>.
-  * <span class="boldtext">If `data class` contains nullable types and those are still used from Java, we should add getters that directly return `Optional<T>` instead of the Nullable type which we might miss in the Java context.</span>.
-  * <span class="boldtext">Keep in mind: Kotlins types don't always map directly to the Java types. Kotin `Long` is `long` in Java, which doesn't have all the compare methods.</span>.
+  * <span class="boldtext">Make the Java-Kotlin interop as easy as possible.</span>
+  * <span class="boldtext">When converting `@AutoValue` classes to `data class`, add static factory methods back in the same way. Ex. `@JvmStatic` functions in `companion objects` of the `data class`: Thus, we use the same methods in Java to create those objects. From Kotlin we can directly call the constructor.</span>
+  * <span class="boldtext">If `data class` contains nullable types and those are still used from Java, we should add getters that directly return `Optional<T>` instead of the `Nullable` type, which we might miss in the Java context.</span>
+  * <span class="boldtext">Keep in mind: Kotlins types don't always map directly to the Java types. Kotin `Long` is `long` in Java, which doesn't have all the compare methods.</span>
 
 <p class="justify">This way, we prepare the terrain by detecting potential issues and solutions to the most common problems in our codebase.</p>
 
@@ -132,10 +134,10 @@ picture smooth_kotlin_06
 
 <p class="justify">Here are some a few examples to make this process smooth without impacting productivity too much:</p>
 
-  * <span class="boldtext">Each new piece of code introduced to our codebase should be written in the new language.</span>.
-  * <span class="boldtext">Each piece of code touched should be migrated to the new language, unless it is a critical bug and needs rapid reaction. </span>.
-  * <span class="boldtext">When reviewing PRs, we should enforce the team to follow these rules. </span>. 
-  * <span class="boldtext">If newly converted Kotlin code is still called from Java, try to keep the interface changes for the Java callers to a minimum.</span>. 
+  * <span class="boldtext">Each new piece of code introduced to our codebase should be written in the new language.</span>
+  * <span class="boldtext">Each piece of code touched should be migrated to the new language, unless it is a critical bug and needs rapid reaction. </span>
+  * <span class="boldtext">When reviewing PRs, we should enforce the team to follow these rules. </span>
+  * <span class="boldtext">If newly converted Kotlin code is still called from Java, try to keep the interface changes for the Java callers to a minimum.</span>
 
 <p class="justify">My suggestion is to also allocate time (when possible) every sprint to migrate and refactor features. Maybe it is also a good idea to address technical debt too and write it in Kotlin: kill two birds with only one stone (legacy code and Java).</p>
 
@@ -151,13 +153,13 @@ picture smooth_kotlin_07
 
 <p class="justify">Here I wanted to include facts and situations we are getting out of this transition:</p>
 
-  * <span class="boldtext">Boost to developer morale, karma and motivation.</span>.
-  * <span class="boldtext">Increased null safety in the Android codebase (due to nullable/non-nullable types).</span>.
-  * <span class="boldtext">Less boilerplate that has to be written, making Pull-Requests smaller and easier to review and the codebase as a whole easier to understand.</span>. 
-  * <span class="boldtext">In the long term, being able to remove some third-party dependencies (e.g. Retrolambda, ButterKnife, AutoValue).</span>. 
-  * <span class="boldtext">In the middle/long term, it also keeps us as a competitive and modern organization betting on the latest/new technologies, in order to attract future talent to the Company/Team.</span>.
-  * <span class="boldtext">Staying up-to-date with the Android developer community.</span>. 
-  * <span class="boldtext">Testing in Kotlin might help, it is better than nothing but you will not appreciate the real power until you solve real world problems with it.</span>.   
+  * <span class="boldtext">Boost to developer morale, karma and motivation.</span>
+  * <span class="boldtext">Increased null safety in the Android codebase (due to nullable/non-nullable types).</span>
+  * <span class="boldtext">Less boilerplate that has to be written, making Pull-Requests smaller and easier to review and the codebase as a whole easier to understand.</span>
+  * <span class="boldtext">In the long term, being able to remove some third-party dependencies (e.g. Retrolambda, ButterKnife, AutoValue).</span>
+  * <span class="boldtext">In the middle/long term, it also keeps us as a competitive and modern organization betting on the latest/new technologies, in order to attract future talent to the Company/Team.</span>
+  * <span class="boldtext">Staying up-to-date with the Android developer community.</span>
+  * <span class="boldtext">Testing in Kotlin might help, it is better than nothing but you will not appreciate the real power until you solve real world problems with it.</span>
 
 ## Conclusion
 
