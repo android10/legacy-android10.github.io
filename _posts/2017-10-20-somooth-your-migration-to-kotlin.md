@@ -32,325 +32,137 @@ tags:
   - continuous learning
   - new technologies
 ---
-<p class="justify"><span class="boldtext">This is not a new topic actually</span>, especially since <a href="https://kotlinlang.org" target="_blank">Kotlin</a> is gaining terrain in the world of programming languages in general, and especially on <span class="boldtext">Android</span>. Also, I'm not going to get into details on <span class="boldtext">what Kotlin offers</span> since <span class="italictext">there is people out there doing a great job</span> (especial mention to my friend <a href="http://antonioleiva.com" target="_blank">Antonio Leiva</a>).</p>
-
-## Kotlin Programming Language
+<p class="justify">First of all, I like to give credit to who deserve it, and in this occasion wanna say thanks to @Mauin for taking the leadership on the process and let me join the party. Was a real pleasure. 
+Also, I like to mention that in this article there is no source code involved and here is the reason: It is not about technical implementation, it is about the process, philosophy and all the moving parts involved. Same principles apply not only when introducing a new programming language, but also any new technology.</p>
+ 
+<p class="justify">Actually the motivation behind this writing came from a tweet and a couple of discussions and constructive feedback around it:</p>
 
-<p class="justify">Before starting I will just mention and give a <span class="boldtext">quick summary of the main benefits of this "young?" and modern programming language</span>:</p>
-
-  * <span class="boldtext">Kotlin is concise.</span> The less code you write, the fewer mistakes you make.
-  * <span class="boldtext">Kotlin is expressive.</span> You can express whatever you want in a shorter way (Java is verbose).
-  * <span class="boldtext">Kotlin is pragmatic.</span> Straight to the point without a lot of wiring.
-  * <span class="boldtext">Kotlin is android-friendly.</span> As we can see in this article ;).
-  * <span class="boldtext">Kotlin is type-safe.</span> Remember the billion dollars mistake?.
-  * <span class="boldtext">Kotlin is functional.</span> Functions and properties are first-class citizens.
-  * <span class="boldtext">Kotlin is friendly.</span> Interoperability between Kotlin and Java works almost perfect.
-
-## Why Kotlin in Tests?
-
-<p class="justify"><span class="italictext">We have an android codebase</span> in our old and lovely? <span class="boldtext">Java</span> and we would love to introduce this awesome language gradually, so <span class="boldtext">why not starting with tests?</span> This way we can give it a try without affecting our main application under any circumstances, <span class="boldtext">and at the same time we get the excitement of a modern and already mature language,</span> plus some training for us and our team in preparation for the big change. Sounds good right? <span class="boldtext">Let's write some code then...</span></p>
-
-## Getting our hands dirty
-
-<p class="justify"><span class="boldtext">Basically, the idea is to showcase how we can test our android applications using Kotlin</span>, so as a first step we need to setup and prepare our environment by <span class="boldtext">adding Kotlin dependencies</span> in our <span class="italictext">build.gradle</span> file:</p>
-
-```groovy
-buildscript {
-  repositories {
-    mavenCentral()
-    jcenter()
-  }
-  dependencies {
-    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.5-2'
-  }
-}
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-
-...
-
-dependencies {
-  ...
-  compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.6"
-
-  ...
-  testCompile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.6'
-  testCompile 'org.jetbrains.kotlin:kotlin-test-junit:1.0.6'
-  testCompile "com.nhaarman:mockito-kotlin:1.1.0"
-  testCompile 'org.amshove.kluent:kluent:1.14'
-}
-```
-
-<p class="justify"><span class="boldtext">Now we need to set the dedicated directories for tests written in Kotlin</span>, this is done in our <span class="boldtext">sourceSets</span> section:</p>
-
-```groovy
-android {
-  ...
-  sourceSets {
-    test.java.srcDirs += 'src/test/kotlin'
-    androidTest.java.srcDirs += 'src/androidTest/kotlin'
-  }
-  ...
-}
-```
-
-<p class="justify"><span class="boldtext">And as a third step we want to make sure, we do not allow accidentally (for now ;)) any Kotlin code in production by also adding this defensive lines:</span></p>
-
-```groovy
-afterEvaluate {
-  android.sourceSets.all { sourceSet ->
-    if (!sourceSet.name.startsWith('test') || !sourceSet.name.startsWith('androidTest')) {
-      sourceSet.kotlin.setSrcDirs([])
-    }
-  }
-}
-```
-
-<p class="justify">The <a href="https://github.com/android10/Android-KotlinInTests/blob/master/app/build.gradle" target="_blank">entire file</a> can be seen in the <a href="https://github.com/android10/Android-KotlinInTests" target="_blank">sample project on Github</a>. <span class="boldtext">And now we are able to write tests in the same way as we would do in Java.</span></p>
-
-## JUnit Tests
-
-<p class="justify">What I only need here is <a href="http://junit.org/junit4/" target="_blank">JUnit</a>, <a href="https://github.com/nhaarman/mockito-kotlin" target="_blank">Mockito-kotlin</a> and <a href="https://github.com/MarkusAmshove/Kluent" target="_blank">Kluent</a> (a library with really cool assertion semantics).</p>
-  
-<p class="justify">Let's see a simple test case for a class called <span class="boldtext">GetUserDetails.java</span> which is a <span class="boldtext">UseCase</span> (<a href="http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/" target="_blank">from a Clean Architecture approach</a>) in my application:</p>
-
-```kotlin
-class GetUserDetailsTest {
-
-  private val USER_ID = 123
-
-  private lateinit var getUserDetails: GetUserDetails
-
-  private val userRepository: UserRepository = mock()
-  private val threadExecutor: ThreadExecutor = mock()
-  private val postExecutionThread: PostExecutionThread = mock()
-
-  @Before
-  fun setUp() {
-    getUserDetails = GetUserDetails(userRepository, threadExecutor, postExecutionThread)
-  }
-
-  @Test
-  fun shouldGetUserDetails() {
-    getUserDetails.buildUseCaseObservable(GetUserDetails.Params.forUser(USER_ID));
-
-    verify(userRepository).user(USER_ID)
-    verifyNoMoreInteractions(userRepository)
-    verifyZeroInteractions(postExecutionThread)
-    verifyZeroInteractions(threadExecutor)
-  }
-}
-```
-
-<p class="justify"><span class="boldtext">Something to pay attention is that when we need to construct our subject under test (in the setup method), we must declare it </span>&#8220;<a href="https://kotlinlang.org/docs/reference/properties.html" target="_blank">lateinit</a>&#8220;, otherwise the compiler will complain, since properties must be initialized or be abstract. Here is another test example for a <span class="boldtext">Serializer.java</span> class in the project, where you can see the <span class="boldtext">assertions</span> mentioned above:</p>
-
-```kotlin
-class SerializerTest {
-
-  private val JSON_RESPONSE = "{\n \"id\": 1,\n " +
-                              "\"cover_url\": \"http://www.android10.org/myapi/cover_1.jpg\",\n " +
-                              "\"full_name\": \"Simon Hill\",\n " +
-                              "\"description\": \"Curabitur gravida nisi at nibh. In hac habitasse " +
-                              "platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer " +
-                              "eget, rutrum at, lorem.\\n\\nInteger tincidunt ante vel ipsum. " +
-                              "Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo " +
-                              "placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, " +
-                              "lacinia eget, tincidunt eget, tempus vel, pede.\",\n " +
-                              "\"followers\": 7484,\n " +
-                              "\"email\": \"jcooper@babbleset.edu\"\n}"
-
-  private var serializer = Serializer()
-
-  @Test
-  fun shouldSerialize() {
-    val userEntityOne = serializer.deserialize(JSON_RESPONSE, UserEntity::class.java)
-    val jsonString = serializer.serialize(userEntityOne, UserEntity::class.java)
-    val userEntityTwo = serializer.deserialize(jsonString, UserEntity::class.java)
-
-    userEntityOne.userId shouldEqual userEntityTwo.userId
-    userEntityOne.fullname shouldEqual userEntityTwo.fullname
-    userEntityOne.followers shouldEqual userEntityTwo.followers
-  }
-
-  @Test
-  fun shouldDesearialize() {
-    val userEntity = serializer.deserialize(JSON_RESPONSE, UserEntity::class.java)
-
-    userEntity.userId shouldEqual 1
-    userEntity.fullname shouldEqual "Simon Hill"
-    userEntity.followers shouldEqual 7484
-  }
-}
-```
-
-## Robolectric (Integration?) Tests
-
-<p class="justify"><span class="boldtext">I created a test parent class (used for each test case) in order to encapsulate everything <a href="http://robolectric.org/" target="_blank">Robolectic</a> related,</span> thus, my tests do not depend directly on this framework. The idea is that any functionality or helper method is wrapped here (<span class="boldtext">this is a lesson learned from the past</span> where I polluted all my code with Robolectric classes, so the process of migrating to a non-backward compatible newer version was very painful).</p>
-
-```kotlin
-/**
- * Base class for Robolectric data layer tests.
- * Inherit from this class to create a test.
- */
-@RunWith(RobolectricTestRunner::class)
-@Config(constants = BuildConfig::class,
-        application = AndroidTest.ApplicationStub::class,
-        sdk = intArrayOf(21))
-abstract class AndroidTest {
-
-  fun context(): Context {
-    return RuntimeEnvironment.application
-  }
-
-  fun cacheDir(): File {
-    return context().cacheDir
-  }
-
-  internal class ApplicationStub : Application()
-}
-```
-
-<p class="justify">And here is an example of an <span class="boldtext">integration test</span> that interacts with the android framework through our <span class="boldtext">AndroidTest.kt</span> class:</p>
-
-```kotlin
-class FileManagerTest : AndroidTest() {
-
-  private var fileManager = FileManager()
-
-  @After
-  fun tearDown() {
-    fileManager.clearDirectory(cacheDir())
-  }
-
-  @Test
-  fun shouldWriteToFile() {
-    val fileToWrite = createDummyFile()
-    val fileContent = "content"
-
-    fileManager.writeToFile(fileToWrite, fileContent)
-
-    fileToWrite.exists() shouldEqualTo true
-  }
-
-  @Test
-  fun shouldHaveCorrectFileContent() {
-    val fileToWrite = createDummyFile()
-    val fileContent = "content\n"
-
-    fileManager.writeToFile(fileToWrite, fileContent)
-    val expectedContent = fileManager.readFileContent(fileToWrite)
-
-    expectedContent shouldEqualTo fileContent
-  }
-
-  private fun createDummyFile(): File {
-    val dummyFilePath = cacheDir().path + File.separator + "dummyFile"
-    return File(dummyFilePath)
-  }
-}
-```
-
-## Espresso Acceptance (UI?) Tests
-
-<p class="justify"><span class="boldtext">My choice here is <a href="https://google.github.io/android-testing-support-library/docs/espresso/" target="_blank">Espresso</a> since it is backed by Google</span> and from my perspective the most stable integration test framework nowadays. The same as with Robolectric,<span class="boldtext"> I decided to create a little framework on top of it,</span> let's see how it works. All my tests depend on an <span class="boldtext">AcceptanceTest.kt</span> class:</p>
-
-```kotlin
-@LargeTest
-@RunWith(AndroidJUnit4::class)
-abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
-
-  @Rule @JvmField
-  val testRule: ActivityTestRule<T> = IntentsTestRule(clazz)
-
-  val checkThat: Matchers = Matchers()
-  val events: Events = Events()
-}
-```
-
-<p class="justify"><span class="boldtext">Things to keep an eye on here:</span></p>
-
-  * <span class="boldtext">A test rule is needed within Espresso (<a href="https://developer.android.com/reference/android/support/test/rule/ActivityTestRule.html" target="_blank">from the documentation</a>):</span> This rule provides functional testing of a single activity. The activity under test will be launched before each test annotated with @Test and before methods annotated with @Before. It will be terminated after the test is completed and methods annotated with @After are finished. During the duration of the test you will be able to manipulate your Activity directly.
-  * <span class="boldtext">We must annotate our &#8220;testRule&#8221; field with <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-field/" target="_blank">@JvmField</a>:</span> this is necessary to turn this Kotlin property into a JVM field that JUnit can interpret.
-  * <span class="boldtext">Matchers class:</span> A wrapper around Espresso checks.
-  * <span class="boldtext">Events class:</span> Another wrapper encapsulating Espresso events.
-
-```kotlin
-class Matchers {
-  fun <T : Activity> nextOpenActivityIs(clazz: Class<T>) {
-    intended(IntentMatchers.hasComponent(clazz.name))
-  }
-
-  fun viewIsVisibleAndContainsText(@StringRes stringResource: Int) {
-    onView(withText(stringResource)).check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
-  }
-
-  fun viewContainsText(@IdRes viewId: Int, @StringRes stringResource: Int) {
-    onView(withId(viewId)).check(matches(withText(stringResource)))
-  }
-}
-```
-
-```kotlin
-class Events {
-  fun clickOnView(@IdRes viewId: Int) {
-    onView(withId(viewId)).perform(click())
-  }
-}
-```
-
-<p class="justify"><span class="boldtext">Last but not least, an example of the main activity of the project</span>, which displays a view and also opens another activity when clicking on a button. The code is pretty simple but if you need a better understanding, <a href="https://github.com/android10/Android-KotlinInTests" target="_blank">you can browse the sample code on Github</a>.</p>
-
-```kotlin
-class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) {
-
-  @Test
-  fun shouldOpenHelloWorldScreen() {
-    events.clickOnView(R.id.btn_hello_world)
-    checkThat.nextOpenActivityIs(HelloWorldActivity::class.java)
-  }
-
-  @Test
-  fun shouldDisplayAction() {
-    events.clickOnView(R.id.fab)
-    checkThat.viewIsVisibleAndContainsText(R.string.action)
-  }
-}
-```
-
-## Running our test battery
-
-<p class="justify"><span class="boldtext">There are neither problems nor especial configuration to run our tests from Android Studio/Intellij. </span>I also added a couple of Gradle tasks in my root <a href="https://github.com/android10/Android-KotlinInTests/blob/master/build.gradle" target="_blank">build.gradle</a> file:</p>
-
-```grovvy
-task runUnitTests(dependsOn: [':app:testDebugUnitTest']) {
-  description 'Run all unit tests'
-}
-
-task runAcceptanceTests(dependsOn: [':app:connectedAndroidTest']) {
-  description 'Run all acceptance tests.'
-}
-```
-
-<p class="justify"><span class="boldtext">Just type this from the command line:</span></p>
-
-```
-./gradlew runUnitTests
-./gradlew runAcceptanceTests
-```
-
-## Wrapping up
-
-<p class="justify"><span class="boldtext">If at some point you were considering Kotlin, there are no longer excuses to use it in production.</span> Tests are a good starting point to introduce it, plus this will help you to have a taste of what this language has to offer. <span class="boldtext">Of course as an extra ball you get all the benefits mentioned in this article and a nice training that will prepare you and your team for the big change.</span></p>
-
-## Repo
-
-* <a href="https://github.com/android10/Android-KotlinInTests" target="_blank">https://github.com/android10/Android-KotlinInTests</a>
-
-## Resources
-
-* <a href="https://yalantis.com/blog/kotlin-vs-java-syntax/" target="_blank">https://yalantis.com/blog/kotlin-vs-java-syntax/</a>  
-* <a href="https://medium.com/@sergii/using-kotlin-for-tests-in-android" target="_blank">https://medium.com/@sergii/using-kotlin-for-tests-in-android</a>  
-* <a href="http://blog.greenhouseci.com/greenhouse/update/android-testing-with-kotlin/" target="_blank">http://blog.greenhouseci.com/greenhouse/update/android-testing-with-kotlin/</a>
-* <a href="http://hadihariri.com/2016/10/04/Mocking-Kotlin-With-Mockito/" target="_blank">http://hadihariri.com/2016/10/04/Mocking-Kotlin-With-Mockito/</a>
-* <a href="https://medium.com/@elye.project/befriending-kotlin-and-mockito-1c2e7b0ef791#.35tvarv9h" target="_blank">https://medium.com/@elye.project/befriending-kotlin-and-mockito</a>
+picture smooth_kotlin_01
+
+<p class="justify">So in this article I will bring up insights (and opinions) on how to introduce Kotlin into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
+
+## The movitation
+
+<p class="justify">Let's say we heard about this new thing called Kotlin (mainly) being used for Android development nowadays. Many people are talking about it, so we start to dive a little bit deeper and see potential in it, so in the end we decide to bring the topic to the table in our next team meeting.</p>
+
+<p class="justify">There should be always a motivation with strong arguments for betting on new technologies, and those reasons do NOT include:</p>
+
+  * <span class="boldtext">Because everyone is using it.</span>.
+  * <span class="boldtext">Because it is trendy.</span>.
+  * <span class="boldtext">Because it is cool.</span>.
+
+picture smooth_kotlin_02
+
+<p class="justify">Keep in mind that we are taking risks at a technical and business level. So if we do not do our homework first, we might run into the unknown with disastrous consequences, which are not easy to rollback and consume development time and for instance money for the organization.</p>
+
+<p class="justify">To avoid these issues the first step should be to consider a bunch of basic questions:</p>
+
+  * <span class="boldtext">Is the technology mature enough?</span>.
+  * <span class="boldtext">Has the technology support from the community?</span>.
+  * <span class="boldtext">Is out there other companies which have already adopted it?</span>.
+  * <span class="boldtext">Do we have experts in the team who can lead/guide us in the process?</span>.
+  * <span class="boldtext">Is the team interested in learning this new programming language?</span>.
+
+<p class="justify">These are, in my opinion, the first answers we need, in order to move forward to the next stage.</p>
+
+## Involving the team
+
+<p class="justify">The advice here is to involve our team in the process as much as we can. It is important that everyone feels part of the it by providing feedback, advice and opinions. 
+We want to make sure we are in the same boat on our path.</p>
+
+<p class="justify">There are a a couple of things we can do to collect such information and participation:</p>
+
+  * <span class="boldtext">Collective meetings for discussions.</span>.
+  * <span class="boldtext">Hacker time for spiking.</span>.
+  * <span class="boldtext">Pair programming on a pet project as example.</span>.
+  * <span class="boldtext">RFCs through a shared document.</span>.
+  * <span class="boldtext">Some basic workshop or presentation after investigation.</span>.
+
+<p class="justify">We want everyone to commit as much as possible which will help the decision making and the collection of information about potential issues we might run into.</p>
+
+<p class="justify">Something we did was to also talk to the iOS Team, since they had gone through a similar process when migrating from Objective C to Swift: super valuable feedback and experience.</p>
+
+picture smooth_kotlin_03
+
+## Resisting the inevitable
+
+<p class="justify">In the past (when Kotlin was not officially supported by Google) we had a few failed attempts which caused uncertainty and frustration in the team due to these doubts:</p>
+
+  * <span class="boldtext">Does it integrate well with our current Continuous Integration Pipeline?</span>.
+  * <span class="boldtext">What about tools availability? Like static analysis for example.</span>.
+  * <span class="boldtext">It is still in Beta and APIs are likely to change without backward compatibility in mind.</span>. 
+
+<p class="justify">But... I think it is time to quote Pablo Neruda here which reflects the impact Kotlin is provoking in the development community:</p>
+
+picture smooth_kotlin_04
+
+<p class="justify">With that being said, nowadays there are no many reasons to NOT introduce Kotlin, or at least the good things beat the downsides. Anyway, that does not mean we do NOT have to focus on the pros and cons of introducing a new technology based on:</p>
+
+  * <span class="boldtext">Our priorities as a Team/Company: we need time and we might slow down feature development in the beginning, although that is going to pay back in the future.</span>.
+  * <span class="boldtext">The state of our current codebase: in our first attempt we were deep in changing our architecture and killing legacy code. Introducing a new programming language would increase our Lava Anti-Pattern. </span>.
+
+<p class="justify">At SoundCloud, after dealing with these 2 aspects we decided it was worth to move forward, so we came up with a bunch of bullet points (a couple of examples below) we would need to address in the next stage:</p>
+
+  * <span class="boldtext">Make the Java <-> Kotlin Interop as easy as possible.</span>.
+  * <span class="boldtext">When converting `@AutoValue` classes to `data class` we should add the static factory methods back in the same way. This would be as `@JvmStatic` functions in "companion objects" of the `data class`. That way we can keep using the same methods in Java to create those objects. From Kotlin we can directly call the constructor.</span>.
+  * <span class="boldtext">If `data class` contains nullable types and those are still used from Java, we should add getters that directly return `Optional<T>` instead of the Nullable type which we might miss in the Java context.</span>.
+  * <span class="boldtext">Keep in mind: Kotlins types don't always map directly to the Java types. Kotin `Long` is `long` in Java, which doesn't have all the compare methods.</span>.
+
+<p class="justify">This way, we prepare the terrain by detecting potential issues and solutions to the most common problems in our codebase.</p>
+
+## Our First PR
+
+<p class="justify">At this point we detected possible problems to solve and it was time to officially get our hands dirty. This is an important stage because we are translating our previous investigation into code.</p>
+
+<p class="justify">In my opinion this should be done with Pair Programming. There should be discussions, suggestions and pair reviews from the rest of the team. It is a good idea to put a deadline until when the PR will be open, otherwise discussions become endless.</p>
+
+<p class="justify">If you are wondering what to work on for your first Kotlin PR, I would say that just pick a simple functionality (a screen) in your app and refactor it end to end. This way, you start your job vertically, and gradually move to the rest of features. Divide and conquer, remember?</p>
+
+<p class="justify">Along the way, we did not only write code, bu also performed tests, for example compilation time. The more information we collect sooner, the better.</p>
+
+picture smooth_kotlin_05
+
+<p class="justify">Finally it was time to push the button and commit our first Kotlin PR. It was a real pleasure to presence that moment (again thanks @Mauin!). Now we are happy kotlin coders.</p>
+
+picture smooth_kotlin_06
+
+## More power implies more responsibility
+
+<p class="justify">Everything does not end up once you merge your first piece of Kotlin code. We are embracing a new language (a new technology) so there should be commitment. The main idea is to establish rules we must follow in order to fully transition from the old stack to the new one.</p>
+
+<p class="justify">Here are some a few examples to make this process smooth without impacting productivity too much:</p>
+
+  * <span class="boldtext">Each new piece of code introduced to our codebase should be written in the new language.</span>.
+  * <span class="boldtext">Each piece of code touched should be migrated to the new language, unless it is a critical bug and needs rapid reaction. </span>.
+  * <span class="boldtext">When reviewing PRs, we should enforce the team to follow these rules. </span>. 
+  * <span class="boldtext">If newly converted Kotlin code is still called from Java, try to keep the interface changes for the Java callers to a minimum.</span>. 
+
+<p class="justify">My suggestion is to also allocate time (when possible) every sprint to migrate and refactor features. Maybe it is also a good idea to address technical debt too and write it in Kotlin: kill two birds with only one stone (legacy code and Java).</p>
+
+## Continuous Learning
+
+<p class="justify">This an exciting process and we should keep it up by constantly learning, improving and addressing together problems we find along the way. Sharing and transfer of knowledge is key. As mentioned earlier, what worked for us, were discussions in our collective weekly meeting, presentations, pair programming and little workshops. </p>
+
+picture smooth_kotlin_07
+
+<p class="justify">As a colleague of mine say, do not put things in cold water and always encourage continuous improvement.</p>
+
+## Benefits and key points
+
+<p class="justify">Here I wanted to include facts and situations we are getting out of this transition:</p>
+
+  * <span class="boldtext">Boost to developer morale, karma and motivation.</span>.
+  * <span class="boldtext">Increased null safety in the Android codebase (due to nullable/non-nullable types).</span>.
+  * <span class="boldtext">Less boilerplate that has to be written, making Pull-Requests smaller and easier to review and the codebase as a whole easier to understand.</span>. 
+  * <span class="boldtext">In the long term, being able to remove some third-party dependencies (e.g. Retrolambda, ButterKnife, AutoValue).</span>. 
+  * <span class="boldtext">In the middle/long term, it also keeps us as a competitive and modern organization betting on the latest/new technologies, in order to attract future talent to the Company/Team.</span>.
+  * <span class="boldtext">Staying up-to-date with the Android developer community.</span>. 
+  * <span class="boldtext">Testing in Kotlin might help, it is better than nothing but you will not appreciate the real power until you solve real world problems with it.</span>.   
+
+## Conclusion
+
+<p class="justify">As we have seen, it is never straightforward to introduce such big changes. Also, the bigger the company is, the more difficult, due to its moving parts, team size and amount of code generated every day.</p>
+
+<p class="justify">That is why it is important to come up with a plan to make the process as smooth as possible.</p>
+
+<p class="justify">This is all I have to offer for now, ping me on Twitter for discussions/feedback. Happy kotlin coding!</p>
