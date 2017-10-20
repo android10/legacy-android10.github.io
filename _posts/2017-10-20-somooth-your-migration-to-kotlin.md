@@ -44,7 +44,7 @@ Also, I like to mention that in this article there is no source code involved an
 <p class="justify">So in this article I will bring up insights (and opinions) on how to introduce Kotlin into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
 
 
-## The movitation
+# The movitation
 
 <p class="justify">Let's say we heard about this new thing called Kotlin (mainly) being used for Android development nowadays. Many people are talking about it, so we start to dive a little bit deeper and see potential in it, so in the end we decide to bring the topic to the table in our next team meeting.</p>
 
@@ -69,7 +69,7 @@ Also, I like to mention that in this article there is no source code involved an
 <p class="justify">These are, in my opinion, the first answers we need, in order to move forward to the next stage.</p>
 
 
-## Involving the team
+# Involving the team
 
 <p class="justify">The advice here is to involve our team in the process as much as we can. It is important that everyone feels part of the it by providing feedback, advice and opinions. 
 We want to make sure we are in the same boat on our path.</p>
