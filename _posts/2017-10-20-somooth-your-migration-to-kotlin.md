@@ -32,15 +32,15 @@ tags:
   - continuous learning
   - new technologies
 ---
-<p class="justify">First of all, I like to give credit to who deserves it, and in this occasion wanna say thanks to <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a> for taking the leadership on the process and let me join the party. Was a real pleasure. Also, I like to mention, that in this article there is no source code involved and here is the reason: It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</p>
+<p class="justify">First of all, <span class="boldtext">I would like to give credit to who deserves it,</span> and in this occasion wanna say thanks to <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a> for taking the leadership on the process and let me join the party. <span class="underlinetext">Was a real pleasure.</span> Also, I like to mention, that in this article there is NO source code involved and here is the reason: <span class="boldtext">It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</span></p>
 
 <p class="justify">Same principles apply not only when introducing a new programming language, but also any new technology.</p>
  
-<p class="justify">Actually the motivation behind this writing <a href="https://twitter.com/fernando_cejas/status/920591431730900992" target="_blank">came from a tweet</a> and a couple of discussions and constructive feedback around it:</p>
+<p class="justify">Actually the motivation behind this writing <a href="https://twitter.com/fernando_cejas/status/920591431730900992" target="_blank">came from a tweet</a> and a couple of discussions and <span class="boldtext">constructive feedback</span> around it:</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_01.png){:class="img-responsive"}
 
-<p class="justify">So in this article I will bring up insights (and opinions) on how to introduce <a href="https://kotlinlang.org/" target="_blank">Kotlin</a> into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
+<p class="justify">So in this article I will bring up <span class="boldtext">insights (and opinions)</span> on how to introduce <a href="https://kotlinlang.org/" target="_blank">Kotlin</a> into <span class="boldtext">your existing Android Java codebase.</span> All this material comes from <span class="boldtext">experiences and real facts,</span> which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
 
 
 # The movitation
