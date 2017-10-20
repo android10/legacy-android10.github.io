@@ -43,6 +43,7 @@ Also, I like to mention that in this article there is no source code involved an
 
 <p class="justify">So in this article I will bring up insights (and opinions) on how to introduce Kotlin into your existing Java Android codebase. All this material comes from experiences and real facts, which from my perspective, is the best way to share knowledge and lessons learned. So let's get started.</p>
 
+
 ## The movitation
 
 <p class="justify">Let's say we heard about this new thing called Kotlin (mainly) being used for Android development nowadays. Many people are talking about it, so we start to dive a little bit deeper and see potential in it, so in the end we decide to bring the topic to the table in our next team meeting.</p>
@@ -53,7 +54,7 @@ Also, I like to mention that in this article there is no source code involved an
   * <span class="boldtext">Because it is trendy.</span>
   * <span class="boldtext">Because it is cool.</span>
 
-![fernando-cejas](/assets/images/smooth_kotlin_02.png){:class="img-responsive"}
+![fernando-cejas](/assets/images/smooth_kotlin_02.jpg){:class="img-responsive"}
 
 <p class="justify">Keep in mind that we are taking risks at a technical and business level. So if we do not do our homework first, we might run into the unknown with disastrous consequences, which are not easy to rollback and consume development time and for instance money for the organization.</p>
 
@@ -66,6 +67,7 @@ Also, I like to mention that in this article there is no source code involved an
   * <span class="boldtext">Is the team interested in learning this new programming language?</span>
 
 <p class="justify">These are, in my opinion, the first answers we need, in order to move forward to the next stage.</p>
+
 
 ## Involving the team
 
@@ -85,6 +87,7 @@ We want to make sure we are in the same boat on our path.</p>
 <p class="justify">Something we did was to also talk to the iOS Team, since they had gone through a similar process when migrating from Objective C to Swift: super valuable feedback and experience.</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_03.png){:class="img-responsive"}
+
 
 ## Resisting the inevitable
 
@@ -112,6 +115,7 @@ We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify">This way, we prepare the terrain by detecting potential issues and solutions to the most common problems in our codebase.</p>
 
+
 ## Our First PR
 
 <p class="justify">At this point we detected possible problems to solve and it was time to officially get our hands dirty. This is an important stage because we are translating our previous investigation into code.</p>
@@ -128,6 +132,7 @@ We want to make sure we are in the same boat on our path.</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_06.png){:class="img-responsive"}
 
+
 ## More power implies more responsibility
 
 <p class="justify">Everything does not end up once you merge your first piece of Kotlin code. We are embracing a new language (a new technology) so there should be commitment. The main idea is to establish rules we must follow in order to fully transition from the old stack to the new one.</p>
@@ -141,6 +146,7 @@ We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify">My suggestion is to also allocate time (when possible) every sprint to migrate and refactor features. Maybe it is also a good idea to address technical debt too and write it in Kotlin: kill two birds with only one stone (legacy code and Java).</p>
 
+
 ## Continuous Learning
 
 <p class="justify">This an exciting process and we should keep it up by constantly learning, improving and addressing together problems we find along the way. Sharing and transfer of knowledge is key. As mentioned earlier, what worked for us, were discussions in our collective weekly meeting, presentations, pair programming and little workshops. </p>
@@ -148,6 +154,7 @@ We want to make sure we are in the same boat on our path.</p>
 ![fernando-cejas](/assets/images/smooth_kotlin_07.png){:class="img-responsive"}
 
 <p class="justify">As a colleague of mine say, do not put things in cold water and always encourage continuous improvement.</p>
+
 
 ## Benefits and key points
 
@@ -160,6 +167,7 @@ We want to make sure we are in the same boat on our path.</p>
   * <span class="boldtext">In the middle/long term, it also keeps us as a competitive and modern organization betting on the latest/new technologies, in order to attract future talent to the Company/Team.</span>
   * <span class="boldtext">Staying up-to-date with the Android developer community.</span>
   * <span class="boldtext">Testing in Kotlin might help, it is better than nothing but you will not appreciate the real power until you solve real world problems with it.</span>
+
 
 ## Conclusion
 
