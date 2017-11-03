@@ -32,7 +32,7 @@ tags:
   - continuous learning
   - new technologies
 ---
-<p class="justify">First of all, <span class="boldtext">I would like to give credit to who deserves it,</span> and in this occasion wanna say thanks to <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a> for taking the leadership on the process and let me join the party. <span class="underlinetext">Was a real pleasure.</span> Also, I like to mention, that in this article there is <span class="boldtext">NO</span> source code involved and here is the reason: <span class="boldtext">It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</span></p>
+<p class="justify">First of all, <span class="boldtext">I would like to give credit to who deserves it,</span> and in this occasion wanna say thanks to <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a> for taking the leadership on the process and let me join the party. <span class="underlinetext">Was a real pleasure.</span> Also, I would like to mention, that in this article there is <span class="boldtext">NO</span> source code involved and here is the reason: <span class="boldtext">It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.</span></p>
 
 <p class="justify">Same principles apply not only when introducing a new programming language, but also any new technology.</p>
  
@@ -70,7 +70,7 @@ tags:
 
 # Involving the team
 
-<p class="justify"><span class="boldtext">The advice here is to involve our team in the process as much as we can.</span> It is important that everyone feels part of the it by providing feedback, advice and opinions. 
+<p class="justify"><span class="boldtext">The advice here is to involve our team in the process as much as we can.</span> It is important that everyone feels part of it by providing feedback, advice and opinions. 
 We want to make sure we are in the same boat on our path.</p>
 
 <p class="justify">There are a a couple of things we can do to collect such information and participation:</p>
@@ -96,11 +96,11 @@ We want to make sure we are in the same boat on our path.</p>
   * <span class="boldtext">What about tools availability? Like static analysis for example.</span>
   * <span class="boldtext">It is still in Beta and APIs are likely to change without backward compatibility in mind.</span>
 
-<p class="justify">But... I think it is time to invoke <span class="boldtext">Pablo Neruda</span> here which reflects the <span class="underlinetext">impact Kotlin is provoking</span> in the development community:</p>
+<p class="justify">But... I think it is time to invoke <span class="boldtext">Pablo Neruda</span> here which reflects the <span class="underlinetext">impact Kotlin is creating</span> in the development community:</p>
 
 ![fernando-cejas](/assets/images/smooth_kotlin_04.png){:class="img-responsive"}
 
-<p class="justify">With that being said, nowadays there are <span class="boldtext">no many reasons to NOT introduce Kotlin,</span> or at least the good things beat the downsides. Anyway, that does not mean we do <span class="boldtext">NOT</span> have to focus on the pros and cons of introducing a new technology based on:</p>
+<p class="justify">With that being said, nowadays there are <span class="boldtext">not many reasons to NOT introduce Kotlin,</span> or at least the upsides outweigh the downsides. Anyway, that does not mean we do <span class="boldtext">NOT</span> have to focus on the pros and cons of introducing a new technology based on:</p>
 
   * <span class="boldtext">Our priorities as a Team/Company: we need time and we might slow down feature development in the beginning, although that is going to pay back in the future.</span>.
   * <span class="boldtext">The state of our current codebase: in our first attempt we were deep in changing our architecture and killing legacy code. Introducing a new programming language would increase our Lava Anti-Pattern. </span>.
