@@ -46,14 +46,14 @@ tags:
 
 # Why?
 
-<p class="justify"><span class="boldtext">This is not easy to answer,</span> but I will do my best. At <a href="https://soundcloud.com/" target="_blank">SoundCloud</a> I used to be a <span class="boldtext">Mobile Core Engineer, which means I was working on infrastracture code (things that affect the entire application) and libraries which were used by feature teams.</span> It was product related and we had a fixed strategy/roadmap and product backlog belonging to the team. Being in touch with the community and doing open source was not my main roll: please do not get me wrong, <span class="boldtext">I always had support from the company, which is a plus one, and from my perspective, one of the best places with the smartest and nicest people I have ever worked at. I am so grateful!</span></p>  
+<p class="justify"><span class="boldtext">This is not easy to answer,</span> but I will do my best. At <a href="https://soundcloud.com/" target="_blank">SoundCloud</a> I used to be a <span class="boldtext">Mobile Core Engineer, which means I was working on infrastracture code (things that affect the entire application) and libraries which were used by feature teams.</span> It was product related and we had a fixed strategy/roadmap and product backlog belonging to the team. Being in touch with the community and doing open source was not my main roll: please do not get me wrong, <span class="boldtext">I always had support from the company, which is a plus one, and from my perspective, one of the best places with the smartest and nicest people I have ever worked with. I am so grateful!</span></p>  
 
 <p class="justify">On the other hand, at <a href="https://www.ibm.com/us-en/" target="_blank">IBM</a> the idea is to <span class="boldtext">do research in the fields mentioned above, and share that knowledge through technical articles, conferences and code samples,</span> thus, creating relationships with developers. With that being said, my decision was more a matter of <span class="boldtext">new challenges</span> and a bit of a <span class="boldtext">career path change</span> (trying new things is something I always encourage to everybody).</p>
 
 
 # The Future
 
-<p class="justify"><span class="boldtext">Of course it is unpredictable:</span> I do not know whether I will like or not until I start doing my job. There are many challenges on the way, plus I was never part of such a big company, but I have to say, <span class="boldtext">I'm very positive,</span> and of course I will put all my effort in order to do my best. I will definitely keep you posted!</p>
+<p class="justify"><span class="boldtext">Of course it is unpredictable: I do not know whether I will like or not until I start doing my job.</span> There are many challenges on the way, plus I was never part of such a big company, but I have to say, <span class="boldtext">I'm very positive,</span> and of course I will put all my effort in order to do my best. <span class="boldtext">I will definitely keep you posted!</span></p>
 
 
 # Thanks
