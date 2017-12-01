@@ -3,7 +3,7 @@ id: 14
 title: Moving forward...  From SoundCloud to IBM.
 date: 2017-12-01T22:25:48+00:00
 author: Fernando Cejas
-description: How to smoothly migrate your existing android java codebase to kotlin. These principles can also be applied to any existing technology being introduced.  
+description: Moving forward from SoundCloud to IBM.  
 layout: post
 permalink: /2017/12/01/moving-forward-from-sc-to-ibm/
 categories:
