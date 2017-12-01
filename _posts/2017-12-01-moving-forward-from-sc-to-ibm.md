@@ -34,16 +34,14 @@ tags:
   - continuous learning
   - new technologies
 ---
-<p class="justify"><span class="boldtext">No technical blog post this time</span>, but I also love to share feelings and sensations, and in this case I wanted to announce that I will be collaborating with <span <span class="boldtext">IBM as a Developer Advocate.</span></p> 
+<p class="justify"><span class="boldtext">No technical blog post this time</span>, but I also love to share feelings and sensations, and in this case I want to announce that I will be collaborating with <span class="boldtext">IBM as a Developer Advocate.</span></p> 
 
 <p class="justify"><span class="boldtext">What does that mean then?</span> <span class="underlinetext">Long story short:</span> this is a new team being created in Germany which its main goal is to research and share material around <a href="https://en.wikipedia.org/wiki/Cognitive_computing" target="_blank">Cognitive Computing</a> and <a href="https://en.wikipedia.org/wiki/Internet_of_things" target="_blank">Internet of Things.</a></p>
 
 
 # My roll
 
-<p class="justify"><span class="boldtext">First of all I'm more committed than ever to the Community.</span> So nothing is going to change: I am more than glad to continue attending events, sharing and giving talks related to lessons learned and knowledge as part of my job. So do not hesitate to <a href="https://twitter.com/fernando_cejas/" target="_blank">invite me!</a> I will also participate more actively on <a href="https://github.com/android10" target="_blank">open source projects</p> and of course I will continue doing one of my passions: <span class="boldtext">mobile development (mainly android).</span></p>
-
-![fernando-cejas](/assets/images/cognitive_android.png){:class="img-responsive"}
+<p class="justify"><span class="boldtext">First of all I'm more committed than ever to the Community.</span> So nothing is going to change: I am more than glad to continue attending events, sharing and giving talks related to lessons learned and knowledge as part of my job. So do not hesitate to <a href="https://twitter.com/fernando_cejas/" target="_blank">invite me!</a> I will also participate more actively on <a href="https://github.com/android10" target="_blank">open source projects</a> and of course I will continue doing one of my passions: <span class="boldtext">mobile development (mainly android).</span></p>
 
 
 # Why?
