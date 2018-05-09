@@ -3,7 +3,7 @@ id: 15
 title: 'Architecting Android...Reloaded'
 date: 2018-05-07T14:06:11+00:00
 author: Fernando Cejas
-description: Clean architecture evolution on Android using functional programming. Hints for error handling, modularization, package organization, etc.   
+description: Clean architecture evolution on Android using functional programming. Hints for error handling, modularization, patterns written in Kotlin.   
 layout: post
 permalink: /2018/05/07/architecting-android-reloaded/
 categories:
