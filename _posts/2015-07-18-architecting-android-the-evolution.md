@@ -343,6 +343,7 @@ dependencies {
 
 ## Further reading:
 
+  * <a href="https://fernandocejas.com/2018/05/07/architecting-android-reloaded/" target="_blank">Architecting Android..reloaded</a>
   * <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android..the clean way</a>
   * <a href="http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/" target="_blank">Tasting Dagger 2 on Android</a>
   * <a href="https://speakerdeck.com/android10/the-mayans-lost-guide-to-rxjava-on-android" target="_blank">The Mayans Lost Guide to RxJava on Android</a>
