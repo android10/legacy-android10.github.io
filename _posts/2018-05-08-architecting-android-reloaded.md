@@ -158,7 +158,7 @@ class GetMovies
 
 <p class="justify">However, I ran into these sort of situations anyway. <span class="boldtext">This is the reason why I decided to go and give a try to MVVM.</span></p> 
 
-### Let's see what changed with MVVP from previous sample and how it works:
+### Let's see what changed with MVVM from previous sample and how it works:
 
 <br>
 ![fernando-cejas](/assets/images/clean_architecture_reloaded_mvvm_app.png){:class="img-responsive"}
