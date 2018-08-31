@@ -2,17 +2,15 @@
 id: 7
 title: 'Architecting Android...The evolution'
 date: 2015-07-18T16:18:56+00:00
-author: Fernando Cejas
+author: fernando
 description: Architecture is about evolution. This is an evolution of my implementation of Clean Architecture on Android
 layout: post
 permalink: /2015/07/18/architecting-android-the-evolution/
-categories:
-  - Android
-  - Development
-  - Java
-  - Reactive Programming
-  - Software Architecture
-  - Testing
+image: assets/images/clean_architecture_reloaded_featured.jpg
+comments: false
+featured: false
+hidden: false
+categories: [ android, mobile, java, architecture, fp, oop, testing, programming, engineering ]
 tags:
   - android
   - androiddev
@@ -37,27 +35,34 @@ tags:
   - test
   - testing
 ---
-<p class="justify"><span class="boldtext">Hey there!</span> After a while (and a lot of feedback received) I decided it was a good time to get back to this topic and <span class="boldtext">give you another taste of what I consider a good approach when it comes to architecting modern mobile applications (android in this case).</span></p>
+Hey there! After a while (and a lot of feedback received) I decided it was a good time to get back to this topic and give you another taste of what I consider a good approach when it comes to **architecting modern mobile applications** (android in this case).
 
-<p class="justify">Before getting started, I assume that <span class="boldtext"><a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">you already read my previous post about Architecting Android…The clean way?</a></span> If not, this is a good opportunity to get in touch with it in order to have a better understanding of the story I’m going to tell you right here:</p>
+Before getting started, I assume that <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">you already read my previous post about Architecting Android…The clean way?</a>. 
+If not, this is a good opportunity to get in touch with it in order to have a better understanding of the story I’m going to tell you right here:
 
-<img class="aligncenter wp-image-208 size-full" src="/assets/migrated/clean_architecture1.png" alt="clean_architecture" width="647" height="440" srcset="/assets/migrated/clean_architecture1.png 647w, /assets/migrated/clean_architecture1-300x204.png 300w" sizes="(max-width: 647px) 100vw, 647px" />
+![clean_architecture](/assets/images/clean_architecture_evolution_01.png)
+
 
 ## Architecture evolution
 
-<p class="justify"><span class="boldtext">Evolution stands for a gradual process in which something changes into a different and usually more complex or better form.</span></p>
+**Evolution stands for a gradual process in which something changes into a different and usually more complex or better form.**
 
-<p class="justify">Said that, software evolves and changes over the time and indeed an architecture. <span class="boldtext">Actually a good software design must help us grow and extend our solution by keeping it healthy without having to rewrite everything</span> (although there are cases where this approach is better, but that is a topic for another article, so let’s focus in what I pointed out earlier, trust me).</p>
+Said that, software evolves and changes over the time and indeed an architecture. Actually **a good software design must help us grow and extend our solution by keeping it healthy without having to rewrite everything** (although there are cases where this approach is better, but that is a topic for another article, so let’s focus in what I pointed out earlier, trust me).
 
-<p class="justify"><span class="boldtext">In this article,</span> I am going to walk you through key points I consider necessary and important, <span class="boldtext">to keep the sanity of our android codebase.</span> Keep in mind this picture and let’s get started.</p>
+In this article, I am going to walk you through key points I consider necessary and important, to keep the sanity of our android codebase. 
 
-<img class="aligncenter size-full wp-image-206" src="/assets/migrated/clean_architecture_android.png" alt="clean_architecture_android" width="673" height="292" srcset="/assets/migrated/clean_architecture_android.png 673w, /assets/migrated/clean_architecture_android-300x130.png 300w" sizes="(max-width: 673px) 100vw, 673px" />
+Keep in mind this picture and let’s get started.
+
+![clean_architecture](/assets/images/clean_architecture_evolution_02.png)
+
 
 ## Reactive approach: RxJava
 
-<p class="justify">I’m not going to talk about the benefits of <span class="boldtext">RxJava</span> here (<a href="https://github.com/ReactiveX/RxJava/wiki/" target="_blank">I assume you already had a taste of it</a>), since <a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/" target="_blank">there are a lot articles</a> and <a href="https://speakerdeck.com/benjchristensen" target="_blank">badasses</a> of this technology that are doing an excellent job out there. However, <span class="boldtext">I will point out what makes it interesting in regards of android applications development, and how it has helped me evolve my first approach of clean architecture.</span></p>
+I’m not going to talk about the benefits of RxJava here (<a href="https://github.com/ReactiveX/RxJava/wiki/" target="_blank">I assume you already had a taste of it</a>), since <a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/" target="_blank">there are a lot articles</a> and <a href="https://speakerdeck.com/benjchristensen" target="_blank">badasses</a> of this technology that are doing an excellent job out there. 
 
-<p class="justify">First, I opted for a reactive pattern by converting use cases (called <span class="boldtext">interactors</span> in the clean architecture naming convention) <span class="boldtext">to return Observables&lt;T&gt; which means all the lower layers will follow the chain and return Observables&lt;T&gt; too.</span></p>
+**However, I will point out what makes it interesting in regards of android applications development, and how it has helped me evolve my first approach of clean architecture.**
+
+First, I opted for a reactive pattern by converting use cases (called interactors in the clean architecture naming convention) to return ```Observables<T>``` which means all the lower layers will follow the chain and return ```Observables<T>``` too.
 
 ```java
 public abstract class UseCase {
@@ -90,13 +95,15 @@ public abstract class UseCase {
 }
 ```
 
-<p class="justify">As you can see here, all use cases inherit from this abstract class and implement the abstract method <span class="boldtext">buildUseCaseObservable()</span> which will setup an <span class="boldtext">Observable&lt;T&gt;</span> that is going to do the hard job and return the needed data.</p>
+As you can see here, all use cases inherit from this abstract class and implement the abstract method ```buildUseCaseObservable()``` which will setup an ```Observable<T>``` that is going to **do the hard job and return the needed data.**
 
-<p class="justify"><span class="boldtext">Something to highlight is the fact that on execute() method, we make sure our Observable&lt;T&gt; executes itself in a separate thread</span>, thus, minimizing how much we block the android main thread. The result is push back on the Android main thread through the android main thread scheduler.</p>
+Something to highlight is the fact that on ```execute()``` method, we make sure our ```Observable<T>``` executes itself in a separate thread, thus, minimizing how much we block the android main thread. **The result is push back on the Android main thread through the android main thread scheduler.**
 
-<p class="justify"><span class="boldtext">So far, we have our Observable&lt;T&gt; up and running, but, as you know, someone has to observe the data sequence emitted by it.</span> To achieve this, I evolved presenters (part of <span class="boldtext">MVP</span> in the presentation layer) into <span class="boldtext">Subscribers</span> which would <span class="boldtext">“react”</span> to these emitted items by use cases, in order to update the user interface.</p>
+So far, we have our ```Observable<T>``` up and running, but, as you know, someone has to observe the data sequence emitted by it. 
 
-<p class="justify">Here is how the subscriber looks like:</p>
+To achieve this, I evolved **Presenters** (part of MVP in the presentation layer) into **Subscribers** which would “react” to these emitted items by use cases in order to update the user interface.
+
+Here is how the Subscriber looks like:
 
 ```java
 private final class UserListSubscriber extends DefaultSubscriber<List<User>> {
@@ -117,34 +124,36 @@ private final class UserListSubscriber extends DefaultSubscriber<List<User>> {
 }
 ```
 
-<p class="justify">Every subscriber is an inner class inside each presenter and implements a <span class="boldtext">DefaultSubscriber&lt;T&gt;</span> created basically for default error handling.</p>
+**Every subscriber is an inner class inside each presenter** and implements a ```DefaultSubscriber<T>``` created basically for default error handling.
 
-<p class="justify"><span class="boldtext">After putting all pieces in place,</span> you can get the whole idea by having a look at the following picture:</p>
+After putting all pieces in place, you can get the whole idea by having a look at the following picture:
 
-<img class="aligncenter size-full wp-image-360" src="/assets/migrated/clean_architecture_evolution.png" alt="clean_architecture_evolution" width="720" height="540" srcset="/assets/migrated/clean_architecture_evolution.png 720w, /assets/migrated/clean_architecture_evolution-300x225.png 300w" sizes="(max-width: 720px) 100vw, 720px" />
+![clean_architecture](/assets/images/clean_architecture_evolution_03.png)
 
-<p class="justify">Let’s enumerate a bunch of benefits we get out of <span class="boldtext">this RxJava based approach:</span></p>
+Let’s enumerate a bunch of **benefits** we get out of this **RxJava** based approach:
 
-* <p class="justify"><span class="boldtext">Decoupling between Observables and Subscribers:</span> makes maintainability and testing easier.</p>
-* <p class="justify"><span class="boldtext">Simplified asynchronous tasks:</span> java threads and futures are complex to manipulate and synchronize if more than one single level of asynchronous execution is required, so by using schedulers we can jump between background and main thread in an easy way (with no extra effort), especially when we need to update the UI. We also avoid what we call a “callback hell”, which makes our code unreadable and hard to follow up.</p>
-* <p class="justify"><span class="boldtext">Data transformation/composition:</span> we can combine multiple Observables&lt;T&gt; without affecting the client, which makes our solution more scalable.</p>
-* <p class="justify"><span class="boldtext">Error handling:</span> a signal is emitted to the consumer when an error has occurred within any Observable&lt;T&gt;.</p>
+* **Decoupling between Observables and Subscribers:** makes maintainability and testing easier.
+* **Simplified asynchronous tasks:** java threads and futures are complex to manipulate and synchronize if more than one single level of asynchronous execution is required, so by using schedulers we can jump between background and main thread in an easy way (with no extra effort), especially when we need to update the UI. We also avoid what we call a “callback hell”, which makes our code unreadable and hard to follow up.
+* **Data transformation/composition:** we can combine multiple ```Observables<T>``` without affecting the client, which makes our solution more scalable.
+* **Error handling:** a signal is emitted to the consumer when an error has occurred within any ```Observable<T>```.
 
-<p class="justify">From my point of view there is one drawback, and indeed a price to pay, which has to do with <span class="boldtext">the learning curve for developers who are not familiar with the concept.</span> However, you get very valuable stuff out of it. <span class="boldtext">Reactive for the win!</span></p>
+From my point of view there is **one drawback**, and indeed a price to pay, which has to do with the **learning curve** for developers who are not familiar with the concept. However, you get very valuable stuff out of it. Reactive for the win!
+
 
 ## Dependency Injection: Dagger 2
 
-<p class="justify">I’m not going to talk much of <span class="boldtext">dependency injection cause <a href="http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/" target="_blank">I have already written a whole article</a>, which I strongly recommend you to read,</span> so we can stay on the same page here.</p>
+I’m not going to talk much of dependency injection cause <a href="http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/" target="_blank">I have already written a whole article</a>, which I strongly recommend you to read, so we can stay on the same page here.
 
-<p class="justify">With that being said, it is worth mentioning, that by implementing a dependency injection framework like <span class="boldtext">Dagger 2 </span>we gain:</p>
+With that being said, it is worth mentioning, that by implementing a dependency injection framework like Dagger 2 we gain:
 
-* <p class="justify"><span class="boldtext">Components reuse</span>, since dependencies can be injected and configured externally.</p>
-* <p class="justify">When injecting abstractions as collaborators, we can just change the implementation of any object without having to make a lot of changes in our codebase, since that <span class="boldtext">object instantiation resides in one place isolated and decoupled</span>.</p>
-* <p class="justify">Dependencies can be injected into a component: <span class="boldtext">it is possible to inject mock implementations of these dependencies which makes testing easier.</span></p>
+* **Components reuse**, since dependencies can be injected and configured externally.
+* When **injecting abstractions as collaborators**, we can just change the implementation of any object without having to make a lot of changes in our codebase, since that object instantiation resides in one place isolated and decoupled.
+* Dependencies can be injected into a component: **it is possible to inject mock implementations of these dependencies which makes testing easier.**
+
 
 ## Lambda expressions: Retrolambda
 
-<p class="justify"><span class="boldtext">No one will complain about making use of Java 8 lambdas in our code</span>,  and even more when they simplify it and get rid of a lot of boilerplate, as you can see in this piece of code:</p>
+No one will complain about making use of Java 8 lambdas in our code, and even more when they **simplify it** and **get rid of a lot of boilerplate**, as you can see in this piece of code:
 
 ```java
 private final Action1<UserEntity> saveToCacheAction =
@@ -155,64 +164,65 @@ private final Action1<UserEntity> saveToCacheAction =
     };
 ```
 
-<p class="justify"><span class="boldtext">However, I have mixed feelings here and will explain why</span>. It turns out that at <a href="https://developers.soundcloud.com/blog/" target="_blank">@SoundCloud</a> we had a discussion around <a href="https://github.com/orfjackal/retrolambda" target="_blank">Retrolambda</a>, <span class="boldtext">mainly whether or not to use it,</span> and the outcome was:</p>
+However, I have mixed feelings here and will explain why. It turns out that at <a href="https://developers.soundcloud.com/blog/" target="_blank">@SoundCloud</a> we had a discussion around <a href="https://github.com/orfjackal/retrolambda" target="_blank">Retrolambda</a>, mainly whether or not to use it, and the outcome was:
 
-* <span class="boldtext">Pros:</span>
-  * Lambdas and method references.
-  * Try with resources.
-  * Dev karma.
+* Pros:
+  * **Lambdas and method references.**
+  * **Try with resources.**
+  * **Dev karma.**
 
-* <span class="boldtext">Cons:</span>   
-  * Accidental use of Java 8 APIs.
-  * 3rd part lib, quite intrusive.
-  * 3rd part gradle plugin to make it work with Android.
+* Cons:   
+  * **Accidental use of Java 8 APIs.**
+  * **3rd part lib, quite intrusive.**
+  * **3rd part gradle plugin to make it work with Android.**
 
-<p class="justify">Finally we decided it was not something that would solve any problems for us: <span class="boldtext">your code looks better and more readable but it was something we could live without, since nowadays all the most powerful IDEs contain code folding options which cover this need, at least in an acceptable manner.</span></p>
+Finally we decided it was not something that would solve any problems for us: your code looks better and more readable but it was something we could live without, since nowadays all the most powerful IDEs contain code folding options which cover this need, at least in an acceptable manner.
 
-<p class="justify">Honestly, the main reason why I used it here, was more to play around it and have a taste of lambdas on Android, although <span class="boldtext">I would probably use it again for a spare time project.</span> I will leave the decision up to you. I am just exposing my field of vision here. <span class="boldtext">Of course the <a href="https://github.com/orfjackal" target="_blank">author</a> of this library deserves my kudos for such an amazing job.</span></p>
+Honestly, the main reason why I used it here, was more to play around it and have a taste of lambdas on Android, although I would probably use it again for a spare time project. **I will leave the decision up to you**. I am just exposing my field of vision here. Of course the <a href="https://github.com/orfjackal" target="_blank">author</a> of this library deserves my **kudos for such an amazing job.**
+
 
 ## Testing approach
 
-<p class="justify">In terms of testing, <span class="boldtext">not big changes</span> in relation with the first version of the example:</p>
+In terms of testing, not big changes in relation with the first version of the example:
 
-* <span class="boldtext">Presentation layer:</span> UI tests with Espresso 2 and Android Instrumentation.
-* <span class="boldtext">Domain layer:</span> JUnit + Mockito since it is a regular Java module.
-* <span class="boldtext">Data layer:</span> Migrated test battery to use Robolectric 3 + JUnit + Mockito. Tests for this layer used to live in a separate Android Module, since back then (at the moment of the first version of the example), <span class="boldtext">there was no built-in unit test support and setting up a framework like robolectric was complicated and required a serie of hacks to make it work properly.</span>
+* **Presentation layer:** UI tests with Espresso 2 and Android Instrumentation.
+* **Domain layer:** JUnit + Mockito since it is a regular Java module.
+* **Data layer:** Migrated test battery to use Robolectric 3 + JUnit + Mockito. Tests for this layer used to live in a separate Android Module, since back then (at the moment of the first version of the example), there was no built-in unit test support and setting up a framework like robolectric was complicated and required a serie of hacks to make it work properly. Fortunately that is part of the past and now everything works out of the box so I could relocated them inside the data module, specifically into its default test location: ```src/test/java``` folder.
 
-<p class="justify">
-  Fortunately that <span class="boldtext">is part of the past </span>and now everything works out of the box so I could relocated them inside the data module, specifically into its default test location: <span class="boldtext">src/test/java</span> folder.
-</p>
 
 ## Package organization
 
-<p class="justify">I consider code/package organization one of the key factors of a good architecture: <span class="boldtext">package structure is the very first thing encountered by a programmer when browsing source code. Everything flows from it. Everything depends on it.</span></p>
+I consider code/package organization one of the key factors of a good architecture: **package structure is the very first thing encountered by a programmer when browsing source code.** Everything flows from it. Everything depends on it.
 
-<p class="justify">We can distinguish between <span class="boldtext">2 paths</span> you can take to divide up your application into packages:</p>
+We can distinguish between 2 paths you can take to divide up your application into packages:
 
-* <p class="justify"><span class="boldtext">Package by layer:</span> Each package contains items that usually are not closely related to each other. This results in packages with low cohesion and low modularity, with high coupling between packages. As a result, editing a feature involves editing files across different packages. In addition, deleting a feature can almost never be performed in a single operation.</p>
-* <p class="justify"><span class="boldtext">Package by feature:</span> It uses packages to reflect the feature set. It tries to place all items related to a single feature (and only that feature) into a single package. This results in packages with high cohesion and high modularity, and with minimal coupling between packages. Items that work closely together are placed next to each other. They are not spread out all over the application.</p>
+* **Package by layer:** Each package contains items that usually are not closely related to each other. This results in packages with low cohesion and low modularity, with high coupling between packages. As a result, editing a feature involves editing files across different packages. In addition, deleting a feature can almost never be performed in a single operation.
+* **Package by feature:** It uses packages to reflect the feature set. It tries to place all items related to a single feature (and only that feature) into a single package. This results in packages with high cohesion and high modularity, and with minimal coupling between packages. Items that work closely together are placed next to each other. They are not spread out all over the application.
 
-<p class="justify"><span class="boldtext">My recommendation is to go with packages by features</span>, which bring these main benefits:</p>
+My recommendation is to go with packages by features, which bring these main benefits:
 
-* <span class="boldtext">Higher Modularity</span>
-* <span class="boldtext">Easier Code Navigation</span>
-* <span class="boldtext">Minimizes Scope</span>
+* **Higher Modularity**
+* **Easier Code Navigation**
+* **Minimizes Scope**
 
-<p class="justify">It is also interesting to add that if you are working with <span class="boldtext">feature teams</span> (as we do at <a href="https://twitter.com/soundcloud" target="_blank">@SoundCloud</a>), <span class="boldtext">code ownership will be easier to organize and more modularized</span>, which is a win in a growing organization where many developers work on the same codebase.</p>
+It is also interesting to add that if you are working with **feature teams** (as we do at <a href="https://twitter.com/soundcloud" target="_blank">@SoundCloud</a>), code ownership will be easier to organize and more modularized, which is a win in a growing organization where many developers work on the same codebase.
 
-<img class="aligncenter wp-image-368" src="/assets/migrated/package_organization-795x1024.png" alt="package_organization" width="450" height="580" srcset="/assets/migrated/package_organization-795x1024.png 795w, /assets/migrated/package_organization-233x300.png 233w, /assets/migrated/package_organization.png 916w" sizes="(max-width: 450px) 100vw, 450px" />
+![package_organization](/assets/images/clean_architecture_evolution_04.png)
 
-<p class="justify">As you can see, my approach looks like packages organized by layer: <span class="boldtext">I might have gotten wrong here (and group everything under &#8216;users&#8217; for example)</span> but I will <span class="boldtext">forgive myself in this case,</span> because this sample is for learning purpose and what I wanted to expose, were the main concepts of the clean architecture approach. <span class="boldtext">DO AS I SAY, NOT AS I DO :).</span></p>
+As you can see, my approach looks like packages organized by layer: I might have gotten wrong here (and group everything under &#8216;users&#8217; for example) but **I will forgive myself in this case,** because this sample is for learning purpose and what I wanted to expose, were the main concepts of the clean architecture approach. **DO AS I SAY, NOT AS I DO** :).
+
 
 ## Extra ball: organizing your build logic
 
-<p class="justify"><span class="boldtext">We all know that you build a house from the foundations up.</span> The same happens with software development, and here I want to remark that, from my perspective, <span class="boldtext">the build system (and its organization) is an important piece of a software architecture.</span></p>
+**We all know that you build a house from the foundations up**. The same happens with software development, and here I want to remark that, from my perspective, the build system (and its organization) is an important piece of a software architecture.
 
-<p class="justify">On Android, we use gradle, which is a platform agnostic build system and indeed, very powerful. The idea here is to go through a <span class="boldtext">bunch of tips and tricks</span> that can simplify your life when it comes to how organize the way you build your application:</p>
+On Android, we use gradle, which is a platform agnostic build system and indeed, very powerful. 
 
-* <span class="boldtext">Group stuff by functionality in separate gradle build files.</span>
+The idea here is to go through a bunch of tips and tricks that can **simplify your life** when it comes to how organize the way you build your application:
 
-<img class="aligncenter wp-image-372" src="/assets/migrated/gradle_organization-283x300.png" alt="gradle_organization" width="210" height="223" srcset="/assets/migrated/gradle_organization-283x300.png 283w, /assets/migrated/gradle_organization.png 428w" sizes="(max-width: 210px) 100vw, 210px" />
+* **Group stuff by functionality in separate gradle build files.**
+
+![gradle_organization](/assets/images/clean_architecture_evolution_05.png)
 
 ```groovy
 def ciServer = 'TRAVIS'
@@ -252,9 +262,11 @@ allprojects {
 ...
 ```
 
-<p class="justify">Thus, you can use <span class="boldtext">"apply from: 'buildsystem/ci.gradle'"</span> to plug that configuration to any gradle build file. <span class="boldtext">Do not put everything on only one build.gradle file otherwise you will start creating a monster. Lesson learned.</span></p>
+Thus, you can use apply from: ```buildsystem/ci.gradle``` to plug that configuration to any gradle build file. 
+Do not put everything on only one ```build.gradle``` file otherwise you will start creating a monster. 
+Lesson learned.
 
-* <span class="boldtext">Create maps of dependencies</span>
+* **Create maps of dependencies.**
 
 ```groovy
 ...
@@ -323,23 +335,29 @@ dependencies {
 }
 ```
 
-<p class="justify"><span class="boldtext">This is very useful if you wanna reuse the same artifact version across different modules in your project</span>, or maybe the other way around, where you have to apply different dependency versions to different modules. Another plus one, is that <span class="boldtext">you also control the dependencies in one place</span> and, for instance, bumping an artifact version is pretty straightforward.</p>
+**This is very useful if you want to reuse the same artifact version across different modules in your project**, or maybe the other way around, where you have to apply different dependency versions to different modules. 
+
+Another plus one, is that you also control the dependencies in one place and, for instance, **bumping an artifact version is pretty straightforward.**
+
 
 ## Wrapping up
 
-<p class="justify">That is pretty much I have for now, and as a conclusion, keep in mind <span class="boldtext">there are no silver bullets</span>. <span class="boldtext">However, a good software architecture will help us keep our code clean and healthy, as well as scalable and easy to maintain.</span></p>
+That is pretty much I have for now, and as a conclusion, keep in mind there are **no silver bullets**. 
+However, a good software architecture will help us keep our **code clean and healthy**, as well as scalable and easy to maintain.
 
-<p class="justify">There is a few more things I would like to point out and they have to do with attitudes you should take when facing a software problem:</p>
+There is a few more things I would like to point out and they have to do with attitudes you should take when facing a software problem:
 
-* <span class="boldtext">Respect SOLID principles.</span>
-* <span class="boldtext">Do not over think (do not do over engineering).</span>
-* <span class="boldtext">Be pragmatic.</span>
-* <span class="boldtext">Minimize framework (android) dependencies in your project as much as you can.</span>
+* **Respect SOLID principles.**
+* **Do not over think (do not do over engineering).**
+* **Be pragmatic.**
+* **Minimize framework (android) dependencies in your project as much as you can.**
+
 
 ## Source code
 
   * <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">Clean architecture github repository - master branch</a>
   * <a href="https://github.com/android10/Android-CleanArchitecture/releases" target="_blank">Clean architecture github repository - releases</a>
+
 
 ## Further reading:
 
@@ -352,6 +370,7 @@ dependencies {
 <center><script class="speakerdeck-embed" src="//speakerdeck.com/assets/embed.js" async="" data-id="f706afb4728549f187682c855ab53163" data-ratio="1.33333333333333"></script></center>
 
 <center><script class="speakerdeck-embed" src="//speakerdeck.com/assets/embed.js" async="" data-id="75eeca307fa10132c8d45e43b27e95d0" data-ratio="1.33333333333333"></script></center>
+
 
 ## References
 

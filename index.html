@@ -1,22 +1,61 @@
 ---
 layout: default
-title: {{ site.name }}
+title: Home
 ---
 
-<div id="home">
+{% if page.url == "/" %}
 
-  <h1>Blog Posts</h1>
-  <ul class="posts">
+<!-- Featured
+================================================== -->
+<section class="featured-posts">
+    <div class="section-title">
+        <h2><span>Featured</span></h2>
+    </div>
+    <div class="row">
+        
     {% for post in site.posts %}
-      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> &raquo; <span><small><strong>{{ post.date | date: "%B %e, %Y" }}</strong></small></span></li>
-    {% endfor %}    
-  </ul>
 
-  <footer class="section-separator"></footer>
+        {% if post.featured == true %}
 
-  <h1>{{ site.posts.first.title }}</h1>
-  <p class="meta">{{ site.posts.first.date | date_to_string }}</p>
-  {{ site.posts.first.content }}
+            {% include featuredbox.html %}
 
+        {% endif %}
+
+    {% endfor %}
+        
+    </div>
+</section>
+
+{% endif %}
+
+<!-- Posts Index
+================================================== -->
+<section class="recent-posts">
+    
+    <div class="section-title">
+        
+        <h2><span>All Stories</span></h2>
+        
+    </div>
+    
+    <div class="row listrecent">
+
+        {% for post in paginator.posts %}
+
+               {% include postbox.html %}          
+
+        {% endfor %}
+        
+    </div>
+    
+</section>
+
+<!-- Pagination
+================================================== -->
+<div class="bottompagination">
+<div class="pointerup"><i class="fa fa-caret-up"></i></div>
+<span class="navigation" role="navigation">
+    {% include pagination.html %}
+</span>
 </div>
 

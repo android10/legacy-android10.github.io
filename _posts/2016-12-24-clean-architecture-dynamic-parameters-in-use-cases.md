@@ -2,16 +2,15 @@
 id: 11
 title: 'Clean Architecture: Dynamic Parameters in Use Cases'
 date: 2016-12-24T22:05:11+00:00
-author: Fernando Cejas
+author: fernando
 description: Using dynamic parameters in a clean architecture approach for android
 layout: post
 permalink: /2016/12/24/clean-architecture-dynamic-parameters-in-use-cases/
-categories:
-  - Android
-  - Development
-  - Java
-  - Reactive Programming
-  - Software Architecture
+image: assets/images/clean_architecture_reloaded_featured.jpg
+comments: false
+featured: false
+hidden: false
+categories: [ android, mobile, java, architecture, oop, programming ]
 tags:
   - android
   - androiddev
@@ -28,40 +27,39 @@ tags:
   - reactive
   - reactive programming
 ---
-<p class="justify"><span class="boldtext">Code is about evolution</span>: A lot has been going on since my first approach of <span class="boldtext">Clean Architecture on Android</span> more than <span class="underlinetext">2 years ago:</span></p>
+**Code is about evolution:** A lot has been going on since my first approach of **Clean Architecture** on Android more than 2 years ago:
 
   * <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android...The clean way?.</a>
   * <a href="http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/" target="_blank">Architecting Android...The evolution.</a>
   * <a href="http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/" target="_blank">Tasting Dagger 2 on Android.</a>
 
-<p class="justify"><a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">The repo</a> has changed a lot, and people are still contributing and giving <a href="https://github.com/android10/Android-CleanArchitecture/issues" target="_blank">a lot of feedback</a>.</p>
-  
-<p class="justify"><span class="boldtext">Kudos to the community!</span></p>
+<a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">The repo</a> has changed a lot, and people are still contributing and giving <a href="https://github.com/android10/Android-CleanArchitecture/issues" target="_blank">a lot of feedback</a>.
+Kudos to the community!
+
 
 ## Why this article?
 
-<p class="justify">Everything started with <a href="https://github.com/android10/Android-CleanArchitecture/issues/32" target="_blank">a simple question on Github</a>:</p>
+Everything started with <a href="https://github.com/android10/Android-CleanArchitecture/issues/32" target="_blank">a simple question on Github</a>:
 
-<!-- Legacy image from migration -->
-<img class="aligncenter wp-image-496 size-large" src="/assets/migrated/github_discussion-1024x912.png" alt="github_discussion" width="792" height="705" srcset="/assets/migrated/github_discussion-1024x912.png 1024w, /assets/migrated/github_discussion-300x267.png 300w, /assets/migrated/github_discussion-768x684.png 768w, /assets/migrated/github_discussion.png 1440w" sizes="(max-width: 792px) 100vw, 792px" />
+![fernando-cejas](/assets/images/clean_architecture_dynamic_params_discussion.png)
 
-<p class="justify">I know that it was <span class="underlinetext">some time ago</span>, but I think it is worth to expose <span class="boldtext">and share my idea with all of you here</span>. As a plus, I really encourage you to look into all feedback and discussions <a href="https://github.com/android10/Android-CleanArchitecture/issues" target="_blank">happening on github,</a> if you have not done it yet. <span class="boldtext">There is a lot of valuable information. </span>Also, in order to better understand this writing, <span class="boldtext">I recommend you to revisit those articles mentioned above.</span></p>
+I know that it was some time ago, but I think it is worth to expose and share my idea with all of you here. As a plus, I really encourage you to look into all feedback and discussions <a href="https://github.com/android10/Android-CleanArchitecture/issues" target="_blank">happening on github,</a> if you have not done it yet. There is a lot of valuable information. Also, in order to better understand this writing, I recommend you to **revisit those articles mentioned above.**
+
 
 ## Use cases and dynamic parameters
 
-<p class="justify">In a nutshell and to put you in context, <span class="boldtext">the clean architecture example has 2 main use cases</span>:</p>
+In a nutshell and to put you in context, the clean architecture example has 2 main use cases:
 
   * <a href="https://github.com/android10/Android-CleanArchitecture/blob/master/domain/src/main/java/com/fernandocejas/android10/sample/domain/interactor/GetUserList.java" target="_blank">GetUserList.java</a>
   * <a href="https://github.com/android10/Android-CleanArchitecture/blob/master/domain/src/main/java/com/fernandocejas/android10/sample/domain/interactor/GetUserDetails.java" target="_blank">GetUserDetails.java</a>
 
-<p class="justify">We are going to focus on <span class="boldtext">"GetUserDetails"</span> here. Why? Because this one <span class="underlinetext"><span class="boldtext">needs a dynamic parameter</span></span> <span class="boldtext">(userId)</span> to return the right data for an specific user and show it on the UI.</p>
+We are going to focus on "**GetUserDetails**" here. Why? Because this one needs a **dynamic parameter** (userId) to return the right data for an specific user and show it on the UI.
 
-<p class="justify">To facilitate understanding this in a easier way, <span class="underlinetext">look at the following picture as a reminder of the architecture</span>, where we have presenters which contain <span class="boldtext">"UseCase"</span> classes as collaborators:</p>
+To facilitate understanding this in a easier way, look at the following picture as a reminder of the architecture, where we have presenters which contain "**UseCase**" classes as collaborators:
 
-<!-- Legacy image from migration -->
-<img class="aligncenter size-full wp-image-360" src="/assets/migrated/clean_architecture_evolution.png" alt="clean_architecture_evolution" width="720" height="540" srcset="/assets/migrated/clean_architecture_evolution.png 720w, /assets/migrated/clean_architecture_evolution-300x225.png 300w" sizes="(max-width: 720px) 100vw, 720px" />
+![fernando-cejas](/assets/images/clean_architecture_dynamic_params_evolution.png)
 
-<p class="justify">This is the original implementation of the already mentioned <span class="boldtext">GetUserDetails.java</span>:</p>
+This is the original implementation of the already mentioned ```GetUserDetails.java```:
 
 ```java
 /**
@@ -87,41 +85,45 @@ public class GetUserDetails extends UseCase {
 }
 ```
 
-<p class="justify"><span class="boldtext">As you can see, this "use case" inherits from a UseCase.java class</span>, which by nature, makes sure that every single <span class="boldtext">"UseCase" runs on a separate thread out of the Android main one</span>, which is a good thing, <span class="underlinetext">remember?</span> We want to provide users with a smooth experience and thus, <span class="boldtext">not overload the Android main UI thread.</span></p>
+As you can see, this "**use case**" inherits from a ```UseCase.java``` class, which by nature, makes sure that every single "**UseCase**" runs on a separate thread out of the Android main one, which is a good thing, remember? We want to provide users with a smooth experience and thus, not overload the Android main UI thread.
 
-<p class="justify">There is a clear problem with this class design: <span class="boldtext">RIGIDNESS</span>, which means that we are injecting the <span class="boldtext">"userId"</span> parameter in the constructor (<span class="underlinetext">at a Dagger module level</span>: <a href="https://github.com/android10/Android-CleanArchitecture/blob/master/presentation/src/main/java/com/fernandocejas/android10/sample/presentation/internal/di/modules/UserModule.java" target="_blank">UserModule.java</a>) which limits us in case we <span class="boldtext">do not know that variable value</span> at the moment of our presenter instantiation.</p>
+There is a clear problem with this class design: **RIGIDNESS**, which means that we are injecting the "**userId**" parameter in the constructor (at a Dagger module level: <a href="https://github.com/android10/Android-CleanArchitecture/blob/master/presentation/src/main/java/com/fernandocejas/android10/sample/presentation/internal/di/modules/UserModule.java" target="_blank">UserModule.java</a>) which limits us in case we do not know that variable value at the moment of our presenter instantiation.
 
-<p class="justify">In fact, this is a valid approach and works for this specific case but, what happens if we have a <span class="boldtext">"LoginUserUseCase"</span> for example? <span class="boldtext">We suffer from the lack of that flexibility</span> because we do not know upfront "username" and "password" when we instantiate our potential <span class="boldtext">"LoginPresenter.java"</span> class.</p>
+In fact, this is a valid approach and works for this specific case but, what happens if we have a "**LoginUserUseCase**" for example? **We suffer from the lack of that flexibility** because we do not know upfront "username" and "password" when we instantiate our potential ```LoginPresenter.java``` class.
 
-<p class="justify">We need to <span class="boldtext">find a simple way to pass in parameters when building the observable</span> (through the abstract method <span class="boldtext">buildUseCaseObservable()</span>) which is responsible for emitting the items needed for our <span class="underlinetext">use case execution.</span></p>
+We need to find a simple way to pass in parameters when building the **observable** (through the abstract method ```buildUseCaseObservable()```) **which is responsible for emitting the items needed for our use case execution.**
 
-<p class="justify">This is the original method signature:</p>
+This is the original method signature:
 
 ```java
  /**
-  * Builds an {@link Observable} which will be used when executing the current {@link UseCase}.
+  * Builds an {@link Observable} which will be used when executing 
+  * the current {@link UseCase}.
   */
   protected abstract Observable buildUseCaseObservable();
 ```
 
+
 ## Solution 1: the workaround
 
-<p class="justify">We can use <span class="boldtext">"Optional&lt;T&gt;"</span> to pass in parameters and change the signature of the method to look like as following:</p>
+We can use **Optional&lt;T&gt;** to pass in parameters and change the signature of the method to look like as following:
 
 ```java
   /**
-   * Builds an {@link Observable} which will be used when executing the current {@link UseCase}.
+   * Builds an {@link Observable} which will be used when executing 
+   * the current {@link UseCase}.
    */
   protected abstract Observable buildUseCaseObservable(Optional<Params> params);
 ```
 
-<p class="justify">I consider this a VALID solution by using <span class="boldtext">Optional&lt;T&gt;</span> for <span class="boldtext">"Optional"</span> parameters, that may be required or not for certain <span class="boldtext">"UseCase"</span> classes.</p>
+I consider this a VALID solution by using **Optional&lt;T&gt;** for **optional** parameters, that may be required or not for certain **UseCase** classes.
   
-<p class="justify">By the way, I'm not going to talk about <a href="http://fernandocejas.com/2016/02/20/how-to-use-optional-on-android-and-java/" target="_blank">the benefits of using Optional&lt;T&gt; on Android</a> since <span class="boldtext">I have already done it in the past</span>.</p>
+By the way, I'm not going to talk about <a href="http://fernandocejas.com/2016/02/20/how-to-use-optional-on-android-and-java/" target="_blank">the benefits of using Optional&lt;T&gt; on Android</a> since I have already done it in the past.
+
 
 ### GetUserDetails.java class implementation
 
-<p class="justify">This is now the final result of our modified <span class="boldtext">"GetUserDetails"</span> class:</p>
+This is now the final result of our modified ```GetUserDetails.java``` class:
 
 ```java
 /**
@@ -156,17 +158,19 @@ public class GetUserDetails extends UseCase {
 }
 ```
 
-<p class="justify"><span class="boldtext">We got rid of our dynamic parameter in the constructor and we pass it in when we execute the "UseCase".</span> And by using <span class="boldtext">Optional&lt;Param&gt;</span> we make sure that any client <span class="boldtext">(UseCase)</span> wanting to unwrap <span class="boldtext">"Params"</span> will have to check their availability first. <a href="https://github.com/android10/Android-CleanArchitecture/commit/dfd61c29170b74298780ebb7cc991e0b2edbdfe6" target="_blank">Here is the commit</a> with all the modifications to the <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">repo</a> if you want to dive deeper.</p>
+We got rid of our dynamic parameter in the constructor and we pass it in when we execute the **UseCase**. **And by using Optional&lt;Param&gt; we make sure that any client (UseCase) wanting to unwrap "Params" will have to check their availability first.** 
+<a href="https://github.com/android10/Android-CleanArchitecture/commit/dfd61c29170b74298780ebb7cc991e0b2edbdfe6" target="_blank">Here is the commit</a> with all the modifications to the <a href="https://github.com/android10/Android-CleanArchitecture" target="_blank">repo</a> if you want to dive deeper.
+
 
 ### Params.java class implementation
 
-<p class="justify"><span class="boldtext">This is no more than a class backed by a Map<T, K> which stores the parameters.</span></p>
+This is no more than a class backed by a **Map<T, K>** which stores the parameters.
   
-<p class="justify">Basically I followed up the principles of the well known <span class="boldtext">"Bundle.java"</span> class on Android, but since I did not want to have any dependencies on the framework at a domain layer level, <span class="underlinetext">I opted for my own implementation.</span></p>
+Basically I followed up the principles of the well known ```Bundle.java``` class on Android, but since I did not want to have any dependencies on the framework at a domain layer level, I opted for my own implementation.
 
-<p class="justify">You may argue that this is <span class="boldtext">reinventing the wheel</span> but from my perspective, it is a very simple class (wrapper) with a clear purpose.</p>
+You may argue that this is reinventing the wheel but from my perspective, **it is a very simple class (wrapper) with a clear purpose.**
 
-<p class="justify">By the way, this is how it looks like:</p>
+By the way, this is how it looks like:
 
 ```java
 /**
@@ -201,18 +205,20 @@ public final class Params {
 }
 ```
 
-<p class="justify">You can grow this class or refactor it <span class="underlinetext">depending on your requirements/needs.</span></p>
+You can grow this class or refactor it depending on your requirements/needs.
+
 
 ## Solution 2: the power of refactoring
 
-<p class="justify"><a href="https://twitter.com/sockeqwe/status/812970762055352320?lang=en" target="_blank">After discussing with the community</a> I came up with a <span class="boldtext">more elegant solution</span>.</p>
+<a href="https://twitter.com/sockeqwe/status/812970762055352320?lang=en" target="_blank">After discussing with the community</a> I came up with a **more elegant solution.**
   
-<p class="justify">It is worth mentioning that I wanted to keep the original one in this article to actually show <span class="boldtext">how we can evolve our code by receiving constructive feedback and seeing how other professionals solve the same problems: The magic of refactoring.</span></p>
+It is worth mentioning that I wanted to keep the original one in this article to actually show how we can evolve our code by receiving constructive feedback and seeing how other professionals solve the same problems: **The magic of refactoring.**
 
-<p class="justify">This second approach consists of making our <a href="https://github.com/android10/Android-CleanArchitecture/blob/master/domain/src/main/java/com/fernandocejas/android10/sample/domain/interactor/UseCase.java" target="_blank">UseCase java class</a> generic, <span class="boldtext">which now requires 2 parameterized types:</span></p>
+This second approach consists of making our <a href="https://github.com/android10/Android-CleanArchitecture/blob/master/domain/src/main/java/com/fernandocejas/android10/sample/domain/interactor/UseCase.java" target="_blank">UseCase java class</a> generic, which now requires 2 parameterized types:
 
-  * <span class="boldtext">T:</span> The use case Observable<T> <span class="boldtext">return type</span>
-  * <span class="boldtext">Param:</span> A class type (inner in my implementation) which is specific to each use case, that will wrap <span class="boldtext">all the execution environment values</span> required in order to execute our use case.
+  * ```T```: The use case **Observable<T>** return type
+  * ```Param```: **A class type** (inner in my implementation) which is specific to each use case, that will wrap all the execution environment values required in order to execute our use case.
+
 
 ### UseCase.java class implementation
 
@@ -221,7 +227,8 @@ public abstract class UseCase<T, Params> {
   ...
 
   /**
-   * Builds an {@link Observable} which will be used when executing the current {@link UseCase}.
+   * Builds an {@link Observable} which will be used when executing 
+   * the current {@link UseCase}.
    */
   abstract Observable<T> buildUseCaseObservable(Params params);
 
@@ -244,7 +251,8 @@ public abstract class UseCase<T, Params> {
 }
 ```
 
-<p class="justify"><span class="boldtext">The main benefit of this is that you get better semantics because our inner "param" class can contain its properly named fields, getters and setters. </span></p>
+The main benefit of this is that **you get better semantics** because our inner "param" class can contain its properly named fields, getters and setters. 
+
 
 ### GetUserDetails.java class implementation
 
@@ -284,9 +292,11 @@ public class GetUserDetails extends UseCase<User, GetUserDetails.Params> {
 }
 ```
 
+
 ### GetUserList.java class implementation
 
-<p class="justify"><span class="boldtext">There is another question that comes to my mind: What happens with UseCase with empty parameters? </span>We can just use <span class="boldtext">"Void"</span> as <span class="boldtext">"Param"</span> type. For example, our <span class="boldtext">"GetUserList"</span> use case which does not require any extra data to be executed:</p>
+There is another question that comes to my mind: **What happens with a UseCase with empty parameters?** We can just use "**Void**" as "**Param**" type. 
+For example, our "**GetUserList**" use case which does not require any extra data to be executed:
 
 ```java
 /**
@@ -310,24 +320,26 @@ public class GetUserList extends UseCase<List<User>, Void>; {
 }
 ```
 
-<p class="justify">Again, <a href="https://github.com/android10/Android-CleanArchitecture/commit/aaa21c1b7cb4dc7b80a4da7f0552036bcb7ff40e" target="_blank">here is the commit</a> if you want to see all the changes involved.</p>
+Again, <a href="https://github.com/android10/Android-CleanArchitecture/commit/aaa21c1b7cb4dc7b80a4da7f0552036bcb7ff40e" target="_blank">here is the commit</a> if you want to see all the changes involved.
+
 
 ## Conclusion
 
-<p class="justify"><span class="boldtext">Here you have 2 simple approaches to use dynamic parameters in Android clean architecture use cases.</span></p>
+Here you have **2 simple approaches to use dynamic parameters** in Android clean architecture use cases.
   
-<p class="justify">Remember that there are <span class="boldtext">NO SILVER BULLETS</span> and you can agree or not with it, but the most important thing is to use <span class="boldtext">WHAT WORKS FOR YOU BASED ON YOUR REQUIREMENTS</span> (Respect software engineering good practices and principles).</p>
+Remember that there are **NO SILVER BULLETS** and you can agree or not with it, but the most important thing is to use **WHAT WORKS FOR YOU BASED ON YOUR REQUIREMENTS** (Respect software engineering good practices and principles).
 
-Also some advice:
+**Also some advice:**
 
-  * <span class="boldtext">You establish the RULES for your framework.</span>
-  * <span class="boldtext">Do not overthink too much.</span>
-  * <span class="boldtext">Do not put a lot of overhead, start simple and move towards complexity.</span>
-  * <span class="boldtext">Be open to get constructive feedback.</span>
+  * You establish the RULES for your framework.
+  * Do not overthink too much.
+  * Do not put a lot of overhead, start simple and move towards complexity.
+  * Be open to get constructive feedback.
 
-<p class="justify"><span class="boldtext">My original implementation worked</span> but it turned out to not be as FLEXIBLE as I wanted to: the more requirements we have the more we need to evolve our code base. Writing this article was a pending debt to me, but as I love to say: <span class="boldtext">"better late than never"</span>.</p>
+**My original implementation worked but it turned out to not be as FLEXIBLE as I wanted to**: the more requirements we have the more we need to evolve our code base. Writing this article was a pending debt to me, but as I love to say: "**better late than never**".
   
-<p class="justify"><a href="https://github.com/android10/Android-CleanArchitecture/issues/32" target="_blank">Please leave any feedback in the discussions section on Github</a>.</p>
+<a href="https://github.com/android10/Android-CleanArchitecture/issues/32" target="_blank">Please leave any **feedback** in the discussions section on Github</a>.
+
 
 ## Links
 
@@ -335,5 +347,5 @@ Also some advice:
   * <a href="https://github.com/android10/Android-CleanArchitecture/issues" target="_blank">Clean Architecture discussions.</a>
   * <a href="http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/" target="_blank">Architecting Android&#8230; The clean way?.</a>
   * <a href="http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/" target="_blank">Architecting Android&#8230; The evolution.</a>
-  * <a href="http://fernandocejas.com/2016/02/20/how-to-use-optional-on-android-and-java/" target="_blank">How to use Optional<T> on Android and Java.</a>
+  * <a href="http://fernandocejas.com/2016/02/20/how-to-use-optional-on-android-and-java/" target="_blank">How to use Optional on Android and Java.</a>
   * <a href="https://github.com/android10/Android-CleanArchitecture/issues" target="_blank">Clean Architecture Discussions.</a>
