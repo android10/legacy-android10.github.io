@@ -11,10 +11,6 @@ comments: false
 featured: false
 hidden: false
 categories: [ android, mobile, java, architecture, aop, oop, programming ]
-categories:
-  - Android
-  - Aspect Oriented Programming
-  - Development
 tags:
   - android
   - androiddev
