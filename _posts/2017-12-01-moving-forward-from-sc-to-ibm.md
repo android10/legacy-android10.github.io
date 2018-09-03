@@ -6,7 +6,7 @@ author: fernando
 description: Moving forward from SoundCloud to IBM.  
 layout: post
 permalink: /2017/12/01/moving-forward-from-sc-to-ibm/
-image: assets/images/cognitive_android.png
+image: assets/images/move_sc_ibm_featured.jpg
 comments: false
 featured: false
 hidden: false
@@ -47,7 +47,7 @@ What does that mean then? Long story short: this is a new team being created in 
 
 **First of all I'm more committed than ever to the Community.** So nothing is going to change: I am more than glad to continue attending events, sharing and giving talks related to lessons learned and knowledge as part of my job. So do not hesitate to <a href="https://twitter.com/fernando_cejas/" target="_blank">invite me!</a> I will also participate more actively on <a href="https://github.com/android10" target="_blank">open source projects</a> and of course I will continue doing one of my passions: mobile development (mainly android).
 
-![fernando-cejas](/assets/images/cognitive_android.png)
+![fernando-cejas](/assets/images/move_sc_ibm_featured.jpg)
 
 
 ## Why?

@@ -6,7 +6,7 @@ author: fernando
 description: Unit testing asynchronous methods with Mockito
 layout: post
 permalink: /2014/04/08/unit-testing-asynchronous-methods-with-mockito/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/asynchronous_testing_mockito.jpeg
 comments: false
 featured: false
 hidden: false

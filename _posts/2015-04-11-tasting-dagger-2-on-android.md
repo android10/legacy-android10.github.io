@@ -6,7 +6,7 @@ author: fernando
 description: Giving a try to Dagger 2 on Android
 layout: post
 permalink: /2015/04/11/tasting-dagger-2-on-android/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/tasting_dagger_android_featured.png
 comments: false
 featured: false
 hidden: false

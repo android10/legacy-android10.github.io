@@ -6,7 +6,7 @@ author: fernando
 description: Optional are not available in Android so in this article I will explain how we can make use of them by introducing a library called arrow that works for both android and java
 layout: post
 permalink: /2016/02/20/how-to-use-optional-on-android-and-java/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/optional_android_java_featured.png
 comments: false
 featured: false
 hidden: false

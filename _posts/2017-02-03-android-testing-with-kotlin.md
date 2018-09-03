@@ -6,7 +6,7 @@ author: fernando
 description: How to introduce Kotlin language on Android by adopting it for Testing
 layout: post
 permalink: /2017/02/03/android-testing-with-kotlin/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/android_kotlin_testing_featured.jpg
 comments: false
 featured: false
 hidden: false

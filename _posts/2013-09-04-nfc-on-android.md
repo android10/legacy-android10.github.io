@@ -6,7 +6,7 @@ author: fernando
 description: Near Field Communication in Android
 layout: post
 permalink: /2013/09/04/nfc-on-android/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/nfc_android_featured.jpg
 comments: false
 featured: false
 hidden: false

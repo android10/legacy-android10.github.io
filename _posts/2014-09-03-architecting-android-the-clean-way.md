@@ -6,7 +6,7 @@ author: fernando
 description: The purpose of this article is to show you a little approach based on Clean Architecture that I had in mind in the last few months plus all the stuff I have learnt from investigating and implementing it.
 layout: post
 permalink: /2014/09/03/architecting-android-the-clean-way/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/clean_architecture_clean_way_featured.jpg
 comments: false
 featured: false
 hidden: false

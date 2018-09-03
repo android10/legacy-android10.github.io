@@ -6,7 +6,7 @@ author: fernando
 description: Using dynamic parameters in a clean architecture approach for android
 layout: post
 permalink: /2016/12/24/clean-architecture-dynamic-parameters-in-use-cases/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/clean_architecture_dynamic_params_featured.jpg
 comments: false
 featured: false
 hidden: false

@@ -6,7 +6,7 @@ author: fernando
 description: Architecture is about evolution. This is an evolution of my implementation of Clean Architecture on Android
 layout: post
 permalink: /2015/07/18/architecting-android-the-evolution/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/clean_architecture_evolution_featured.png
 comments: false
 featured: false
 hidden: false

@@ -6,7 +6,7 @@ author: fernando
 description: In this article I will explain the main difference between concatmap and flatmap rxjava operators
 layout: post
 permalink: /2015/01/11/rxjava-observable-tranformation-concatmap-vs-flatmap/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/concat_vs_flatmap_featured.jpg
 comments: false
 featured: false
 hidden: false

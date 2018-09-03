@@ -6,7 +6,7 @@ author: fernando
 description: AOP is a paradigm that has been with us for many years, and I found it very useful to apply it to Android. After some investigation I consider that we can get a lot of advantages and very useful stuff when making use of it
 layout: post
 permalink: /2014/08/03/aspect-oriented-programming-in-android/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/aspect_oriented_programming_featured.jpg
 comments: false
 featured: false
 hidden: false

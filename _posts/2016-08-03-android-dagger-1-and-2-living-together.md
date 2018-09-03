@@ -6,7 +6,7 @@ author: fernando
 description: When migrating from Dagger 1 to Dagger 2, it is important to do it gradually. We can have both versions working together in Android
 layout: post
 permalink: /2016/08/03/android-dagger-1-and-2-living-together/
-image: assets/images/clean_architecture_reloaded_featured.jpg
+image: assets/images/dagger_one_two_featured.jpg
 comments: false
 featured: false
 hidden: false
