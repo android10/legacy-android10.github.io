@@ -1,36 +1,32 @@
 ---
-id: 13
-title: Smooth your migration to Kotlin
-date: 2017-10-20T19:15:58+00:00
+id: 15
+title: It is about Phylosophy... Organizations's Culture and the Power of Humanity
+date: 2018-11-10T20:03:35+00:00
 author: fernando
-description: How to smoothly migrate your existing android java codebase to kotlin. These principles can also be applied to any existing technology being introduced.  
+description: Even though technical skills are a very positive thing, other qualifications are really more important, 'features' like respect, honesty or humility are required not only to become a better person but also to create culture around your organization based on human values. 
 layout: post
-permalink: /2017/10/20/smooth-your-migration-to-kotlin/
-image: assets/images/smooth_kotlin_featured.jpg
+permalink: /2018/11/11/organization-culture-and-humanity/
+image: assets/images/organization_culture_humanity_featured.jpg
 comments: false
-featured: false
-hidden: false
-categories: [ android, mobile, java, kotlin, functional, programming ]
+featured: true
+hidden: true
+categories: [ culture, development, career, company, personal ]
 tags:
-  - android
-  - androiddev
+  - community
+  - organization
+  - career 
+  - respect
+  - professional
+  - value
   - process
   - agile
-  - migration
+  - challenge
   - transition
   - developer
   - developers
   - development
-  - java
-  - kotlin
-  - mobile
-  - mobile dev
   - programmer
   - programming
-  - reactive programming
-  - rxjava
-  - testing
-  - continuous learning
   - new technologies
 ---
 First of all, **I would like to give credit to who deserves it,** and in this occasion wanna say thanks to <a href="https://twitter.com/Mauin" target="_blank">@Mauin</a> for taking the leadership on the process and let me join the party. Was a real pleasure. Also, I would like to mention, that in this article there is NO source code involved and here is the reason: **It is not about technical implementation, it is about the process, philosophy and all the moving parts involved.**
