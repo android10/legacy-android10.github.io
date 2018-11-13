@@ -122,7 +122,7 @@ This is not easy, especially if you start growing up exponentially, but **minimi
 
 We should also try to **avoid secrets** and hidden information in general, especially since this might lead to **untrust.**
 
-Anyway, it is totally valid if some information is critical and should be not exposed or kept safe: one clear example is regarding DNAs or partnerships with 3rd parties which are out of scope and control in our organization. 
+Anyway, it is totally valid if some information is critical and should be not exposed or kept safe: one clear example is regarding NDAs or partnerships with 3rd parties which are out of scope and control in our organization. 
 
 > "We should try to avoid secrets and hidden information in general, especially since this might lead to untrust."
 
@@ -130,7 +130,7 @@ Here are a bunch of tools which facilitate transparency:
 
 - **All-Hands.**
 - **Internal Wiki/Blog.**
-- **A People's Team (HR could also take this rol).**
+- **A People's Team (HR could also take this role).**
 
 ![fernando-cejas](/assets/images/organization_culture_humanity_03.jpg)
 
