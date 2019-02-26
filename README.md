@@ -162,7 +162,7 @@ Feel free to contribute either by requesting features or collaborating with new 
 
 
 
-Useful commands for building this iste
+Useful commands for building this site
 -----------------
 
  * `bundle install`: Install all the dependencies.
