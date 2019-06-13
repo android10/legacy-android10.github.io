@@ -32,211 +32,338 @@ tags:
   - continuous learning
   - new technologies
 ---
-Philosophy is the study of general and fundamental problems, such as those connected to reality, existence, knowledge, values, reason, mind, and language. In my mind, when looking at this definition, this question arises: 
+This is a long article I wanted to squeeze in a smaller one but it was almost mission impossible to get rid of some important/valuable information.
+I hope you enjoy and find it helpful. Feel free to provide feedback, which as usual, is more than welcome.
 
-**How can all this be linked to an organization's culture?**
+With that being said, I would like to start with a quote from Uncle Bob Martin:
 
-**True fact:** there is a proportional relationship in being happy and getting things done, which again brings up another topic to the table: 
+"Bad code is always imprudent"
 
-**How can we achieve such happiness and motivation in order to create a working environment full of good vibes?**
+I cannot agree more with this, and no matter what I sell you in this post :), there is NEVER a good reason to write bad code.
 
-![fernando-cejas](/assets/images/organization_culture_humanity_01.png)
 
->"There is a proportional relationship in being happy and getting things done"
+The Question
+----------
+We as Engineers, Tech Leads and Managers know that technical debt is one of our worst enemies when it comes to codebases and software projects in general
+It can be very frustrating and demotivating thus making our life a bit more complicated...But... 
 
-In order to answer these questions, let's walk together through a bunch of aspects, that in my opinion, are key in order to construct a culture and environment based on human values which will facilitate working in harmony, thus, contributing to achieve that mentioned **happiness.** 
+What is technical debt really? 
+And Legacy code?
+Is there a proportional relationship between them?
+How can we measure and determine the healthiness of our project?
+And once we measure it, how can we finally address the problem?
 
+Let's try to answer these questions and also explore in depth different techniques and strategies that will help us effectively deal with it. 
 
-## Human values
 
-We can learn pretty much every technology out there and predict its behavior, but unfortunately people are unpredictable and that is why I encourage to build up a working 
-culture based on a set of **very important human values:**
+Fact: Our Software is Terrible
+-----------
+In an ideal world, a project would be:
+    - Finished on time.
+    - With a clean code design.
+    - Additional features.
+    - Tested twice. 
+    - On Budget.
 
-  * **Respect**
-  * **Honesty**
-  * **Communication**
-  * **Humility**
+If that is your reality, then you can stop reading this post, luckily you have UNLOCKED the LEVEL SUPERHEROE, so please share your thoughts and ideas, I am more than curious to know how 
+you have achieved it.  
 
-From my perspective, **these are pillars of any relationship or interaction:** family, friends and human beings in general.
+Otherwise, welcome to my world, where we create authentic monsters: giant beasts full of technical debt, legacy code, issues and bugs.
 
-Applying them all is not straightforward, but understanding them is a big win, and trust me, it is the way to go, otherwise much of our energy will be consumed trying to **fix friction and conflicts** bubbling up from people interacting with each other. 
+funny picture of a monster full of legacy code 
 
-> "Computers are predictable, people are totally unpredictable"
+And if you let me add more, that also includes coordination and communication problems across the entire organization. 
+Yes! Our Software is terrible and we know it is TRUE, which does not make it any special, right?
 
-Here are a few tips which can help us to promote those mentioned values:
 
-- **Respect other opinions:** in the end these are opinions and we could agree or not, but listening is always a must. 
+What is Legacy Code?
+------------
+There are many definitions of legacy code and some of them, in my opinion, contradict themselves, so since you are familiar with the concept, let's keep it simple:
 
-- **Accept feedback without being a smartass:** We are not know-it-all and we must be always open to receive feedback in a constructive way.
+"Legacy code is code without tests."
 
-- **Understand we make mistakes:** there are always good intentions but we are human beings and we are not perfect.  
+Testing nowadays should be implicit in our engineering process when writing code. So if you are not at least unit testing your codebase, run and do it, it is a command :).
 
-- **No finger pointing:** learn out of failure and create retrospectives in order to not repeat those failures again, but please do not blame people, we are always together either in the good moments and when going through difficulties. 
 
-- **Be a team player:** communicate properly and be honest and transparent.
+What is Reckless Debt?
+------------
+I came across this term lately and it looks like we can use it as a synonym of technical debt, but in reality, here is the formal definition:
 
-- **We all have our bad days right?** Learn to separate what is personal and what it is not.
+"Reckless Debt is code that violates design principles and good practices."
 
-- **Be open minded and understand other cultures:** most of the time we work in a multicultural context and that is why we must keep it in mind. For example, what could be super nice in one culture, could be rude in another.
+That means that all code generated by you and your team is junk (not done on purpose of course).
+Moreover, Reckless Debt will lead to Technical Debt in the short/mid term and it is also a signal that your team needs more training, or you have too many inexperienced or junior developers. 
 
-- **Listen and be patient:** we all deserve our time to express ourselves. 
 
-- **Be positive:** there is always light at the end of the tunnel.
+What is Technical Debt?
+------------
+Here I will rely on Martin Fowler:
 
-- **Be friendly and help:** when we ask for help, we want to see that big smile which make us feel way better.
+"Technical Debt is a metaphor developed by Ward Cunningham to help us think about this problem. 
+Like a financial debt, technical debt incurs interest payments, which come in the form of the extra effort that we have to do in future development because of the quick and dirty 
+design choice. We can choose to continue paying the interest, or we can pay down the principal by refactoring the quick and dirty design into the better design."
 
-- **Treat everyone the same way:** no one is better than anyone, no rockstars. (Personal experience: people in upper layers of the company/organization, I'm looking at you).
+In summary: Technical Debt is the additional effort and work required to complete any software development.
 
-- **Do not be shy:** voice your opinion and ask anything, dumb questions do not exist. 
 
-> "No one is better than anyone, no rockstars please."
+Real case scenario: Adding a new feature
+------------
+So let's put our day to day life back into our heads. In this case we have decided to add a new functionality to our project, so here we have 2 well defined options:
 
-**This sounds good on paper and also normal right?**
-
-Unfortunately, at least in my experience, I have not found many places where this is respected. That is why taking this attitudes is a good starting point and a game changer for our working culture, and the first step is to apply them ourselves and **be an example for the rest.**
-
-
-## Favor leaders over bosses
-
-The very first and important point here is to differentiate a leader from a boss. Both roles take responsibilities but the main difference sits on their attitude and way of working. 
-
-In my opinion, a leader is someone I see as a reference, someone I trust and rely on, a person I can also learn a lot from, **with high human quality and values.** She/he should point us in the right direction, and also **defend** and **protect** us if we are under difficult situations. 
-
-> "A leader is someone I see as a reference, someone I trust and rely on, a person I can also learn a lot from, with high human quality and values."
-
-Another feature a good leader should offer, is the ability to make us feel that we are part of the project, by letting us to **participate** in the decision making **without doing micromanagement,** thus, trusting and letting us do our job. 
-
-![fernando-cejas](/assets/images/organization_culture_humanity_02.jpg)
-
-> "The concept of a boss is prehistoric and should be eradicated."
-
-On the other hand we have the concept of the boss, which from my point of view, it is prehistoric and should be eradicated. **Tons of red flags in people with this mentality 200 years old,** pushing and giving commands as if we were machines causing burnout and demotivation. 
-
-**I think the choice is clear:** favor a leader over a boss. 
-
-> "Favor a leader over a boss"
-
-
-## Communication and transparency
-
-It is evident that the smaller your organization is, the better the information flows, that is why **we should favor flat hierarchies** as much as we can.
-
-This is not easy, especially if you start growing up exponentially, but **minimize the number of communication layers to facilitate transparency and a good flow in the information transportation** across the organization. 
-
-We should also try to **avoid secrets** and hidden information in general, especially since this might lead to **untrust.**
-
-Anyway, it is totally valid if some information is critical and should be not exposed or kept safe: one clear example is regarding NDAs or partnerships with 3rd parties which are out of scope and control in our organization. 
-
-> "We should try to avoid secrets and hidden information in general, especially since this might lead to untrust."
-
-Here are a bunch of tools which facilitate transparency:
-
-- **All-Hands.**
-- **Internal Wiki/Blog.**
-- **A People's Team (HR could also take this role).**
-
-![fernando-cejas](/assets/images/organization_culture_humanity_03.jpg)
-
-In the end, **a rule of thumb is that we should feel free and comfortable to ask any questions to anyone.** If we want to feel part of a project, we need to feel it in all senses at all levels: that is why, it is important to communicate properly and efficiently in a transparent way.
-
-
-## Career path and continuous improvement
-
-With this world changing so fast, we all love to learn and make progress in our careers, that is the main reason why one of **the fundamental building blocks of any organization's culture is guidance and career path.**
-
-> "One of the fundamental building blocks of any organization's culture is guidance and career path."
-
-Both People's Team and (Engineering) Managers should help with the task:
-
-- **Establish policies for mentorship:** continuous learning and knowledge sharing. 
-- **Define policies for career guidance:** follow up closely employees motivations with tools like 1:1 meetings for example.
-- **Conduct regular employee surveys:** nothing can be improved without constructive feedback.
-
-
-## Nothing better than celebration
-
-Anything would be the same without celebrating our achievements: **Recognition to the effort.** In my opinion, this one is one of the most important ones: **Celebrate your achievements.**
-
-> "Anything would be the same without celebrating our achievements: Recognition to the effort."
-
-![fernando-cejas](/assets/images/organization_culture_humanity_04.jpg)
-
-**We should always reward employees who do a good job:** recognition to both the individuals and teams who work had will encourage them to keep it up, plus it will also spread out the notion that hard work is acknowledged and appreciated.
-
-
-## Engineering culture
-
-Now it is time to switch gears and go deeper into what we can do in terms of engineering (Although I guess these principles, or part of them, could also apply to any other area). 
-
-> "Foment continuous learning and sharing."
-
-Here a bunch of key points:
-
-- **Defend code quality and good practices.**
-- **Accept challenges:** do not be afraid of making mistakes. 
-- **Be prepare for the change:** everything evolves.
-- **Foment continuous learning and sharing.**
-- **Share experiences:** blog entries, promote conferences attendance, etc.
-- **Continuous Learning:** One day per week or sprint of "hacking time". 
-- **Use Post-mortems:** learn out of mistakes.
-- **Retrospectives:** another tool for continuous feedback and improvement. 
-- **Have fun.**
-
-> "Defend code quality and good practices."
-
-
-## Hiring
-
-**Hiring is important** and a lot of time and effort must be invested in order to develop all these ideas mentioned so far.
-
-**We should be involved in the hiring process,** especially if the person who is going to be hired will work with us: **we want to avoid people who do not fit with the culture we are encouraging.**
-
-> We should be involved in the process in order to hire the right people who is going to work with us.
+    - The "easy" way, built up with messy design and code, which will get us there way faster: REMEMBER WE NEED TO PAY THE INTEREST. 
+    - The "hard" way, built up with cleaner code and a meaningful and consistent architecture. Without a doubt this will take more time but it is going to be more EFFICIENT IN TERMS OF INTEREST COST. 
  
-**So here is my advice:** If you have the chance to participate and combine efforts with the Human Resources team, do not doubt and go for it: It is very likely It will require a bit of effort and time investment but you will appreciate it, and in the end, it will contribute to build up such organization's culture we are looking for. 
+"Accept some short term Technical Debt for tactical reason"
+
+It is not uncommon that at some point we need to develop something quickly because of time to market (or market experiment), or perhaps there is a new internal component that needs 
+to be shipped in order to be used across the entire organization and we are contributing to it (a module for example), and we code it fast with not the best design until we can come 
+up with a more robust and effective solution.  
+
+"No matter what is the reason, but part of this decision to accept technical debt is to also accept the need to pay it down at some point in the future. 
+Having good regression testing assets in place, assures that refactoring accepted technical debt in the future, can be done with low risk."
+
+Let's move on and see how we can analyze and inspect our codebase in order to detect technical debt.
 
 
-## The power of happiness and motivation
+ROOKIE Level Unlocked! Static Code Analysis
+-----------
+It is the most basic and fundamental building block when it comes to measuring technical debt at a code level. 
+Most of us are familiar with this practice since it aims to highlight potential bugs, vulnerabilities and complexity.
 
-Building an organization's culture with all the ideas above is not easy (and there is a long path towards it) but **we can always contribute from our tiny position.**
-        
-These followed up points should be take into consideration when it comes to happiness:
+But first, in order to interpret the results of static code analysis and quantify technical debt, we need to be familiar with a bunch of code metrics:
+     - Cyclomatic Complexity: stands for the complexity of classes and methods by analyzing the number of functional paths in the code (if clauses for example).
+     - Code coverage: A lack of unit tests is a source of technical debt. This is the amount of code covered by unit tests (we should take this one responsibly, since testing getters and setter can also increase code coverage). 
+     - SQALE-rating: Broad evaluation of software quality. The scale goes from A to E, with A being the highest quality. 
+     - Number of rule: Number of rules violated from a given set of coding conventions.
+     - Bug count: As technical debt increases, the quality of the software decreases. The number of bugs will likely grow (We can complement this one with information coming from our bug tracker).
 
-- **Start from the trenches:** build your own team's culture and infect others.
+There is a variety of tools out there (free for open source projects), which provide the above information out of the box, and most of the time, they can be easily 
+integrated either with your CI infrastructure or directly with github/gitlab/git.
 
-- **Neither impose nor give commands, instead spread and pollute the environment with good vibes.**
+Here is a screenshot of the open source tool SonarQube:
+screen shot 
 
-- **Become a reference and a game changer.**
+Lint is also a very flexible and popular one (there are plugins for the most popular IDEs and you can write your own custom rules):
+screen shot
 
-- **Create a context where the word pressure is forbidden:** in the end we put our own pressure on ourselves. We are not under a gun and knowing when to say no is an important part of happiness and being a good professional. 
-
-- **Follow your heart:** many times the heart sees what it is invisible to the eye. Especially in difficult situations.
-
-- **Equality in all senses for the win:** Do not feel intimidated by anyone because no one is better than anyone. 
-
-Keep in mind that we spend so many hours in our lives working, so we should always try to find something which really fulfills us, and If you feel you have tried pretty much everything to achieve these goals, maybe you should reconsider whether your current place is the right one. 
-
-> "Equality in all senses for the win: Do not feel intimidated by anyone because no one is better than anyone."
-
-![fernando-cejas](/assets/images/organization_culture_humanity_05.png)
-
-
-## Be a good person over a good professional
-
-**Prioritize humanity over technical skills.** This is in the end my conclusion. 
-
-Both are important, no doubts, but in my opinion, **nothing is more fulfilling when you open your heart and help people,** and you are appreciated because of that too.
-
-> "We work with people, not with computers, they are only means to reach out to people."
-
-**And REMEMBER:** we work with people, not with computers, they are only means to reach out to **PEOPLE.**
+Static code analysis should be our first mandatory step to tackle and measure technical debt. 
+So let's make sure we include as a regular practice in our engineering process. 
 
 
-## References
+EXPERIENCED Level Unlocked! Tech Debt Radar
+-----------
+A Tech Debt Radar is a very simple tool that has personally given me really good results (while working at @SoundCloud, within the android team, it was (and it is AFAIK) a regular practice).
+We should know that this is not an automated tool (like the ones mentioned above) and I define it as a "Social Technical Debt Detector by Experience". 
 
-Here is a **presentation** that I prepared some time ago (and keep it up to date), where I give advice on **how to become a better professional.**
+The idea is pretty simple: all the feedback related to how difficult is to work with the current codebase, comes from actually the developers working with it (by experience).
+You can see a Tech Debt Radar in the picture below:
+image of the tech debt radar
 
-I hope you find it useful and as usual, any feedback is more than welcome.
+As we can see, there is a board with a few post-its representing each one either a feature or even an area of the codebase which eventually is hard to work with. 
 
-<center><script async class="speakerdeck-embed" data-id="2a6758f93d4241b68e89b349ec984b64" data-ratio="1.33333333333333" 
+Then we have 2 axys:
+    - X: represents the level of pain when working with a specific part of the codebase.
+    - Y: represents how much development time would it take to improve the mentioned piece of code. 
+
+At a process level, this is done in a meeting with the development team and a technical debt captain (someone who will be in charge of analysing technical debt).
+
+Basically each member of the team, will have the chance to place these post-its depending on how much pain (X axis) each is causing, and how much development time (Y axis) is required to fix it. 
+This would be mostly common sense (with strong arguments and an explanation of the whys) in the beginning but I can ensure that it will get better over time with the accumulated experience.
+
+As an example on the board, let's look at the DI card (Dependency Injection). It looks like it is a very painful area in our project and refactoring it will require a big effort. 
+On the other hand, Login is causing a lot of pain and fixing it will not be very complicated. 
+
+With this in mind you can get some conclusions:
+    - By addressing all features that are painful and at the same time require little development time (the ones placed upper left corner), we will be able to provide a lot of value and improvement by fixing them.  
+    - The rest of the functionalities will require some workout to be prioritized and refactored. As a rule of thumb, discuss with the team and use a divide and conquer approach (split up big problem into smaller ones). 
+
+Once we gather all this information, we need to keep track of all the collected feedback, so feel free to use your favorite tool for that purpose. 
+Even a document might do the job: this is a matter of taste, as soon as you have a place to store all this data. 
+
+A Technical Debt will not provide the level of granularity and details that any other automated tool out there might do, but it is totally worth a try and 
+a very valuable method that perfectly complements our codebase analysis with the purpose of understanding the most painful spots, and the most important, 
+is that this information comes from us, from the feedback of the people who daily work with the code.
+
+Remember to have these meetings regularly (minimum once every 2-3 weeks) in order to keep an eye on how much progress (positive or negative) has been done. 
+
+
+GURU Level Unlocked! Behavioral Code Analysis
+-----------
+It is obvious that technical debt have a 1 to 1 relationship with legacy code but there is another important factor to take into consideration: the social part of our organization, which emphasizes in
+how we as human beings interact with each other (as a team), with customers, with the rest of the organization and with the code itself. 
+
+All this comes from the fact, that over the years there has seen changes in the way we work and interact with each other, which led to modifications in collaboration techniques, tools and again, the code itself.  
+References like Adam Thornill in the area of human psychology and code are helping us to understand a bit more this social part.   
+
+Before continuing, let's recap what a traditional static code analysis tool can do for us:
+    
+    - ...focus on a snapshot of the code as it looks right now.
+    - ...find code that is overly complex.
+    - ...find code which has heavy dependencies on other parts.
+
+In conclusion it is a very useful tool and as pointed out above, should be our first step when it comes to code inspection, but there is an important gap to fill in:
+
+"Static analysis will never be able to tell you if that excess code complexity actually matters – just because a piece of code is complex doesn’t mean it is a problem."
+
+Social aspects of software development like coordination, communication, and motivation issues increase in importance and all these softer aspects of software development are invisible in our code: 
+
+"Adam Thornill: if you pick up a piece of code from your system there’s no way of telling if it has been written by a single developer or if that code is a coordination bottleneck for five development teams. 
+That is, we miss an important piece of information: the people side of code."
+
+Behavioral code analysis emphasizes trends in the development of our codebase by mining version-control data. 
+Since version-control data is also social data, we know exactly which programmer that wrote each piece of code and with this in mind, it is possible to build up knowledge maps of a codebase, for example, like the one in the next figure 
+which shows the main developers behind each module:
+
+picture of knowledge map
+
+For purpose of understanding way more of what we are talking about here, we will be diving deeper into this online toolset called Codescene.io (https://codescene.io/showcase), which is free for open source projects.
+Needless to say, apart from being a great helper with a nice UI, the platform is mostly based on an open source project called code-maat (https://github.com/adamtornhill/code-maat) from the same author.
+
+Let's see what it is capable of...
+
+Hotspots 
+
+In essence, a hotspot is complicated code that you have to work with often and its calculation is pretty simple:
+picture of the hotspot calculation 
+
+With a Hotspot analysis we can get an interactive map that lets us analyze our codebase interactively. 
+Check the following visualizations where each file is represented as a circle:
+
+picture of hotspot map 
+
+As we can see, we can also identify clusters of Hotspots that indicate problematic sub-systems.
+
+The main benefits of a Hotspot analysis include: 
+
+    - Maintenance problems identification: Information on where sits complicated code that we have to work with often. This is useful to prioritize re-designs.
+    - Risk management: It could be risky to change/extend functionality in a Hotspot for example. We can identify those areas up-front and schedule additional time or allocate extra testing efforts.
+    - Defects Detector: It could identify parts of the codebase that seem unstable with lots of development activity.
+
+Code Biomarkers
+
+In medicine, biomarkers stand for measurements that might indicate a particular disease or physiological state of an organism. 
+We can do the same for code to get a high-level summary of the state of our hotspots and the direction our code is moving in. 
+Code biomarkers act like a virtual code reviewer that looks for patterns that might indicate problems.
+They are scored from A to E (SQALE-rating as we have already seen above) where A is the best and E indicates code with severe potential problems. 
+
+code biomarkers picture
+
+In conclusion we can use Code Biomarkers to:
+
+    - To decide when it’s time to invest in technical improvements instead of adding new features at a high pace.
+    - Get immediate feedback on improvements.
+
+Conway’s Law
+
+    Conway's Law 
+    Social Analysis 
+
+There is way more to cover in this field (like Conway's Law (https://www.empear.com/blog/measure-conways-law/) or refactoring targets (https://codescene.io/projects/167/jobs/11357/results/code/refactoring-targets)), but from here 
+I will leave it to you, otherwise this article will be too long and pretty much the idea was to wake up your curiosity (luckily I have achieved it) and shade some light on what is possible by exploring the social side of the code.
+
+You can also enrich your knowledge in this field by reading Adam Tornhill's book: Software Design X-Rays (Totally recommended). 
+
+As another plus one, I encourage you to give Codescene.io (https://codescene.io/) a try either within an open source repo or within the existent samples (https://codescene.io/showcase), you will be surprised of how much curious stuff you find :).
+
+
+
+Extra Ball
+-----------
+I would like to introduce an open source repository visualization tool called Gource (https://github.com/acaudwell/Gource)
+
+Here is how the author describes it:
+
+"Software projects are displayed by Gource as an animated tree with the root directory of the project at its centre. 
+Directories appear as branches with files as leaves. Developers can be seen working on the tree at the times they contributed to the project.
+
+In essence you can grab your git repository, run gource on it and the result is something like this: 
+
+Video of gource on how the codebase has evolved in a graphical way. 
+
+The documentation sits at: https://github.com/acaudwell/Gource/wiki/Controls 
+
+
+Paying Technical Debt
+-----------
+"The best way to reduce technical debt in new projects is to include technical debt in the conversation early on."
+
+As this quote suggests, this is more at a process level, and even though we have our refactoring toolbox, without the effort of the team, would be impossible to minimize future 
+technical debt and repair existent one. 
+
+So let's see how we can deal with these contexts by pointing out a few tips for the action plan:
+
+At Team level
+-----
+    - Prioritize and keep track of technical debt: During the sprint planning for example. 
+    - Allocate time to address technical debt: Also During the sprint planning or when estimating a task that requires touching a sick part of the code. 
+    - Tech Debt Days: Another great practice where the team spends an entire day only focused on repairing affected code. 
+
+At Company level
+-----
+    - Educate people about its existence: Cost of delay: This metric helps to make visible how much time a team loses due to technical debt.
+    - Make it transparent: Talk, talk and talk and always bring it up to the table. 
+    - Communicate it properly: An idea would be to add a tech debt update meeting about the current state of it. 
+
+As a conclusion, I would like to finish this section with a quote from Adam Tornhill (https://twitter.com/AdamTornhill): 
+
+"Technical debt can be a frustrating and de-motivating topic for many Development Teams."
+"The keyword is transparency."
+"Explain the cost of low-quality code by using the transparent metaphor of 'technical debt'."
+"Make technical debt visible in the code using a variety of objective metrics, and frequently re-evaluate these metrics."
+"Finally, make technical debt visible on the Product and/or Sprint Backlog." 
+"Don’t hide Technical Debt from the Product Owner and the broader organization."
+
+
+
+Wrapping up
+-----------
+Technical debt is a ticking bomb and as our lovely Batman from 1966 (characterized by Adam West) would say (you can check the full 2 minutes video here):
+
+"Some days you just cannot get rid of a bomb..."
+
+And based on that inspiring quote let me rephrase it to:
+
+"Sometimes it is not easy to get rid of a bomb..."
+
+It is a reality that technical debt exists in 99% of the codebases, it is also an important challenge we must face to keep the healthiness and maintenance of our software projects.  
+Hopefully there is light at the end of the tunnel and with the different techniques mentioned above, now you have a couple of new tools in your toolbox to address it effectively.  
+Have fun and do not let technical debt beat you.
+
+
+Congratulations! Technical Debt GURU Level Unlocked!
+-----------
+Part of this article came out of a talk I gave about technical debt recently, you can check the slides:
+"slides from speaker deck"
+There are also 2 sketches that perfectly summarize the main idea of my talk:
+"Images from the sketches"
+Especial thanks to @lariki (https://twitter.com/lariki) and @Miqubel (https://twitter.com/Miqubel) for such a great job :). 
+
+Congratulations! Legacy Code GURU Level Unlocked! - Fernando Cejas - App Builders 2019
+https://www.youtube.com/watch?v=kWQudcaPdQs
+
+
+<center><script async class="speakerdeck-embed" data-id="32ef52a5e0524a96aad7b1439c6bb552" data-ratio="1.66666666666666" 
 src="//speakerdeck.com/assets/embed.js"></script></center>
+
+
+Books
+-----------
+Your Code as a crime scene: https://www.amazon.com/Your-Code-Crime-Scene-Bottlenecks/dp/1680500384/ref=sr_1_1?crid=351O37NG2DKBA&keywords=code+as+a+crime+scene&qid=1555063438&s=gateway&sprefix=code+as+%2Caps%2C223&sr=8-1
+Software Design X-Rays: Fix Technical Debt with Behavioral Code Analysis: https://www.amazon.com/dp/1680502727/ref=emc_b_5_t
+
+
+Articles
+-----------
+https://martinfowler.com/bliki/TechnicalDebt.html
+https://medium.com/the-liberators/how-to-deal-with-technical-debt-in-scrum-f4ec3481eabb
+https://dzone.com/articles/what-technical-debt-it-and-how-to-calculate-it
+http://disciplinedagiledelivery.com/technical-debt/
+https://hackernoon.com/there-are-3-main-types-of-technical-debt-heres-how-to-manage-them-4a3328a4c50c
+https://www.empear.com/blog/code-analysis-tool/
+https://www.empear.com/blog/software-revolution-part1/
+https://www.empear.com/blog/software-revolution-part2/
+https://www.bmc.com/blogs/technical-debt-explained-the-complete-guide-to-understanding-and-dealing-with-technical-debt/
+https://medium.com/@adamdonaghy/in-defence-of-tech-debt-dc9595e0d316
+https://melv1n.com/how-to-manage-technical-debt/
+https://medium.com/libertyit/people-and-code-part-1-reviews-fb1b0bf0fdf6
+https://medium.com/libertyit/people-and-code-part-2-behavioural-code-analysis-180b8fa2a98b
