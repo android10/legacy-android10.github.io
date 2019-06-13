@@ -8,8 +8,8 @@ layout: post
 permalink: /2017/10/20/smooth-your-migration-to-kotlin/
 image: assets/images/smooth_kotlin_featured.jpg
 comments: false
-featured: false
-hidden: false
+featured: true
+hidden: true
 categories: [ android, mobile, java, kotlin, functional, programming ]
 tags:
   - android

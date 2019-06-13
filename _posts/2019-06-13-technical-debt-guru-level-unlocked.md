@@ -6,10 +6,10 @@ author: fernando
 description: As Software Engineers we know that Technical Debt and Legacy Code are familiar concepts we have to live with in our day to day life. We are also aware that our software, in general terms, is terrible and that does not make it any especial. Code base healthiness and maintenance are challenging, so in this quick journey we are going to walk together through a bunch of tips and techniques on how to effectively address this problem.
 layout: post
 permalink: /2019/06/13/technical-debt-guru-level-unlocked/
-image: assets/images/organization_culture_humanity_featured.jpg
+image: assets/images/technical_debt_guru_level_unlocked_featured.jpg
 comments: false
-featured: false
-hidden: false
+featured: true
+hidden: true
 categories: [ culture, development, company, android, mobile, java, kotlin, functional, programming, engineering ]
 tags:
   - organization
