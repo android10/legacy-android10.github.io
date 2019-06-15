@@ -229,7 +229,7 @@ picture of the hotspot calculation
 With a Hotspot analysis we can get an interactive map that lets us analyze our codebase interactively. 
 Check the following visualizations where each file is represented as a circle:
 
-picture of hotspot map 
+picture of hotspot map (add another picture)
 
 As we can see, we can also identify clusters of Hotspots that indicate problematic sub-systems.
 
@@ -244,22 +244,19 @@ Code Biomarkers
 In medicine, biomarkers stand for measurements that might indicate a particular disease or physiological state of an organism. 
 We can do the same for code to get a high-level summary of the state of our hotspots and the direction our code is moving in. 
 Code biomarkers act like a virtual code reviewer that looks for patterns that might indicate problems.
-They are scored from A to E (SQALE-rating as we have already seen above) where A is the best and E indicates code with severe potential problems. 
+They are scored from A to E where A is the best and E indicates code with severe potential problems. 
 
-code biomarkers picture
+code biomarkers picture or pictures
 
 In conclusion we can use Code Biomarkers to:
 
     - To decide when it’s time to invest in technical improvements instead of adding new features at a high pace.
     - Get immediate feedback on improvements.
 
-Conway’s Law
-
-    Conway's Law 
-    Social Analysis 
-
 There is way more to cover in this field (like Conway's Law (https://www.empear.com/blog/measure-conways-law/) or refactoring targets (https://codescene.io/projects/167/jobs/11357/results/code/refactoring-targets)), but from here 
-I will leave it to you, otherwise this article will be too long and pretty much the idea was to wake up your curiosity (luckily I have achieved it) and shade some light on what is possible by exploring the social side of the code.
+I will leave it to you, otherwise this article will be too long and, by the way, the idea was to wake up your curiosity (luckily I have achieved it) and shade some light on what is possible by exploring the social side of the code.
+
+"Keep in mind that Behavioral code analysis helps you ask the right questions, and points your attention to the aspects of your system – both social and technical – that are most likely to need it. You use this information to find parts of the code that may have to be split and modularized to facilitate parallel development by separate teams, or, find opportunities to introduce a new team into your organization to take on a shared responsibility."
 
 You can also enrich your knowledge in this field by reading Adam Tornhill's book: Software Design X-Rays (Totally recommended). 
 
