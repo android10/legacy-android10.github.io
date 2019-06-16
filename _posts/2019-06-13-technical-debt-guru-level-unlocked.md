@@ -230,22 +230,23 @@ That is, we miss an important piece of information: the people side of code."
 
 **Behavioral code analysis emphasizes trends in the development of our codebase by mining version-control data.**
 
-Since version-control data is also social data, **we know exactly which programmer that wrote each piece of code** and with this in mind, it is possible to build up knowledge maps of a codebase, for example, like the one in the next figure which shows the main developers behind each module:
+Since version-control data is also social data, **we know exactly which programmer that wrote each piece of code** and with this in mind, it is possible to build up **knowledge maps of a codebase,** for example, like the one in the next figure which shows the main developers behind each module:
 
-picture of knowledge map
+![knowledge-map](/assets/images/technical_debt_guru_level_unlocked_knowledgemap.png)
 
-For purpose of understanding way more of what we are talking about here, we will be diving deeper into this online toolset called Codescene.io (https://codescene.io/showcase), which is free for open source projects.
+**For the purpose of better understanding way more of what we are talking about,** we will be diving deeper into this online toolset called <a href="https://codescene.io/" target="_blank">Codescene.io</a>, which is free for open source projects.
 
-Needless to say, apart from being a great helper with a nice UI, the platform is mostly based on an open source project called code-maat (https://github.com/adamtornhill/code-maat) from the same author.
+Needless to say, apart from being a great helper with a nice UI, the platform is mostly based on an **open source project** called <a href="https://github.com/adamtornhill/code-maat" target="_blank">code-maat</a> from the same author.
 
-Let's see what CodeScene is capable of...
+Let's see what <a href="https://codescene.io/" target="_blank">Codescene</a> is capable of...
 
 ### Hotspots 
 
 In essence, a hotspot is complicated code that you have to work with often and its calculation is pretty simple:
 picture of the hotspot calculation 
 
-With a Hotspot analysis we can get an interactive map that lets us analyze our codebase interactively. 
+With a Hotspot analysis we can get a map that lets us analyze our codebase interactively. 
+
 Check the following visualizations where each file is represented as a circle:
 
 picture of hotspot map (add another picture)
@@ -358,7 +359,7 @@ Part of this article came out of a talk I gave about TECHNICAL DEBT recently, yo
 <center><script async class="speakerdeck-embed" data-id="32ef52a5e0524a96aad7b1439c6bb552" data-ratio="1.66666666666666" 
 src="//speakerdeck.com/assets/embed.js"></script></center><br>
 
-There are also 1 sketch that perfectly summarizes the main idea of my talk, courtesy of <a href="https://twitter.com/lariki" target="_blank">@lariki</a> and <a href="https://twitter.com/Miqubel" target="_blank">@Miqubel</a>:
+There is also a sketch that perfectly summarizes the main idea of my talk, courtesy of <a href="https://twitter.com/lariki" target="_blank">@lariki</a> and <a href="https://twitter.com/Miqubel" target="_blank">@Miqubel</a>:
 
 ![fernando-cejas](/assets/images/technical_debt_guru_level_unlocked_sketch.jpg)<br>
 
