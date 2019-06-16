@@ -32,121 +32,133 @@ tags:
   - continuous learning
   - new technologies
 ---
-This is a long article I wanted to squeeze in a smaller one but it was almost mission impossible to get rid of some important/valuable information.
-I hope you enjoy and find it helpful. Feel free to provide feedback, which as usual, is more than welcome.
+This is a **long article** that I wanted to squeeze in a smaller one but it was almost mission impossible to get rid of some important/valuable information.
+I hope you enjoy and find it helpful. 
 
-With that being said, I would like to start with a quote from Uncle Bob Martin:
+Feel free to provide ***feedback***, which as usual, is more than welcome.
 
-"Bad code is always imprudent"
+With that being said, I would like to start with a quote from <a href="https://blog.cleancoder.com/" target="_blank">Uncle Bob Martin</a>:
 
-I cannot agree more with this, and no matter what I sell you in this post :), there is NEVER a good reason to write bad code.
+> "Bad code is always imprudent"
 
-
-The Question
-----------
-We as Engineers, Tech Leads and Managers know that technical debt is one of our worst enemies when it comes to codebases and software projects in general
-It can be very frustrating and demotivating thus making our life a bit more complicated...But... 
-
-What is technical debt really? 
-And Legacy code?
-Is there a proportional relationship between them?
-How can we measure and determine the healthiness of our project?
-And once we measure it, how can we finally address the problem?
-
-Let's try to answer these questions and also explore in depth different techniques and strategies that will help us effectively deal with it. 
+I cannot agree more with this, and no matter what I sell you in this post :), **there is NEVER a good reason to write bad code.**
 
 
-Fact: Our Software is Terrible
------------
-In an ideal world, a project would be:
-    - Finished on time.
-    - With a clean code design.
-    - Additional features.
-    - Tested twice. 
-    - On Budget.
+## The Questions
 
-If that is your reality, then you can stop reading this post, luckily you have UNLOCKED the LEVEL SUPERHEROE, so please share your thoughts and ideas, I am more than curious to know how 
-you have achieved it.  
+We as Engineers, Tech Leads and Managers know that **technical debt** is one of our **worst enemies** when it comes to codebases and software projects in general
+It can be very **frustrating** and **demotivating** thus making our life a bit more complicated...But... 
 
-Otherwise, welcome to my world, where we create authentic monsters: giant beasts full of technical debt, legacy code, issues and bugs.
+* **What is technical debt really?**
+* **And Legacy code?**
+* **Is there a proportional relationship between them?**
+* **How can we measure and determine the healthiness of our project?**
+* **And once we measure it, how can we finally address the problem?**
 
-funny picture of a monster full of legacy code 
-
-And if you let me add more, that also includes coordination and communication problems across the entire organization. 
-Yes! Our Software is terrible and we know it is TRUE, which does not make it any special, right?
+Let's try to answer these questions and also explore in depth different **techniques** and **strategies** that will help us effectively deal with it. 
 
 
-What is Legacy Code?
-------------
-There are many definitions of legacy code and some of them, in my opinion, contradict themselves, so since you are familiar with the concept, let's keep it simple:
+## Fact: Our Software is Terrible
 
-"Legacy code is code without tests."
+In an **ideal world,** a project would be:
+    
+* **Finished on time.**
+* **With a clean code design.**
+* **Additional features.**
+* **Tested twice.**
+* **On Budget.**
 
-Testing nowadays should be implicit in our engineering process when writing code. So if you are not at least unit testing your codebase, run and do it, it is a command :).
+If that is your reality, then you can **stop reading this post**, luckily you have **UNLOCKED the LEVEL SUPERHEROE,** so please share your thoughts and ideas, I am more than curious to know how 
+you have achieved it.
+
+Otherwise, welcome to my world, where we create **authentic monsters: giant beasts full of technical debt, legacy code, issues and bugs.**
+
+![fernando-cejas](/assets/images/technical_debt_guru_level_unlocked_monster.jpg)
+
+And if you let me add more, that also includes **coordination and communication problems** across the entire organization. 
+Yes! **Our Software is terrible** and we know it is **TRUE,** which does not make it any special, right?
 
 
-What is Reckless Debt?
-------------
-I came across this term lately and it looks like we can use it as a synonym of technical debt, but in reality, here is the formal definition:
+## What is Legacy Code?
 
-"Reckless Debt is code that violates design principles and good practices."
+There are many definitions of legacy code and some of them, in my opinion, contradict themselves, so since you are familiar with the concept, **let's keep it simple:**
 
-That means that all code generated by you and your team is junk (not done on purpose of course).
-Moreover, Reckless Debt will lead to Technical Debt in the short/mid term and it is also a signal that your team needs more training, or you have too many inexperienced or junior developers. 
+> "Legacy code is code without tests."
+
+**Testing nowadays should be implicit in our engineering process when writing code.** So if you are not at least unit testing your codebase, run and do it, it is a command :).
 
 
-What is Technical Debt?
-------------
-Here I will rely on Martin Fowler:
+## What is Reckless Debt?
 
-"Technical Debt is a metaphor developed by Ward Cunningham to help us think about this problem. 
+I came across this term lately and it looks like we can use it as a synonym of technical debt, but in reality, **here is the formal definition:**
+
+> "Reckless Debt is code that violates design principles and good practices."
+
+That means that **all code generated by us and our team is junk** (not done on purpose of course).
+
+**Moreover, Reckless Debt will lead to Technical Debt in the short/mid term and it is also a signal that your team needs more training, or you have too many inexperienced or junior developers.**
+
+
+## What is Technical Debt?
+
+Here I will rely on <a href="https://martinfowler.com/" target="_blank">Martin Fowler</a>:
+
+> "Technical Debt is a metaphor developed by Ward Cunningham to help us think about this problem. 
 Like a financial debt, technical debt incurs interest payments, which come in the form of the extra effort that we have to do in future development because of the quick and dirty 
 design choice. We can choose to continue paying the interest, or we can pay down the principal by refactoring the quick and dirty design into the better design."
 
-In summary: Technical Debt is the additional effort and work required to complete any software development.
+**In summary: Technical Debt is the additional effort and work required to complete any software development.**
 
 
-Real case scenario: Adding a new feature
-------------
+## Real case scenario: Adding a new feature
+
 So let's put our day to day life back into our heads. In this case we have decided to add a new functionality to our project, so here we have 2 well defined options:
 
-    - The "easy" way, built up with messy design and code, which will get us there way faster: REMEMBER WE NEED TO PAY THE INTEREST. 
-    - The "hard" way, built up with cleaner code and a meaningful and consistent architecture. Without a doubt this will take more time but it is going to be more EFFICIENT IN TERMS OF INTEREST COST. 
+1. **The "easy" way,** built up with messy design and code, which will get us there way faster: **REMEMBER WE NEED TO PAY THE INTEREST.**
+
+2. **The "hard" way,** built up with cleaner code and a meaningful and consistent architecture. Without a doubt this will take more time but it is going to be more **EFFICIENT IN TERMS OF INTEREST COST.**
  
-"Accept some short term Technical Debt for tactical reason"
+> "Accept some short term Technical Debt for tactical reason"
 
-It is not uncommon that at some point we need to develop something quickly because of time to market (or market experiment), or perhaps there is a new internal component that needs 
-to be shipped in order to be used across the entire organization and we are contributing to it (a module for example), and we code it fast with not the best design until we can come 
-up with a more robust and effective solution.  
+It is not uncommon that at some point we need to develop something quickly because of **time to market** (or market experiment), or perhaps there is a **new internal component** that needs 
+to be shipped in order to be used across the entire organization and we are contributing to it (a module for example), and **we code it fast with not the best design until we can come up with a more robust and effective solution.**
 
-"No matter what is the reason, but part of this decision to accept technical debt is to also accept the need to pay it down at some point in the future. 
+> "No matter what is the reason, but part of this decision to accept technical debt is to also accept the need to pay it down at some point in the future. 
 Having good regression testing assets in place, assures that refactoring accepted technical debt in the future, can be done with low risk."
 
-Let's move on and see how we can analyze and inspect our codebase in order to detect technical debt.
+**Let's move on and see how we can analyze and inspect our codebase in order to detect technical debt.**
 
 
-ROOKIE Level Unlocked! Static Code Analysis
------------
-It is the most basic and fundamental building block when it comes to measuring technical debt at a code level. 
-Most of us are familiar with this practice since it aims to highlight potential bugs, vulnerabilities and complexity.
+## ROOKIE Level Unlocked! Static Code Analysis
 
-But first, in order to interpret the results of static code analysis and quantify technical debt, we need to be familiar with a bunch of code metrics:
-     - Cyclomatic Complexity: stands for the complexity of classes and methods by analyzing the number of functional paths in the code (if clauses for example).
-     - Code coverage: A lack of unit tests is a source of technical debt. This is the amount of code covered by unit tests (we should take this one responsibly, since testing getters and setter can also increase code coverage). 
-     - SQALE-rating: Broad evaluation of software quality. The scale goes from A to E, with A being the highest quality. 
-     - Number of rule: Number of rules violated from a given set of coding conventions.
-     - Bug count: As technical debt increases, the quality of the software decreases. The number of bugs will likely grow (We can complement this one with information coming from our bug tracker).
+> It is the most basic and fundamental building block when it comes to measuring technical debt at a code level. 
 
-There is a variety of tools out there (free for open source projects), which provide the above information out of the box, and most of the time, they can be easily 
-integrated either with your CI infrastructure or directly with github/gitlab/git.
+Most of us are familiar with this practice since **it aims to highlight potential bugs, vulnerabilities and complexity.**
 
-Here is a screenshot of the open source tool SonarQube:
-screen shot 
+**But first, in order to interpret the results of static code analysis and quantify technical debt, we need to be familiar with a bunch of code metrics:**
 
-Lint is also a very flexible and popular one (there are plugins for the most popular IDEs and you can write your own custom rules):
-screen shot
+* **Cyclomatic Complexity:** stands for the complexity of classes and methods by analyzing the number of functional paths in the code (if clauses for example).
 
-Static code analysis should be our first mandatory step to tackle and measure technical debt. 
+* **Code coverage:** A lack of unit tests is a source of technical debt. This is the amount of code covered by unit tests (we should take this one responsibly, since testing getters and setter can also increase code coverage). 
+
+* **SQALE-rating:** Broad evaluation of software quality. The scale goes from A to E, with A being the highest quality. 
+
+* **Number of rules:** Number of rules violated from a given set of coding conventions.
+
+* **Bug count:** As technical debt increases, the quality of the software decreases. The number of bugs will likely grow (We can complement this one with information coming from our bug tracker).
+
+**There is a variety of tools out there (free for open source projects),** which provide the above information out of the box, and most of the time, they can be easily 
+integrated either with your CI infrastructure or directly with our version control system tools like github/gitlab/git.
+
+Here is a screenshot of one codebase example using the online open source tool <a href="https://sonarcloud.io/" target="_blank">SonarQube</a>:
+
+![sonarqube](/assets/images/technical_debt_guru_level_unlocked_sonarqube.png)
+
+**Lint is also a very flexible and popular one** (there are plugins for the most popular IDEs and you can write your own custom rules, in this case on Android):
+
+![lint](/assets/images/technical_debt_guru_level_unlocked_lint.png)
+
+> Static code analysis should be our first mandatory step to tackle and measure technical debt. 
 So let's make sure we include as a regular practice in our engineering process. 
 
 
@@ -318,7 +330,7 @@ Technical debt is a ticking bomb and as our lovely Batman from 1966 (characteriz
 
 "Some days you just cannot get rid of a bomb..."
 
-And based on that inspiring quote let me rephrase it to:
+And based on this inspiring quote let me rephrase it to:
 
 "Sometimes it is not easy to get rid of a bomb..."
 
