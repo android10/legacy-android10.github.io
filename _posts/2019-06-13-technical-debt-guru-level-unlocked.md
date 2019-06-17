@@ -365,8 +365,7 @@ There is also a sketch that perfectly summarizes the main idea of my talk, court
 
 There is also a video of my talk at <a href="https://appbuilders.ch" target="_blank">App Builders 2019</a>:
 
-VIDEO: Congratulations! Legacy Code GURU Level Unlocked! - Fernando Cejas - App Builders 2019
-https://www.youtube.com/watch?v=kWQudcaPdQs
+<center><iframe width="800" height="480" src="https://www.youtube.com/embed/kWQudcaPdQs" frameborder="0" allowfullscreen></iframe></center>
 
 
 ## Books
