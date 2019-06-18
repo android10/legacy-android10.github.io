@@ -242,45 +242,77 @@ Let's see what <a href="https://codescene.io/" target="_blank">Codescene</a> is 
 
 ### Hotspots 
 
-In essence, a hotspot is complicated code that you have to work with often and its calculation is pretty simple:
-picture of the hotspot calculation 
+> **In essence, a hotspot is complicated code that you have to work with often.**
 
-With a Hotspot analysis we can get a map that lets us analyze our codebase interactively. 
+Its calculation is pretty simple:
 
-Check the following visualizations where each file is represented as a circle:
+![hotspot-formula](/assets/images/technical_debt_guru_level_unlocked_hotspotformula.png)
 
-picture of hotspot map (add another picture)
+**With a Hotspot analysis we can get a hierarchical map that lets us analyze our codebase interactively.**
 
-As we can see, we can also identify clusters of Hotspots that indicate problematic sub-systems.
+By using <a href="https://codescene.io/showcase" target="_blank">one of the examples of the platform</a>, we can check the following visualizations where each file is represented as a circle:
 
-The main benefits of a Hotspot analysis include: 
+![hotspots-augmented-map](/assets/images/technical_debt_guru_level_unlocked_hotspotsaugmentedmap.png)
 
-    - Maintenance problems identification: Information on where sits complicated code that we have to work with often. This is useful to prioritize re-designs.
-    - Risk management: It could be risky to change/extend functionality in a Hotspot for example. We can identify those areas up-front and schedule additional time or allocate extra testing efforts.
-    - Defects Detector: It could identify parts of the codebase that seem unstable with lots of development activity.
+**As we can see, we can also identify clusters of Hotspots that indicate problematic sub-systems.**
+
+By clicking on a Hotspot we can get **more details** to get deeper information:
+
+![hotspot-details](/assets/images/technical_debt_guru_level_unlocked_hotspotdetails.png)
+
+The **main benefits** of a Hotspot analysis include: 
+
+* **Maintenance problems identification:** Information on where sits complicated code that we have to work with often. This is useful to prioritize re-designs.
+
+* **Risk management:** It could be risky to change/extend functionality in a Hotspot for example. We can identify those areas up-front and schedule additional time or allocate extra testing efforts.
+
+* **Defects Detector:** It could identify parts of the codebase that seem unstable with lots of development activity.
+
+Here is the <a href="https://codescene.io/docs/guides/technical/hotspots.html" target="_blank">full documentation</a> with more details. 
+
 
 ### Code Biomarkers
 
-In medicine, biomarkers stand for measurements that might indicate a particular disease or physiological state of an organism. 
-We can do the same for code to get a high-level summary of the state of our hotspots and the direction our code is moving in. 
-Code biomarkers act like a virtual code reviewer that looks for patterns that might indicate problems.
-They are scored from A to E where A is the best and E indicates code with severe potential problems. 
+> **In medicine, biomarkers stand for measurements that might indicate a particular disease or physiological state of an organism.**
+**We can do the same for code to get a high-level summary of the state of our hotspots and the direction our code is moving in.**
 
-code biomarkers picture or pictures
+**Code biomarkers act like a virtual code reviewer that looks for patterns that might indicate problems.**
 
-In conclusion we can use Code Biomarkers to:
+They are scored from **A to E** where A is the best and E indicates code with **severe potential problems.**
 
-    - To decide when it’s time to invest in technical improvements instead of adding new features at a high pace.
-    - Get immediate feedback on improvements.
+**Let's have a look at a couple of examples listing risky areas of our code base:**
 
-There is way more to cover in this field (like Conway's Law (https://www.empear.com/blog/measure-conways-law/) or refactoring targets (https://codescene.io/projects/167/jobs/11357/results/code/refactoring-targets)), but from here 
-I will leave it to you, otherwise this article will be too long and, by the way, the idea was to wake up your curiosity (luckily I have achieved it) and shade some light on what is possible by exploring the social side of the code.
+![code-biomarkers](/assets/images/technical_debt_guru_level_unlocked_biomarkers_one.png)
 
-"Keep in mind that Behavioral code analysis helps you ask the right questions, and points your attention to the aspects of your system – both social and technical – that are most likely to need it. You use this information to find parts of the code that may have to be split and modularized to facilitate parallel development by separate teams, or, find opportunities to introduce a new team into your organization to take on a shared responsibility."
+![code-biomarkers](/assets/images/technical_debt_guru_level_unlocked_biomarkers_two.png)
 
-You can also enrich your knowledge in this field by reading Adam Tornhill's book: Software Design X-Rays (Totally recommended). 
+**In conclusion we can use Code Biomarkers to:**
 
-As another plus one, I encourage you to give Codescene.io (https://codescene.io/) a try either within an open source repo or within the existent samples (https://codescene.io/showcase), you will be surprised of how much curious stuff you find :).
+* **To decide when it’s time to invest in technical improvements instead of adding new features at a high pace.**
+
+* **Get immediate feedback on improvements.**
+
+Same as with <a href="https://codescene.io/docs/guides/technical/hotspots.html" target="_blank">hotspots</a>, here is also the <a href="https://codescene.io/docs/guides/technical/biomarkers.html" target="_blank">biomarkers full documentation</a>. 
+
+
+## Covering more Social Analysis
+
+There is way more to cover in this field like: 
+
+* <a href="https://www.empear.com/blog/measure-conways-law/" target="_blank">Conway's Law</a>.
+* <a href="https://codescene.io/projects/167/jobs/11357/results/code/refactoring-targets" target="_blank">Refactoring Targets</a>.
+* <a href="https://codescene.io/docs/guides/technical/temporal-coupling.html" target="_blank">Temporal coupling</a>.
+
+But from here I will leave it to you, otherwise this article will be too long and, by the way, the idea was to wake up your curiosity (luckily I have achieved it) and shade some light on what is possible by exploring the social side of the code.
+
+> **"Behavioral code analysis helps you ask the right questions, and points your attention to the aspects of your system – both social and technical – that are most likely to need it.**
+**You use this information to find parts of the code that may have to be split and modularized to facilitate parallel development by separate teams, or, find opportunities to introduce a new team into your organization to take on a shared responsibility."**
+
+1. **Where should we focus improvements?**
+2. **Where are the risk areas in the code?**
+3. **Any team productivity bottleneck?**
+
+I definitely encourage you to give <a href="https://codescene.io/" target="_blank">Codescene</a> a try either within an open source repo or within <a href="https://codescene.io/showcase" target="_blank">the existent samples</a>, you will be surprised how much curious stuff you find :).
 
 
 ## Extra Ball
@@ -294,7 +326,7 @@ Directories appear as branches with files as leaves. Developers can be seen work
 
 **In essence you can grab your git repository, run gource on it and the result is something like this** (This is an example of the Bitcoin repository and its evolution): 
 
-VIDEO of gource on how the codebase has evolved in a graphical way. 
+<center><iframe width="800" height="480" src="https://www.youtube.com/embed/60cGHG9LFWk" frameborder="0" allowfullscreen></iframe></center>
 
 The documentation sits at the <a href="https://github.com/acaudwell/Gource/wiki/Controls" target="_blank">Gource Github Wiki</a>.
 
