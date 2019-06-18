@@ -43,6 +43,8 @@ With that being said, I would like to start with a quote from <a href="https://b
 
 I cannot agree more with this, and no matter what I sell you in this post :), **there is NEVER a good reason to write bad code.**
 
+![fernando-cejas](/assets/images/technical_debt_guru_level_unlocked_monster.jpg)
+
 
 ## The Questions
 
@@ -73,7 +75,7 @@ you have achieved it.
 
 Otherwise, welcome to my world, where we create **authentic monsters: giant beasts full of technical debt, legacy code, issues and bugs.**
 
-![fernando-cejas](/assets/images/technical_debt_guru_level_unlocked_monster.jpg)
+![bad-code](/assets/images/technical_debt_guru_level_unlocked_badcode.jpg)
 
 And if you let me add more, that also includes **coordination and communication problems** across the entire organization. 
 Yes! **Our Software is terrible** and we know it is **TRUE,** which does not make it any special, right?
