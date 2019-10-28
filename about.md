@@ -25,10 +25,12 @@ Let me bring up a bunch of phrases I strongly identify with:
 
 ## What I do and what I have done
 
-I'm currently working as a **Developer Advocate** by speaking at conferences, spreading and sharing knowledge through open source, communities and blog posts. Being social and helping in any way I can, is one the things I like the most. 
-{: .text-justify}
+Currently I am working as a Director in the Mobile Development Space. This is a role switch, getting into a more strategic position by helping companies and teams to develop themselves, be productive and reach out their goals. 
 
 In the last 10 years I mostly worked as **Core Engineer** and **Tech Lead** focused on Mobile Development. I also had the opportunity to be **Engineer Manager** since I love solving people's problems and keeping teams motivated without losing entirely the technical part. 
+{: .text-justify}
+
+I also worked as a **Developer Advocate** by speaking at conferences, spreading and sharing knowledge through open source, communities and blog posts. Being social and helping in any way I can, is one the things I like the most. 
 {: .text-justify}
 
 Previously I started as a **developer** and later converted to an **agile coach**. 
