@@ -6,7 +6,7 @@ author: fernando
 description: description.
 layout: post
 permalink: /2020/03/21/learn-out-of-mistakes-postmortems/
-image: assets/images/technical_debt_guru_level_unlocked_featured.jpg
+image: assets/images/learn_out_mistakes_postmortems_featured.jpg
 comments: false
 featured: true
 hidden: true
