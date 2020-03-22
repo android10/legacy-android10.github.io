@@ -39,7 +39,7 @@ I bumped into this **inspirational quote** and wrote it down some time ago (plea
 
 > "Whatever you do, you will make mistakes, errors and blunders. Everyone does. Some less, some more, but no one is exempt. **Yet, success is nothing more than mistakes you managed to overcome. That is why a mistake is not important. What counts are the things you do after one.**"
 
-![fernando-cejas](/assets/images/technical_debt_guru_level_unlocked_monster.jpg)
+![fernando-cejas](/assets/images/learn_out_mistakes_postmortems_01.png)
 
 In my opinion, it is our reponsibility to minimize failure, but **company's cultures should provide room for failing**, and when this happens, we should get something positive and constructive out of it: **a lesson learned.** 
 
@@ -94,7 +94,7 @@ How we organize this information, is a matter of taste, but we should keep **con
 
 Here is an screenshot of a postmortem out of a situation I experienced recently: 
 
-![fernando-cejas](/assets/images/technical_debt_guru_level_unlocked_monster.jpg)
+![fernando-cejas](/assets/images/learn_out_mistakes_postmortems_02.png)
 
 ## Tooling and Templates
 
