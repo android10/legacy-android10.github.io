@@ -8,8 +8,8 @@ layout: post
 permalink: /2020/03/21/learn-out-of-mistakes-postmortems/
 image: assets/images/learn_out_mistakes_postmortems_featured.jpg
 comments: false
-featured: true
-hidden: true
+featured: false
+hidden: false
 categories: [ culture, development, company, agile, learning, continuous learning, organization ]
 tags:
   - organization
