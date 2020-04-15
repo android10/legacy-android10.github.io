@@ -6,7 +6,7 @@ author: fernando
 description: Postmortem are a good way of promoting and encouraging continuos improvement and learning out of mistakes. Let's jump in and see how we can leverage this technique in order to get the best out it.
 layout: post
 permalink: /2020/03/21/learn-out-of-mistakes-postmortems/
-image: assets/images/learn_out_mistakes_postmortems_featured.jpg
+image: assets/images/learn_out_mistakes_postmortems_featured_small.jpg
 comments: false
 featured: false
 hidden: false
