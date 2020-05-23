@@ -1,15 +1,15 @@
 ---
-id: 16
+id: 17
 title: Learn out of mistakes. Postmortems to the rescue.
 date: 2020-03-21T12:54:33+00:00
 author: fernando
-description: description.
+description: Postmortem are a good way of promoting and encouraging continuos improvement and learning out of mistakes. Let's jump in and see how we can leverage this technique in order to get the best out it.
 layout: post
 permalink: /2020/03/21/learn-out-of-mistakes-postmortems/
-image: assets/images/learn_out_mistakes_postmortems_featured.jpg
+image: assets/images/learn_out_mistakes_postmortems_featured_small.jpg
 comments: false
-featured: true
-hidden: true
+featured: false
+hidden: false
 categories: [ culture, development, company, agile, learning, continuous learning, organization ]
 tags:
   - organization
