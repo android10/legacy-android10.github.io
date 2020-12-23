@@ -1,3 +1,7 @@
+DEPRECATED: This repo is no longer maintained but still valid if you want to use the template. 
+=========================
+
+
 Jekyll Blog Project
 =========================
 
