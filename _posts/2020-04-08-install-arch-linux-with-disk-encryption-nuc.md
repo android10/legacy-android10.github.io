@@ -3,10 +3,10 @@ id: 18
 title: Install Arch Linux with Disk Encryption
 date: 2020-04-08T10:22:11+00:00
 author: fernando
-description: This post is going to help you to install Arch Linux with full disk encryption.
+description: This post might act as a guide for learning and it is going to help you to install Arch Linux with full disk encryption.
 layout: post
 permalink: /2020/04/08/install-arch-linux-with-disk-encryption/
-image: assets/images/learn_out_mistakes_postmortems_featured.jpg
+image: assets/images/install_arch_disk_encryption_featured.jpg
 comments: false
 featured: true
 hidden: true
@@ -19,12 +19,26 @@ tags:
   - luks
   - arch
 ---
-This post is going to help you to install Arch Linux with full disk encryption.
+I'm a Linux fan, and the main reason is because of its open source nature: I have been using it for years and I gotta say a lot has changed since the early days... If you remember re-compiling the kernel in order to install an application, you know what I'm talking about... Fortunately that does not happen anymore, so do not freak out, not yet :). 
+
+This article will act as a guide, which is goint to help you to install (and understand) Arch Linux with full disk encryption. We are also going to walk together through some of the concepts involved in the linux world, expecifically in the Arch Linux World that will provide you with a better picture of this ecosystem.
+
+Disclaimer: give yourself time since it is a long text and you will need also patience, but I promise you will learn and have fun. Let's get started!
+
+## Why Arch Linux?
+I used SuSe, Red Hat, Devian, Ubuntu and Arch, in that order.
+But First why Arch Linux? Mention Oriol
+Give the reasons
+There are many distros out there.... but let me enumerate the reasons why I choose Arch and made me feel in love with him
+Do it yourself person. Installing arch linux is like building your own hause. 
+Rolling release
+
+## Why disk encryption?
+
+## Before Start
+Preparing the terrain
 In this case I will do it on an Intel NUC I will use as a server but this guide could be applied to any other device.
 Make sure that you check device specifics on the well documented Arch Linux Wiki while following this guide.  
-
-## Why Arch Linux
-Give the reasons
 
 ## First steps
 
